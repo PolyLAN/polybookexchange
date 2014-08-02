@@ -1,0 +1,77 @@
+{% extends "polybookexchange/base.html" %}
+{% load i18n %}
+{% load polybookexchange_extras %}
+
+{% block title %}{{block.super}} :: {% trans "Browse" %}{% endblock %}
+
+{% block content %}
+
+    <h1 class="page-header">{% trans "Browse" %}</h1>
+
+    {% trans "This page display all exemplars in stock linked to a section" %}
+
+    <br /><br />
+
+    <form method="GET">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>{% trans "Section" %}</label>
+                        <select name="sec" class="form-control">
+                            <option value="-1">{% trans "All" %}</option>
+                            {% for sec in sections %}
+                                <option value="{{sec.pk}}" {% if sec.pk = section.pk %}selected = "selected"{% endif %}>{{sec.name|safe}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>{% trans "Semester" %}</label>
+                        <select name="sem" class="form-control">
+                            <option value="-1">{% trans "All" %}</option>
+                            {% for sem in semestres %}
+                                <option value="{{sem.pk}}" {% if sem.pk = semestre.pk %}selected = "selected"{% endif %}>{{sem.name|safe}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary pull-right" type="submit"><i class="glyphicon glyphicon-search"></i> {% trans "Search" %}</button>
+        <br /><br />
+    </form>
+
+    {% if liste %}
+
+        {% for b in liste.object_list %}
+            {% show_small_book b %}
+        {% endfor %}
+
+
+        <ul class="pager">
+            {% if liste.has_previous %}
+                <li class="previous"><a href="?page={{liste.previous_page_number}}&sem={{sem.pk}}&sec={{sec.pk}}">&larr; {% trans "Previous" %}</a></li>
+            {% else %}
+                <li class="previous disabled"><a href="#">&larr; {% trans "Previous" %}</a></li>
+            {% endif %}
+
+            <li>{% blocktrans with n=liste.number p=liste.paginator.num_pages %}Page {{n}} of {{p}}{% endblocktrans %}</li>
+
+            {% if liste.has_next %}
+                <li class="next"><a href="?page={{liste.next_page_number}}&sem={{sem.pk}}&sec={{sec.pk}}">{% trans "Next" %} &rarr;</a></li>
+            {% else %}
+                <li class="next disabled"><a href="#">{% trans "Next" %} &rarr;</a></li>
+            {% endif %}
+
+        </ul>
+
+    {% endif %}
+
+
+    <script type="text/javascript">$('#polybook-menu-browse').addClass('active');</script>
+
+{% endblock %}

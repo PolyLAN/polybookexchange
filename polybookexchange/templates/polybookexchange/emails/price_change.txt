@@ -1,0 +1,8 @@
+{% load i18n %}{% blocktrans with id=exemplar.pk price=exemplar.price %}
+Hi !
+
+The book exemplar {{id}} has a new price: {{price}} !
+
+Bests,
+
+The book exchange,{% endblocktrans %}

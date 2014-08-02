@@ -1,0 +1,43 @@
+{% load i18n %}
+<html>
+    <head><title>AGEPoly :: {% trans "Book exchange" %}</title></head>
+
+    <body>
+        <h2>{% trans "Book proposition's details " %}</h2>
+
+        <p>{% trans "You have to <a href='javascript:window.print()'>print</a> this page et put it inside the book you bring to AGEPoly's desk " %}<br />
+        <br />
+
+        <table>
+            <tr>
+                <td>{% trans "CandidateID:" %}</td>
+                <td><b>{{ candidate.pk }}</b></td>
+                <td style="padding: 15px;"><img src="{% url 'polybookexchange.views.gen_bar_code' candidate.pk %}"></td>
+            </tr>
+            <tr>
+                <td>{% trans "Sciper:" %}</td>
+                <td><b>{{ candidate.sciper }}</b></td>
+                <td style="padding: 15px;"><img src="{% url 'polybookexchange.views.gen_bar_code' candidate.sciper %}"></td>
+            </tr>
+            <tr>
+                <td>{% trans "ISBN:" %}</td>
+                <td><b>{{ candidate.isbn }}</b></td>
+                <td style="padding: 15px;"><img src="{% url 'polybookexchange.views.gen_bar_code' candidate.isbn %}"></td>
+            </tr>
+            <tr>
+                <td>{% trans "Price" %}:</td>
+                <td><b>{{ candidate.price|floatformat:2 }}</b></td>
+                <td></td>
+            </tr>
+
+        </table>
+
+        {% trans "Your book will only be available in the sell area when you brigen him to AGEPoly's desk and we validated it" %}<br />
+
+        {% trans "You can access this page later using the left menu if you cannot print it now." %}<br /><br />
+
+        {% trans "You now have 14 days to bring the book to AGEPoly's desk, after the delay you will have to start over." %}
+        </p>
+        <span style="float: right;"><a href="javascript:window.close();">{% trans "Close this window" %}</a></span>
+    </body>
+</html>

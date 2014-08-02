@@ -1,0 +1,13 @@
+{% load i18n %}{% blocktrans with id=exemplar.pk %}
+Hi !
+
+As said in our conditions, your book (exemplar id: {{id}}) has been removed from our system and offered to the main library.
+
+Thanks you for using the book exchange !
+
+Bests,
+
+The AGEPoly's book exchange,
+
+
+(This email is sent automaticaly when a book is removed){% endblocktrans %}

@@ -1,0 +1,45 @@
+{% extends "polybookexchange/base.html" %}
+{% load i18n %}
+{% load polybookexchange_extras %}
+
+{% block title %}{{block.super}} :: {% trans "Old candidates cleanup" %}{% endblock %}
+
+{% block content %}
+
+    <h1 class="page-header">{% trans "Old candidates cleanup" %}</h1>
+
+    {% if done %}
+        <div class="alert alert-success">
+            {% trans "Candidates deleted !" %}
+        </div>
+    {% endif %}
+
+    <div class="alert alert-info">
+        {% trans "If needed, you can unselect some candidates" %}
+    </div>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        {% for c in to_delete %}
+
+            <input type="checkbox" name="to_delete[]" value="{{c.pk}}" checked>
+            {{c.id}} - {{c.isbn}} - {{c.sciper}} - {{c.creation_date}} ({{c.creation_date|timesince}})
+            <br />
+        {% empty %}
+
+            <div class="alert alert-warning">
+                {% trans "Nothing to cleanup !" %}
+            </div>
+
+        {% endfor %}
+
+
+        <button type="submit" class="btn btn-danger pull-right"><i class="glyphicon glyphicon-trash"></i> {% trans "Cleanup" %}</button>
+
+    </form>
+
+
+    <script type="text/javascript">$('#polybook-menu-admin').addClass('active');</script>
+
+{% endblock %}

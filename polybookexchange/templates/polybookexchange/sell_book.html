@@ -1,0 +1,54 @@
+{% extends "polybookexchange/base.html" %}
+{% load i18n %}
+{% load polybookexchange_extras %}
+
+{% block title %}{{block.super}} :: {% trans "Book selling" %}{% endblock %}
+
+{% block content %}
+
+    <h1 class="page-header">{% trans "Book selling" %}</h1>
+
+    {% if status == "ok" %}
+
+        <div class="alert alert-success">
+            {% trans "Book sold successfuly !" %}
+
+            <a href="{% url 'polybookexchange.views.exemplar' exemplar_id %}" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-print"></i> {% trans "Show the recepie" %}</a>
+            <br /><br />
+
+        </div>
+
+    {% else %}
+
+        {% if status == "error" %}
+            <div class="alert alert-danger">
+                {% trans "Exemplar invalid or already sold !" %}
+            </div>
+        {% endif %}
+
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            {% if exemplar_id %}
+                <input type="hidden" value="{{exemplar_id}}" name="exemplar_id">
+            {% else %}
+                <div class="form-group">
+                    <label>{% trans "Exemplar ID:" %}</label>
+                    <input name="exemplar_id" type="text" class="form-control">
+                </div>
+            {% endif %}
+
+            <div class="form-group">
+                <label>{% trans "Sciper:" %}</label>
+                <input name="sciper" type="text" class="form-control">
+                <span class="help-text">{% trans "Of the buyer" %}</span>
+            </div>
+
+            <button type="submit" class="pull-right btn btn-primary"><i class="glyphicon glyphicon-shopping-cart"></i> {% trans "Sell" %}</button>
+        </form>
+
+    {% endif %}
+
+    <script type="text/javascript">$('#polybook-menu-admin').addClass('active');</script>
+
+{% endblock %}

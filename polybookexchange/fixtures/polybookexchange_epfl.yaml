@@ -1,0 +1,75 @@
+- fields: {acronym: CMD-MTE, name: CDM - Programme de management de la technologie
+      et entrepreneuriat}
+  model: polybookexchange.section
+  pk: 1
+- fields: {acronym: CMS, name: Cours de math&eacute;matiques sp&eacute;ciales}
+  model: polybookexchange.section
+  pk: 2
+- fields: {acronym: ENAC-AR, name: ENAC - Section d'architecture}
+  model: polybookexchange.section
+  pk: 3
+- fields: {acronym: ENAC-GC, name: ENAC - Section de g&eacute;nie civil}
+  model: polybookexchange.section
+  pk: 4
+- fields: {acronym: ENAC-SIE, name: ENAC - Section des sciences et ing&eacute;nierie
+      de l'environnement}
+  model: polybookexchange.section
+  pk: 5
+- fields: {acronym: DOC, name: Ecole doctorale}
+  model: polybookexchange.section
+  pk: 6
+- fields: {acronym: IC-IN, name: IC - Section d'informatique}
+  model: polybookexchange.section
+  pk: 7
+- fields: {acronym: IC-SC, name: IC - Section des syst&eacute;mes de communication}
+  model: polybookexchange.section
+  pk: 8
+- fields: {acronym: SB-CGC, name: SB - Section de chimie et g&eacute;nie chimique}
+  model: polybookexchange.section
+  pk: 9
+- fields: {acronym: SB-MA, name: SB - Section de math&eacute;matiques}
+  model: polybookexchange.section
+  pk: 10
+- fields: {acronym: SB-PH, name: SB - Section de physique}
+  model: polybookexchange.section
+  pk: 11
+- fields: {acronym: STI-GM, name: STI - Section de g&eacute;nie m&eacute;canique}
+  model: polybookexchange.section
+  pk: 12
+- fields: {acronym: STI-EL, name: STI - Section de g&eacute;nie &eacute;lectrique
+      et &eacute;lectronique}
+  model: polybookexchange.section
+  pk: 13
+- fields: {acronym: STI-MT, name: STI - Section de microtechnique}
+  model: polybookexchange.section
+  pk: 14
+- fields: {acronym: STI-MX, name: STI - Section de science et g&eacute;nie des mat&eacute;riaux}
+  model: polybookexchange.section
+  pk: 15
+- fields: {acronym: SV-SV, name: SV - Section des sciences de la vie}
+  model: polybookexchange.section
+  pk: 16
+- fields: {acronym: 1e, name: Bachelor premi&egrave;re ann&eacute;e}
+  model: polybookexchange.semester
+  pk: 1
+- fields: {acronym: 2e, name: Bachelor deuxi&egrave;me ann&eacute;e}
+  model: polybookexchange.semester
+  pk: 2
+- fields: {acronym: 3e, name: Bachelor troisi&egrave;me ann&eacute;e}
+  model: polybookexchange.semester
+  pk: 3
+- fields: {acronym: 4e, name: Master premi&egrave;re ann&eacute;e}
+  model: polybookexchange.semester
+  pk: 4
+- fields: {acronym: 5e, name: Master deuxi&egrave;me ann&eacute;e}
+  model: polybookexchange.semester
+  pk: 5
+- fields: {acronym: PM, name: Projet de Master}
+  model: polybookexchange.semester
+  pk: 6
+- fields: {acronym: Doc, name: Doctorant}
+  model: polybookexchange.semester
+  pk: 7
+- fields: {acronym: CMS, name: CMS}
+  model: polybookexchange.semester
+  pk: 8

@@ -1,0 +1,116 @@
+{% extends "polybookexchange/base.html" %}
+{% load i18n %}
+{% load polybookexchange_extras %}
+
+{% block title %}{{block.super}} :: {% trans "Book details" %}{% endblock %}
+
+{% block content %}
+
+    <h1 class="page-header">{% trans "Book details" %}</h1>
+
+    {% show_book book "False" %}
+
+    <h3>{% trans "Exemplars of this book currently available:" %}</h3>
+
+    {% if book.sellable %}
+
+        <table class="table table-condensed table-hover table-state">
+            <thead>
+                <tr>
+                    <th>{% trans "ID" %}</th>
+                    <th>{% trans "Price" %}</th>
+                    <th>{% trans "State" %}</th>
+                    {% if user.is_staff %}<th></th>{% endif %}
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for ex in book.sellable %}
+
+                    <tr>
+                        <td><a href="{% url 'polybookexchange.views.exemplar' ex.pk %}">{% trans "Book n°" %}{{ ex.pk }}</a></td>
+                        <td>{{ ex.price|floatformat:2 }} CHF</td>
+                            <td><span class="label label-{{ex.state_color}}">{{ ex.state }}</span></td>
+                            {% if user.is_staff %}
+                                <td><a href="{% url 'polybookexchange.views.sell_book' %}?eId={{ ex.pk }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-shopping-cart"></i> {% trans "Sell" %}</a></td>
+                            {% endif %}
+                        </tr>
+                {% endfor %}
+
+                </tbody>
+        </table>
+
+    {% else %}
+
+        <div class="alert alert-warning">
+            {% trans "This book is not available yet, please try again later !" %}
+        </div>
+
+    {% endif %}
+
+    {% if user.is_staff %}
+
+        <h3>{% trans "Exemplars solds:" %}</h3>
+
+        {% if book.sold %}
+
+            <table class="table table-condensed table-hover table-state">
+                <thead>
+                    <tr>
+                        <th>{% trans "ID" %}</th>
+                        <th>{% trans "Price" %}</th>
+                        <th>{% trans "State" %}</th>
+                    </tr>
+                </thead>
+
+                {% for ex in book.sold %}
+                    <tr>
+                        <td><a href="{% url 'polybookexchange.views.exemplar' ex.pk %}">{% trans "Book n°" %}{{ ex.pk }}</a></td>
+                        <td>{{ ex.price|floatformat:2 }} CHF</td>
+                        <td><span class="label label-{{ex.state_color}}">{{ ex.state }}</span></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+
+            <div class="alert alert-warning">
+                {% trans "No exemplar sold yet !" %}
+            </div>
+
+
+        {% endif %}
+    {% endif %}
+
+    <h3>{% trans "This book is used by:" %}</h3>
+
+    <table class="table table-condensed">
+
+        <thead>
+            <tr>
+                <th></th>
+                {% for sem in book.used_in_semesters %}
+                    <th>{{ sem.acronym }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for sec in book.used_in_sections %}
+                <tr>
+                    <td><b>{{ sec.acronym }}</b></td>
+                    {% for sem in book.used_in_semesters %}
+                        <td>{% show_for_sem_sec book sem sec %}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+
+    <script type="text/javascript">$('#polybook-menu-browse').addClass('active');</script>
+
+{% endblock %}

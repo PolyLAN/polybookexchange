@@ -1,0 +1,51 @@
+{% extends "polybookexchange/base.html" %}
+{% load i18n %}
+{% load polybookexchange_extras %}
+
+{% block title %}{{block.super}} :: {% trans "Purchased books" %}{% endblock %}
+
+{% block content %}
+
+    <h1 class="page-header">{% trans "Purchased books" %}</h1>
+
+    {% if liste %}
+
+        <table class="table table-striped table-hover">
+
+            <thead>
+                <tr>
+                    <th>{% trans "ID" %}</th>
+                    <th>{% trans "Title" %}</th>
+                    <th>{% trans "Price" %}</th>
+                    <th>{% trans "Submited date" %}</th>
+                    <th>{% trans "Buy date" %}</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for ex in liste %}
+                    <tr>
+                        <td><a href="{% url 'polybookexchange.views.exemplar' ex.pk %}">{{ex.pk}}</a></td>
+                        <td>{{ex.book.title}}</td>
+                        <td>{{ex.price|floatformat:2}}</td>
+                        <td>{{ex.posted_date}}</td>
+                        <td>{{ex.sold_date}}</td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    {% else %}
+
+        <div class="alert alert-info">
+            {% trans "You didn't purchased a book yet" %}
+        </div>
+
+    {% endif %}
+
+    <script type="text/javascript">$('#polybook-menu-purchases').addClass('active');</script>
+
+{% endblock %}

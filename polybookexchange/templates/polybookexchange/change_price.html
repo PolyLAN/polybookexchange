@@ -1,0 +1,48 @@
+{% extends "polybookexchange/base.html" %}
+{% load i18n %}
+{% load polybookexchange_extras %}
+
+{% block title %}{{block.super}} :: {% trans "Change price" %}{% endblock %}
+
+{% block content %}
+
+    <h1 class="page-header">{% trans "Change price" %}</h1>
+
+    {% if status = "ok" %}
+
+        <div class="alert alert-success">
+            {% trans "New price has been saved !" %}
+
+            <a href="{% url 'polybookexchange.views.sales' %}" class="btn btn-info pull-right"><i class="glyphicon glyphicon-list"></i> {% trans "Back" %}</a>
+            <br /><br />
+        </div>
+
+    {% else %}
+
+        {% if status = "err" %}
+            <div class="alert alert-danger">
+                {% trans "Please enter a price greather than 0, without cents" %}
+            </div>
+        {% endif %}
+
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>{% trans "New price" %}</label>
+                <input name="price" type="text" class="form-control">
+                <span class="help-text">
+                    {% trans "The old price was" %} {{exemplar.price}}
+                </span>
+            </div>
+
+            <button type="submit" class="pull-right btn btn-primary"><i class="glyphicon glyphicon-pencil"></i> {% trans "Save" %}</button>
+
+        </form>
+
+    {% endif %}
+
+    <script type="text/javascript">$('#polybook-menu-sales').addClass('active');</script>
+
+{% endblock %}
+

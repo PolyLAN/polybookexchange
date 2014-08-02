@@ -1,0 +1,13 @@
+{% load i18n %}{% blocktrans with id=exemplar.pk title=exemplar.book.title %}
+Hi !
+
+One of your book (Title: {{title}}, exemplar id: {{id}}) has been sold ! You can come to AGEPoly's desk to claim your money.
+
+Thanks you for using the book exchange !
+
+Bests,
+
+The AGEPoly's book exchange,
+
+
+(This email is sent automaticaly when a book is sold){% endblocktrans %}

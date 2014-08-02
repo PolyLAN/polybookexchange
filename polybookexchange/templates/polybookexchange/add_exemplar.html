@@ -1,0 +1,110 @@
+{% extends "polybookexchange/base.html" %}
+{% load i18n %}
+{% load polybookexchange_extras %}
+
+{% block title %}{{block.super}} :: {% trans "New exemplar" %}{% endblock %}
+
+{% block content %}
+
+    <h1 class="page-header">{% trans "New exemplar" %}</h2>
+
+    {% show_book book "False" %}
+
+    <div class="alert alert-info">
+        {% trans "The seller is" %} <b>{% show_name_from_sciper sciper %}</b>
+    </div>
+
+    <form method="POST" action"">
+        {% csrf_token %}
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{% trans "About the exemplar" %}</h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="container-fluid">
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label>{% trans "Annotated:" %}</label>
+                                <input type="checkbox" name="annotated" value="annotated" {% if annotated %}checked{% endif %}>
+                            </div>
+                            <div class="form-group">
+                                <label>{% trans "Surligned:" %}</label>
+                                <input type="checkbox" name="highlighted" value="highlighted" {% if highlighted %}checked{% endif %}>
+                            </div>
+                            <div class="form-group">
+                                <label>{% trans "Condition" %}</label>
+                                <select name="state" class="form-control">
+                                    <option value="neuf" {% if candidate.state == 'new' %}selected{% endif %}>{% trans "New" %}</option>
+                                    <option value="bon" {% if candidate.state == 'bon' %}selected{% endif %}>{% trans "Good" %}</option>
+                                    <option value="acceptable" {% if candidate.state == 'acceptable' %}selected{% endif %}>{% trans "Acceptable" %}</option>
+                                    <option value="mauvais" {% if candidate.state == 'mauvais' %}selected{% endif %}>{% trans "Bad" %}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{% trans "Price asked:" %}</label>
+                                <input name="price" type="text" class="form-control" value="{{candidate.price}}">
+                            </div>
+                            <div class="form-group">
+                                <label>{% trans "Comments:" %}</label>
+                                <textarea name="comment" class="form-control">{{candidate.comments}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{% trans "Book usage" %}</h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="alert alert-info">
+                    {% trans "Please select sections/years when this book is used." %} <b>{% trans "Maximium two checks !" %}</b>
+                </div>
+
+                <table class="table table-condensed table-hover">
+
+                    <thead>
+                        <tr>
+                            <th></th>
+                            {% for sem in semestres %}
+                                <th>{{sem.acronym}}</th>
+                                {% endfor %}
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for sec in sections %}
+                            <tr>
+                                <td><b>{{ sec.acronym }}</b></td>
+
+                                {% for sem in semestres %}
+                                    <td><input type="checkbox" name="c_{{sec.pk}}_{{sem.pk}}" value="on" {% checked_case book sem sec candidate %}></td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+
+                </table>
+
+
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i> {% trans "Submit" %}</button>
+    </form>
+
+    <script type="text/javascript">$('#polybook-menu-admin').addClass('active');</script>
+
+{% endblock %}

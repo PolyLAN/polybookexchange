@@ -1,0 +1,58 @@
+{% load i18n %}
+{% load polybookexchange_extras %}
+
+<html>
+
+    <head>
+        <title>{% trans "AGEPoly's book exchange" %}</title>
+    </head>
+
+    <body>
+
+        <img src="{% url 'polybookexchange.views.gen_bar_code' exemplar.pk %}" style="float: right;">
+
+        <h1>{{exemplar.pk}}</h1>
+
+        <img src="{% url 'polybookexchange.views.gen_bar_code' exemplar.book.isbn %}" style="float: right;">
+
+        {% trans "Details of exemplar" %} <b>{{exemplar.pk}}</b> {% trans "of book" %} <u>{{exemplar.book.title}} ({{exemplar.book.isbn}})</u><br />
+        <br />
+
+        <table style="width: 100%; border: 1px #ddd solid;">
+
+            <tr style="margin-bottom: 15px;">
+                <td>{% trans "State" %}: <b>{{ exemplar.state }}</b></td>
+                <td>{% trans "Annotated" %}: <b>{{ exemplar.annotated|yesno:"Oui,Non" }}</b></td>
+                <td>{% trans "Highlighted" %}: <b>{{ exemplar.highlighted|yesno:"Oui,Non" }}</b></td>
+                <td>{% trans "Price" %}: <b>{{ exemplar.price|floatformat:2 }} CHF</b></td>
+            </tr>
+
+            {% if exemplar.comments %}
+                <tr style="margin-bottom: 15px; border-top: 1px black solid; border-bottom: 1px black solid;">
+                    <td colspan="4">{% trans "Seller's comments:" %}<br /><i>{{ exemplar.comments }}</i></td>
+                </tr>
+            {% endif %}
+
+            <tr>
+                <td colspan="2">{% trans "To sale since" %}: <b>{{ exemplar.posted_date }}</b></td>
+                <td colspan="2">{% if exemplar.soldDate %}{% trans "Sold date:" %} <b>{{ exemplar.sold_date }}</b>{% else %}{% trans "Not sold yet" %}{% endif %}</td>
+            </tr>
+
+            {% if user.is_staff %}
+                <tr>
+                    <td colspan="2">{% trans "Seller" %}: <b>{% show_name_from_sciper exemplar.seller_id %}</b></td>
+                    <td colspan="2">{% trans "Buyer" %}: <b>{% show_name_from_sciper exemplar.buyer_id %}</b></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2"><img src="{% url 'polybookexchange.views.gen_bar_code' exemplar.seller_id %}"></td>
+                    <td colspan="2"><img src="{% url 'polybookexchange.views.gen_bar_code' exemplar.buyer_id %}"></td>
+                </tr>
+
+            {% endif %}
+
+        </table>
+        <script type="text/javascript">window.print();</script>
+
+    </body>
+</html>

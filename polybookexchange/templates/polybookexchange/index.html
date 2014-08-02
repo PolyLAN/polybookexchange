@@ -1,0 +1,23 @@
+{% extends "polybookexchange/base.html" %}
+{% load i18n %}
+{% load polybookexchange_extras %}
+
+{% block title %}{{block.super}} :: {% trans "Home" %}{% endblock %}
+
+{% block content %}
+
+    <h1 class="page-header">{% trans "Welcome on the AGEPoly's book exchange !" %}</h1>
+
+    <a href="{% url 'polybookexchange.views.howto' %}">{% trans "How it works ?" %}</a>
+
+    <h3>{% trans "Last book to buy" %}</h3>
+
+    {% show_book last_exemplar.book "True" %}
+
+    <h3>{% trans "A random book" %}</h3>
+
+    {% show_book random_exemplar.book "True" %}
+
+    <script type="text/javascript">$('#polybook-menu-home').addClass('active');</script>
+
+{% endblock %}

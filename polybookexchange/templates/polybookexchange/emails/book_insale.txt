@@ -1,0 +1,13 @@
+{% load i18n %}{% blocktrans with id=exemplar.pk bname=exemplar.book.title %}
+Hi !
+
+One of your book (exemplar id: {{id}}) is now in sale !
+
+Thanks you for using the book exchange !
+
+Bests,
+
+The AGEPoly's book exchange,
+
+
+(This email is sent automaticaly when a book is validated){% endblocktrans %}

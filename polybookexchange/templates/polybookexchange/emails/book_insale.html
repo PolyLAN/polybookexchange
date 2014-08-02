@@ -1,0 +1,13 @@
+{% load i18n %}{% blocktrans with id=exemplar.pk title=exemplar.book.title %}
+Hi !<br />
+<br />
+One of your book (Title: <b>{{title}}</b>, exemplar id: <b>{{id}}</b>) is now in sale !<br />
+<br />
+Thanks you for using the book exchange !<br />
+<br />
+Bests,<br />
+<br />
+The AGEPoly's book exchange,<br />
+<br />
+<br />
+<i>(This email is sent automaticaly when a book is validated)</i>{% endblocktrans %}

@@ -1,0 +1,35 @@
+{% load i18n %}
+{% load humanize %}
+
+<div class="well well-sm">
+
+
+    <a href="{{ book.coverURL }}" class="pull-right"><img src="{{ book.get_current_cover }}" width="250" border="0" class="img-thumbnail"></a>
+
+    <h3>{{book.title}}</h3>
+
+    <dl>
+        <dt>{% trans "ISBN:" %}</dt>
+        <dd>{{book.isbn}}</dd>
+
+        <dt>{% trans "Author(s):" %}</dt>
+        {% for a in book.author.all %}
+            <dd>{{a}}</dd>
+        {% endfor %}
+
+        <dt>{% trans "Publisher" %}</dt>
+        <dd>{{book.publisher}}, {{book.year}}</dd>
+
+        <dt>{% trans "Edition" %}</dt>
+        <dd>{{book.edition|ordinal|safe}}</dd>
+
+        <dt>{% trans "Average price" %}</dt>
+        <dd>{{ book.avg_price|floatformat:2 }}</dd>
+
+        <dt>{% trans "Stats" %}</dt>
+        <dd>{% blocktrans with p=book.qty_sold|pluralize sold=book.qty_sold stock=book.qty_in_stock %}{{sold}} book{{p}} sold, {{stock}} in sock{% endblocktrans %}</dd>
+
+        {% if show_details %}<a href="{% url 'polybookexchange.views.book' book.isbn %}" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-briefcase"></i> {% trans "More details" %}</a><br />{% endif %}
+    </dl>
+
+</div>

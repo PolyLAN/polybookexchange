@@ -1,0 +1,157 @@
+{% extends "polybookexchange/base.html" %}
+{% load i18n %}
+
+{% block title %}{{block.super}} :: {% trans "New candidate" %}{% endblock %}
+
+{% block content %}
+
+    <h1 class="page-header">{% trans "Add a new candidate to sell" %}</h1>
+
+    {% if error %}
+        <div class="alert alert-danger">
+            {% trans "There was an error submiting your book. Did you filled all fields ? Please try again." %}
+        </div>
+    {% endif %}
+
+    {% trans "This page is the first step in the process to sell your book. You will pre-register the book in our database. You will then get a recepie that you need to bring your book at AGEPoly's desk." %}<br /><br />
+
+    <div class="alert alert-warning">
+        {% trans "One the book submited, you have 14 days to bring it to the AGEPoly's desk!" %}
+    </div>
+
+    <form method="POST" onsubmit="if (!$('#terms').is(':checked')) { alert('{% trans "Please accepts terms !" %}'); return false }">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label>{% trans "ISBN of your book:" %}</label>
+            <div class="input-group">
+                <input name="isbn" type="text" id="isbn" class="form-control" value="{{isbn}}">
+                <span class="input-group-addon" id="isbn-result"></span>
+            </div>
+            <span class="help-block">
+                {% trans "Begin by 978. No - or spaces please." %}
+                <small>
+                    <a href="http://{% trans "en" %}.wikipedia.org/wiki/ISBN" target="_blank">
+                        {% trans "What is an ISBN?" %}
+                    </a>
+                </small>
+            </span>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{% trans "About your exemplar" %}</h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="container-fluid">
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label>{% trans "Annotated:" %}</label>
+                                <input type="checkbox" name="annotated" value="annotated" {% if annotated %}checked{% endif %}>
+                            </div>
+                            <div class="form-group">
+                                <label>{% trans "Surligned:" %}</label>
+                                <input type="checkbox" name="highlighted" value="highlighted" {% if highlighted %}checked{% endif %}>
+                            </div>
+                            <div class="form-group">
+                                <label>{% trans "Condition" %}</label>
+                                <select name="state" class="form-control">
+                                    <option value="neuf" {% if state == 'new' %}selected{% endif %}>{% trans "New" %}</option>
+                                    <option value="bon" {% if state == 'bon' %}selected{% endif %}>{% trans "Good" %}</option>
+                                    <option value="acceptable" {% if state == 'acceptable' %}selected{% endif %}>{% trans "Acceptable" %}</option>
+                                    <option value="mauvais" {% if state == 'mauvais' %}selected{% endif %}>{% trans "Bad" %}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{% trans "Price asked:" %}</label>
+                                <input name="price" type="text" class="form-control" value="{{price}}">
+                            </div>
+                            <div class="form-group">
+                                <label>{% trans "Comments:" %}</label>
+                                <textarea name="comment" class="form-control">{{comment}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{% trans "Book usage" %}</h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="alert alert-info">
+                    {% trans "Please select sections/years when this book is used." %} <b>{% trans "Maximium two checks !" %}</b>
+                </div>
+
+                <table class="table table-condensed table-hover">
+
+                    <thead>
+                        <tr>
+                            <th></th>
+                            {% for sem in semestres %}
+                                <th>{{sem.acronym}}</th>
+                                {% endfor %}
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for sec in sections %}
+                            <tr>
+                                <td><b>{{ sec.acronym }}</b></td>
+
+                                {% for sem in semestres %}
+                                    <td><input type="checkbox" name="c_{{sec.pk}}_{{sem.pk}}" value="on"></td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+
+                </table>
+
+
+            </div>
+        </div>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="terms" name="terms" value="terms"> {% trans "I accept" %}<a href="{% url 'polybookexchange.views.howto' %}" target="_blank"> {% trans "the terms and conditions of the book exchange" %}</a>
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i> {% trans "Add" %}</button>
+
+    </form>
+
+    <script type="text/javascript">
+
+        function check_isbn() {
+
+            $.ajax({
+                url: "{% url 'polybookexchange.views.check_isbn' %}",
+                data: {'isbn': $('#isbn').val()},
+            }).done(function( data ) {
+                $('#isbn-result').html(data);
+            });
+        }
+
+        $('#isbn').change(check_isbn);
+
+        check_isbn();
+
+        $('#polybook-menu-propose').addClass('active');
+
+    </script>
+
+
+{% endblock %}
