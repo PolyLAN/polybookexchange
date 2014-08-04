@@ -49,6 +49,7 @@
                 </div>
             </div>
 
+
             {% if user.is_staff %}
 
                 <div class="row">
@@ -63,6 +64,12 @@
 
         </div>
     </div>
+
+    {% if not exemplar.sold_date %}
+        <div class="alert alert-info">
+            {% blocktrans with id=exemplar.id %}To buy this book, please come to AGEPoly's desk and ask for the book with ID <b>{{id}}</b> !{% endblocktrans %}
+        </div>
+    {% endif %}
 
     {% if user.is_staff %}
 
