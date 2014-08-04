@@ -145,7 +145,7 @@ class Exemplar(models.Model):
 
     def state_color(self):
         mapping = {
-            'neuf': 'sucess',
+            'neuf': 'success',
             'bon': 'info',
             'acceptable': 'warning',
             'mauvais': 'danger'
