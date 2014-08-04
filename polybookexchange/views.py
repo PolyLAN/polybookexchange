@@ -293,11 +293,19 @@ def propose(request):
 
             for sec in sections:
                 for sem in semestres:
-                    if request.POST.get('c_' + str(sec.pk) + '_' + str(sem.pk)):
+                    if request.POST.get('c_%s_%s' % (sec.pk, sem.pk, )):
                         CandidateUsage(candidate=c, section=sec, semester=sem).save()
             return render_to_response('polybookexchange/propose_ok.html', {'c': c}, context_instance=RequestContext(request))
 
-    return render_to_response('polybookexchange/propose.html', {'error': error, 'sections': sections, 'semestres': semestres, 'isbn': isbn, 'annotated': annotated, 'highlighted': highlighted, 'price': price, 'comment': comment}, context_instance=RequestContext(request))
+    checks_to_check = []
+
+    for sec in sections:
+        for sem in semestres:
+            key = 'c_' + str(sec.pk) + '_' + str(sem.pk)
+            if request.POST.get(key):
+                checks_to_check.append(key)
+
+    return render_to_response('polybookexchange/propose.html', {'error': error, 'sections': sections, 'semestres': semestres, 'isbn': isbn, 'annotated': annotated, 'highlighted': highlighted, 'price': price, 'comment': comment, 'checks_to_check': checks_to_check}, context_instance=RequestContext(request))
 
 
 @login_required

@@ -112,7 +112,7 @@
                                 <td><b>{{ sec.acronym }}</b></td>
 
                                 {% for sem in semestres %}
-                                    <td><input type="checkbox" name="c_{{sec.pk}}_{{sem.pk}}" value="on"></td>
+                                    <td><input type="checkbox" id="c_{{sec.pk}}_{{sem.pk}}" name="c_{{sec.pk}}_{{sem.pk}}" value="on"></td>
                                 {% endfor %}
                             </tr>
                         {% endfor %}
@@ -148,6 +148,10 @@
         $('#isbn').change(check_isbn);
 
         check_isbn();
+
+        {% for check in checks_to_check %}
+            $('#{{check}}').attr('checked', 'checked');
+        {% endfor %}
 
         $('#polybook-menu-propose').addClass('active');
 
