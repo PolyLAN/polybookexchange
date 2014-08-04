@@ -240,14 +240,14 @@ def check_isbn(request):
     isbn = request.GET.get('isbn', '')
 
     if not isbnlib.is_isbn13(isbn):
-        return HttpResponse('<span class="text-warning"><i class="glyphicon glyphicon-warning-sign"></i> %s</span>' % (unicode(_('Not an ISBN')), ))
+        return HttpResponse('<script type="text/javascript">$(\'#form-group-isbn\').attr(\'class\', \'has-warning\');</script><span class="text-warning"><i class="glyphicon glyphicon-warning-sign"></i> %s</span>' % (unicode(_('Not an ISBN')), ))
 
     data = isbnlib.meta(str(isbn))
 
     if not data or not data.get('Authors'):
-        return HttpResponse('<span class="text-danger"><i class="glyphicon glyphicon-remove"></i> %s</span>' % (unicode(_('Cannot found this ISBN in online databases')), ))
+        return HttpResponse('<script type="text/javascript">$(\'#form-group-isbn\').attr(\'class\', \'has-danger\');</script><span class="text-danger"><i class="glyphicon glyphicon-remove"></i> %s</span>' % (unicode(_('Cannot found this ISBN in online databases')), ))
 
-    return HttpResponse('<span class="text-success"><i class="glyphicon glyphicon-ok"></i> %s</span>' % (unicode(_('Good ISBN !')), ))
+    return HttpResponse('<script type="text/javascript">$(\'#form-group-isbn\').attr(\'class\', \'has-success\');</script><span class="text-success"><i class="glyphicon glyphicon-ok"></i> %s</span>' % (unicode(_('Good ISBN !')), ))
 
 
 @login_required
