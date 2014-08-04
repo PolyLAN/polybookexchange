@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PolyBookExchange\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-02 20:47+0200\n"
-"PO-Revision-Date: 2014-08-04 21:56+0100\n"
+"POT-Creation-Date: 2014-08-04 22:13+0200\n"
+"PO-Revision-Date: 2014-08-04 22:14+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Maximilien Cuony <theglu@theglu.org>\n"
 "Language: fr\n"
@@ -19,31 +19,31 @@ msgstr ""
 "X-Generator: Poedit 1.6.5\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: views.py:218
+#: views.py:216
 msgid "Bookexchange: Change of price"
 msgstr "Bourse aux livres: Changement de prix"
 
-#: views.py:245
+#: views.py:243
 msgid "Not an ISBN"
 msgstr "Pas un ISBN"
 
-#: views.py:250
+#: views.py:248
 msgid "Cannot found this ISBN in online databases"
 msgstr "Impossible de trouver les détails de l'ISBN en ligne"
 
-#: views.py:252
+#: views.py:250
 msgid "Good ISBN !"
 msgstr "ISBN ok !"
 
-#: views.py:341
+#: views.py:347
 msgid "AGEPoly's book exchange: Exemplar removed"
 msgstr "Bourse aux livres de l'AGEPoly: Exemplaire retiré"
 
-#: views.py:377
+#: views.py:383
 msgid "AGEPoly's book exchange: Exemplar sold"
 msgstr "Bourse aux livres de l'AGEPoly: Exemplaire vendu"
 
-#: views.py:551
+#: views.py:557
 msgid "AGEPoly's book exchange: Exemplar in sale"
 msgstr "Bourse aux livres de l'AGEPoly: Exemplaire en vente"
 
@@ -177,11 +177,6 @@ msgstr "Utilisation du livre"
 msgid "Please select sections/years when this book is used."
 msgstr "Merci de sélectionner les sections/années où ce livre est utilisé."
 
-#: templates/polybookexchange/add_exemplar.html:73
-#: templates/polybookexchange/propose.html:94
-msgid "Maximium two checks !"
-msgstr "Maximum deux croix !"
-
 #: templates/polybookexchange/admin.html:5
 #: templates/polybookexchange/admin.html:9
 msgid "Administration"
@@ -252,7 +247,7 @@ msgstr "Bienvenue"
 
 #: templates/polybookexchange/base.html:48
 msgid "Language"
-msgstr ""
+msgstr "Langue"
 
 #: templates/polybookexchange/base.html:62
 msgid "Logout"
@@ -368,7 +363,7 @@ msgid "Book n°"
 msgstr "Livre n°"
 
 #: templates/polybookexchange/book.html:36
-#: templates/polybookexchange/exemplar.html:72
+#: templates/polybookexchange/exemplar.html:79
 #: templates/polybookexchange/sell_book.html:47
 msgid "Sell"
 msgstr "Vendre"
@@ -564,15 +559,24 @@ msgstr "Date de vente :"
 msgid "This exemplar hasen't been sold yet."
 msgstr "Cette exemplaire n'as pas encore été vendu."
 
-#: templates/polybookexchange/exemplar.html:56
+#: templates/polybookexchange/exemplar.html:57
 msgid "Seller:"
 msgstr "Vendeur :"
 
-#: templates/polybookexchange/exemplar.html:59
+#: templates/polybookexchange/exemplar.html:60
 msgid "Buyer:"
 msgstr "Acheteur :"
 
-#: templates/polybookexchange/exemplar.html:74
+#: templates/polybookexchange/exemplar.html:70
+#, python-format
+msgid ""
+"To buy this book, please come to AGEPoly's desk and ask for the book with ID "
+"<b>%(id)s</b> !"
+msgstr ""
+"Pour acheter de livre, merci de venir au bureau de l'AGEPoly et demander le "
+"livre n°<b>%(id)s</b> !"
+
+#: templates/polybookexchange/exemplar.html:81
 msgid "Print card"
 msgstr "Imprimer la fiche"
 
@@ -1316,3 +1320,6 @@ msgstr ""
 "    Prix moyen: %(average)s CHF<br />\n"
 "    depuis le 23.10.2006.\n"
 "\n"
+
+#~ msgid "Maximium two checks !"
+#~ msgstr "Maximum deux croix !"
