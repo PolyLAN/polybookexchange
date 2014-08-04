@@ -21,6 +21,7 @@ setup(
     packages=[
         'polybookexchange',
     ],
+    include_package_data=True,
     install_requires=[
         'south',
         'django',
