@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PolyBookExchange\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-02 20:47+0200\n"
-"PO-Revision-Date: 2014-08-02 20:27+0100\n"
+"PO-Revision-Date: 2014-08-04 21:56+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Maximilien Cuony <theglu@theglu.org>\n"
 "Language: fr\n"
@@ -813,7 +813,7 @@ msgstr ""
 
 #: templates/polybookexchange/propose.html:22
 msgid "Please accepts terms !"
-msgstr "Merci d'accepter les conditions !"
+msgstr "Merci d\\'accepter les conditions !"
 
 #: templates/polybookexchange/propose.html:26
 msgid "ISBN of your book:"
