@@ -43,7 +43,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-              <li><a href="#" onclick="return false;">{% trans "Welcome" %} {{user}}</a></li>
+              <li><a href="#" onclick="return false;">{% trans "Welcome" %} {{user.get_full_name}}</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Language" %}<b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -54,7 +54,7 @@
                                     <input type="hidden" name="language" value="{{ lang.0 }}" />
                                 </form>
                             </li>
-                        {% endfor %}    
+                        {% endfor %}
                     </ul>
                 </li>
 
