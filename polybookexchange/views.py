@@ -17,6 +17,7 @@ from django.core.urlresolvers import reverse
 import isbnlib
 import barcode
 from StringIO import StringIO
+import re
 
 from polybookexchange.utils import sciper2mail, send_templated_mail
 
@@ -237,7 +238,7 @@ def candidate_card(request, id):
 @login_required
 def check_isbn(request):
 
-    isbn = request.GET.get('isbn', '')
+    isbn = clean_isbn(request.GET.get('isbn', ''))
 
     if not isbnlib.is_isbn13(isbn):
         return HttpResponse('<script type="text/javascript">$(\'#form-group-isbn\').attr(\'class\', \'has-warning\');</script><span class="text-warning"><i class="glyphicon glyphicon-warning-sign"></i> %s</span>' % (unicode(_('Not an ISBN')), ))
@@ -248,6 +249,17 @@ def check_isbn(request):
         return HttpResponse('<script type="text/javascript">$(\'#form-group-isbn\').attr(\'class\', \'has-danger\');</script><span class="text-danger"><i class="glyphicon glyphicon-remove"></i> %s</span>' % (unicode(_('Cannot found this ISBN in online databases')), ))
 
     return HttpResponse('<script type="text/javascript">$(\'#form-group-isbn\').attr(\'class\', \'has-success\');</script><span class="text-success"><i class="glyphicon glyphicon-ok"></i> %s</span>' % (unicode(_('Good ISBN !')), ))
+
+
+def clean_isbn(isbn):
+    """Convert an ISBN to the ISBN-13 format, remove extra characters"""
+
+    isbn = re.sub("[^\d]*", "", isbn)
+
+    if isbnlib.is_isbn10(isbn):
+        isbn = isbnlib.to_isbn13(isbn)
+
+    return isbn
 
 
 @login_required
@@ -267,7 +279,7 @@ def propose(request):
 
     if request.method == 'POST':
 
-        isbn = request.POST.get('isbn', '')
+        isbn = clean_isbn(request.POST.get('isbn', ''))
         if not isbnlib.is_isbn13(isbn):
             isbn = ''
 
@@ -513,7 +525,7 @@ def add_exemplar(request):
         except Candidate.DoesNotExist:
             pass
 
-    isbn = request.GET.get('isbn')
+    isbn = clean_isbn(request.GET.get('isbn'))
     sciper = request.GET.get('sciper')
 
     sections = Section.objects.order_by('pk').all()

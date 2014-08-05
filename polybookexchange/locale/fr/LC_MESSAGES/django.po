@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PolyBookExchange\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-04 22:13+0200\n"
-"PO-Revision-Date: 2014-08-04 22:14+0100\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2014-08-05 09:16+0200\n"
+"PO-Revision-Date: 2014-08-05 09:16+0100\n"
+"Last-Translator: Maximilien Cuony <theglu@theglu.org>\n"
 "Language-Team: Maximilien Cuony <theglu@theglu.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -19,31 +19,31 @@ msgstr ""
 "X-Generator: Poedit 1.6.5\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: views.py:216
+#: views.py:217
 msgid "Bookexchange: Change of price"
 msgstr "Bourse aux livres: Changement de prix"
 
-#: views.py:243
+#: views.py:244
 msgid "Not an ISBN"
 msgstr "Pas un ISBN"
 
-#: views.py:248
+#: views.py:249
 msgid "Cannot found this ISBN in online databases"
 msgstr "Impossible de trouver les détails de l'ISBN en ligne"
 
-#: views.py:250
+#: views.py:251
 msgid "Good ISBN !"
 msgstr "ISBN ok !"
 
-#: views.py:347
+#: views.py:359
 msgid "AGEPoly's book exchange: Exemplar removed"
 msgstr "Bourse aux livres de l'AGEPoly: Exemplaire retiré"
 
-#: views.py:383
+#: views.py:395
 msgid "AGEPoly's book exchange: Exemplar sold"
 msgstr "Bourse aux livres de l'AGEPoly: Exemplaire vendu"
 
-#: views.py:557
+#: views.py:569
 msgid "AGEPoly's book exchange: Exemplar in sale"
 msgstr "Bourse aux livres de l'AGEPoly: Exemplaire en vente"
 
@@ -824,8 +824,8 @@ msgid "ISBN of your book:"
 msgstr "ISBN de votre livre :"
 
 #: templates/polybookexchange/propose.html:32
-msgid "Begin by 978. No - or spaces please."
-msgstr "Commence par 978. Pas de - ou d'espaces, merci."
+msgid "Begin by 978"
+msgstr "Commence par 978"
 
 #: templates/polybookexchange/propose.html:34
 msgid "en"
@@ -1320,6 +1320,9 @@ msgstr ""
 "    Prix moyen: %(average)s CHF<br />\n"
 "    depuis le 23.10.2006.\n"
 "\n"
+
+#~ msgid "Begin by 978. No - or spaces please."
+#~ msgstr "Commence par 978. Pas de - ou d'espaces, merci."
 
 #~ msgid "Maximium two checks !"
 #~ msgstr "Maximum deux croix !"
