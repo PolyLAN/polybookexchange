@@ -46,7 +46,7 @@
 
                 <tr>
                     <td colspan="2"><img src="{% url 'polybookexchange.views.gen_bar_code' exemplar.seller_id %}"></td>
-                    <td colspan="2"><img src="{% url 'polybookexchange.views.gen_bar_code' exemplar.buyer_id %}"></td>
+                    <td colspan="2">{% if exemplar.buyer_id %}<img src="{% url 'polybookexchange.views.gen_bar_code' exemplar.buyer_id %}">{% endif %}</td>
                 </tr>
 
             {% endif %}
