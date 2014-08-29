@@ -23,7 +23,7 @@ def search_attr_in_ldap(sciper, attr):
 
 def sciper2mail(sciper):
     """Convert a sciper to an email, searching in EPFL's LDAP"""
-    return search_attr_in_ldap(sciper, 'mail')
+    return search_attr_in_ldap(sciper, 'mail') or 'nobody@epfl.ch'
 
 
 def sciper2name(sciper):
