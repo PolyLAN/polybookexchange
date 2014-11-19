@@ -59,7 +59,7 @@
                 </li>
 
               </li>
-              <li><a href="#">{% trans "Logout" %}</a></li>
+              <li><a href="{% url 'django.contrib.auth.views.logout' %}?next={% url 'polybookexchange.views.home' %}">{% trans "Logout" %}</a></li>
               <li><a href="https://agepoly.ch">{% trans "Back to the AGEPoly's website" %}</a></li>
           </ul>
         </div>
