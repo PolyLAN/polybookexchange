@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from django.shortcuts import get_object_or_404, render_to_response, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.template import RequestContext
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
@@ -28,7 +28,7 @@ def home(request):
     last_exemplar = Exemplar.objects.filter(buyer_id=None).order_by('-pk').first()
     random_exemplar = Exemplar.objects.filter(buyer_id=None).order_by('?').first()
 
-    return render_to_response('polybookexchange/index.html', {'last_exemplar': last_exemplar, 'random_exemplar': random_exemplar}, context_instance=RequestContext(request))
+    return render(request, 'polybookexchange/index.html', {'last_exemplar': last_exemplar, 'random_exemplar': random_exemplar})
 
 
 @login_required
@@ -36,13 +36,13 @@ def book(request, isbn):
 
     book = get_object_or_404(Book, isbn=isbn)
 
-    return render_to_response('polybookexchange/book.html', {'book': book}, context_instance=RequestContext(request))
+    return render(request, 'polybookexchange/book.html', {'book': book})
 
 
 @login_required
 def howto(request):
 
-    return render_to_response('polybookexchange/howto.html', {}, context_instance=RequestContext(request))
+    return render(request, 'polybookexchange/howto.html', {})
 
 
 @login_required
@@ -50,7 +50,7 @@ def exemplar(request, id):
 
     exemplar = get_object_or_404(Exemplar, pk=id)
 
-    return render_to_response('polybookexchange/exemplar.html', {'exemplar': exemplar}, context_instance=RequestContext(request))
+    return render(request, 'polybookexchange/exemplar.html', {'exemplar': exemplar})
 
 
 @login_required
@@ -58,7 +58,7 @@ def exemplar_print(request, id):
 
     exemplar = get_object_or_404(Exemplar, pk=id)
 
-    return render_to_response('polybookexchange/exemplar_print.html', {'exemplar': exemplar}, context_instance=RequestContext(request))
+    return render(request, 'polybookexchange/exemplar_print.html', {'exemplar': exemplar})
 
 
 @login_required
@@ -111,7 +111,7 @@ def browse(request):
     else:
         liste = None
 
-    return render_to_response('polybookexchange/browse.html', {'sections': sections, 'semestres': semestres, 'section': section, 'semestre': semestre, 'liste': liste}, context_instance=RequestContext(request))
+    return render(request, 'polybookexchange/browse.html', {'sections': sections, 'semestres': semestres, 'section': section, 'semestre': semestre, 'liste': liste})
 
 
 @login_required
@@ -173,7 +173,7 @@ def search(request):
     sections = Section.objects.order_by('pk').all()
     semestres = Semester.objects.order_by('pk').all()
 
-    return render_to_response('polybookexchange/search.html', {'liste': liste, 'isbn': isbn, 'title': title, 'author': author, 'section': section, 'semestre': semestre, 'sections': sections, 'semestres': semestres}, context_instance=RequestContext(request))
+    return render(request, 'polybookexchange/search.html', {'liste': liste, 'isbn': isbn, 'title': title, 'author': author, 'section': section, 'semestre': semestre, 'sections': sections, 'semestres': semestres})
 
 
 @login_required
@@ -181,7 +181,7 @@ def purchases(request):
 
     liste = Exemplar.objects.filter(buyer_id=request.user.get_sciper()).order_by('sold_date').all()
 
-    return render_to_response('polybookexchange/purchases.html', {'liste': liste}, context_instance=RequestContext(request))
+    return render(request, 'polybookexchange/purchases.html', {'liste': liste})
 
 
 @login_required
@@ -189,7 +189,7 @@ def sales(request):
 
     liste = Exemplar.objects.filter(seller_id=request.user.get_sciper()).order_by('posted_date').all()
 
-    return render_to_response('polybookexchange/sales.html', {'liste': liste}, context_instance=RequestContext(request))
+    return render(request, 'polybookexchange/sales.html', {'liste': liste})
 
 
 @login_required
@@ -216,7 +216,7 @@ def change_price(request, id):
 
             send_templated_mail(_('Bookexchange: Change of price'), settings.POLYBOOKEXCHANGE_EMAIL_FROM, [settings.POLYBOOKEXCHANGE_EMAIL_MANAGERS], 'price_change', {'exemplar': exemplar})
 
-    return render_to_response('polybookexchange/change_price.html', {'exemplar': exemplar, 'status': status}, context_instance=RequestContext(request))
+    return render(request, 'polybookexchange/change_price.html', {'exemplar': exemplar, 'status': status})
 
 
 @login_required
@@ -224,7 +224,7 @@ def proposed(request):
 
     proposals = Candidate.objects.filter(sciper=request.user.get_sciper()).order_by('pk').all()
 
-    return render_to_response('polybookexchange/proposed.html', {'liste': proposals}, context_instance=RequestContext(request))
+    return render(request, 'polybookexchange/proposed.html', {'liste': proposals})
 
 
 @login_required
@@ -232,7 +232,7 @@ def candidate_card(request, id):
 
     candidate = get_object_or_404(Candidate, pk=id, sciper=request.user.get_sciper())
 
-    return render_to_response('polybookexchange/candidate_fiche.html', {'candidate': candidate}, context_instance=RequestContext(request))
+    return render(request, 'polybookexchange/candidate_fiche.html', {'candidate': candidate})
 
 
 @login_required
@@ -307,7 +307,7 @@ def propose(request):
                 for sem in semestres:
                     if request.POST.get('c_%s_%s' % (sec.pk, sem.pk, )):
                         CandidateUsage(candidate=c, section=sec, semester=sem).save()
-            return render_to_response('polybookexchange/propose_ok.html', {'c': c}, context_instance=RequestContext(request))
+            return render(request, 'polybookexchange/propose_ok.html', {'c': c})
 
     checks_to_check = []
 
@@ -317,14 +317,14 @@ def propose(request):
             if request.POST.get(key):
                 checks_to_check.append(key)
 
-    return render_to_response('polybookexchange/propose.html', {'error': error, 'sections': sections, 'semestres': semestres, 'isbn': isbn, 'annotated': annotated, 'highlighted': highlighted, 'price': price, 'comment': comment, 'checks_to_check': checks_to_check}, context_instance=RequestContext(request))
+    return render(request, 'polybookexchange/propose.html', {'error': error, 'sections': sections, 'semestres': semestres, 'isbn': isbn, 'annotated': annotated, 'highlighted': highlighted, 'price': price, 'comment': comment, 'checks_to_check': checks_to_check})
 
 
 @login_required
 @staff_member_required
 def admin(request):
 
-    return render_to_response('polybookexchange/admin.html', {}, context_instance=RequestContext(request))
+    return render(request, 'polybookexchange/admin.html', {})
 
 
 @login_required
@@ -358,7 +358,7 @@ def remove_book(request):
 
         send_templated_mail(_('AGEPoly\'s book exchange: Exemplar removed'), settings.POLYBOOKEXCHANGE_EMAIL_FROM, [sciper2mail(exemplar.seller_id)], 'book_removed', {'exemplar': exemplar})
 
-    return render_to_response('polybookexchange/remove_book.html', {'exemplar_id': exemplar_id, 'status': status}, context_instance=RequestContext(request))
+    return render(request, 'polybookexchange/remove_book.html', {'exemplar_id': exemplar_id, 'status': status})
 
 
 @login_required
@@ -394,14 +394,14 @@ def sell_book(request):
 
         send_templated_mail(_('AGEPoly\'s book exchange: Exemplar sold'), settings.POLYBOOKEXCHANGE_EMAIL_FROM, [sciper2mail(exemplar.seller_id)], 'book_sold', {'exemplar': exemplar})
 
-    return render_to_response('polybookexchange/sell_book.html', {'exemplar_id': exemplar_id, 'status': status}, context_instance=RequestContext(request))
+    return render(request, 'polybookexchange/sell_book.html', {'exemplar_id': exemplar_id, 'status': status})
 
 
 @login_required
 @staff_member_required
 def list_candidates(request):
 
-    return render_to_response('polybookexchange/list_candidates.html', {'candidates': Candidate.objects.order_by('pk').all()}, context_instance=RequestContext(request))
+    return render(request, 'polybookexchange/list_candidates.html', {'candidates': Candidate.objects.order_by('pk').all()})
 
 
 @login_required
@@ -424,7 +424,7 @@ def transactions(request):
     except (EmptyPage, InvalidPage):
         liste = paginator.page(paginator.num_pages)
 
-    return render_to_response('polybookexchange/transactions.html', {'liste': liste}, context_instance=RequestContext(request))
+    return render(request, 'polybookexchange/transactions.html', {'liste': liste})
 
 
 @login_required
@@ -443,7 +443,7 @@ def clean_candidates(request):
 
     to_delete = Candidate.objects.filter(creation_date__lte=datetime.now() - timedelta(16)).all()
 
-    return render_to_response('polybookexchange/clean_candidates.html', {'to_delete': to_delete, 'done': done}, context_instance=RequestContext(request))
+    return render(request, 'polybookexchange/clean_candidates.html', {'to_delete': to_delete, 'done': done})
 
 
 @login_required
@@ -505,11 +505,11 @@ def add_book(request):
             book = Book(edition='1', isbn=isbn)
             book.update_metadata()
 
-            return render_to_response('polybookexchange/add_book_new_book.html', {'book': book}, context_instance=RequestContext(request))
+            return render(request, 'polybookexchange/add_book_new_book.html', {'book': book})
 
     else:
         # Aucun paramètre passé. On demande l'isbn et le sciper
-        return render_to_response('polybookexchange/add_book_request.html', {'warning_candidate': candidate_id and not candidate}, context_instance=RequestContext(request))
+        return render(request, 'polybookexchange/add_book_request.html', {'warning_candidate': candidate_id and not candidate})
 
 
 @login_required
@@ -574,7 +574,7 @@ def add_exemplar(request):
             return redirect('polybookexchange.views.exemplar', e.pk)
 
         else:
-            return render_to_response('polybookexchange/add_exemplar.html', {'book': book, 'sciper': sciper, 'candidate': candidate, 'sections': sections, 'semestres': semestres}, context_instance=RequestContext(request))
+            return render(request, 'polybookexchange/add_exemplar.html', {'book': book, 'sciper': sciper, 'candidate': candidate, 'sections': sections, 'semestres': semestres})
 
 
 @login_required
