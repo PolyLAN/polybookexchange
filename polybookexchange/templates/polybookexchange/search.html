@@ -76,7 +76,7 @@
 
         <ul class="pager">
             {% if liste.has_previous %}
-                <li class="previous"><a href="?page={{liste.previous_page_number}}&sem={{sem.pk}}&sec={{sec.pk}}">&larr; {% trans "Previous" %}</a></li>
+            <li class="previous"><a href="?page={{liste.previous_page_number}}&sem={{semestre.pk}}&sec={{section.pk}}&author={{author}}&title={{title}}&isbn={{isbn}}">&larr; {% trans "Previous" %}</a></li>
             {% else %}
                 <li class="previous disabled"><a href="#">&larr; {% trans "Previous" %}</a></li>
             {% endif %}
@@ -84,7 +84,7 @@
             <li>{% blocktrans with n=liste.number p=liste.paginator.num_pages %}Page {{n}} of {{p}}{% endblocktrans %}</li>
 
             {% if liste.has_next %}
-                <li class="next"><a href="?page={{liste.next_page_number}}&sem={{sem.pk}}&sec={{sec.pk}}">{% trans "Next" %} &rarr;</a></li>
+            <li class="next"><a href="?page={{liste.next_page_number}}&sem={{semestre.pk}}&sec={{section.pk}}&author={{author}}&title={{title}}&isbn={{isbn}}">{% trans "Next" %} &rarr;</a></li>
             {% else %}
                 <li class="next disabled"><a href="#">{% trans "Next" %} &rarr;</a></li>
             {% endif %}
