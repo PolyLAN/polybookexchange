@@ -736,8 +736,8 @@ msgid "The service is free, for EPFL students"
 msgstr "Le service est gratuit, pour les étudiants EPFL"
 
 #: templates/polybookexchange/howto.html:51
-msgid "If a book isn't sold or taken back after 18 months,"
-msgstr "Si un livre n'est pas vendu ou reprit après 18 mois, "
+msgid "If a book isn't sold or taken back after 15 months,"
+msgstr "Si un livre n'est pas vendu ou reprit après 15 mois, "
 
 #: templates/polybookexchange/howto.html:51
 msgid ""
