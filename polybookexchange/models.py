@@ -38,18 +38,21 @@ class Book(models.Model):
 
     def update_metadata(self):
 
-        data = isbnlib.meta(str(self.isbn), 'wcat')
+        try:
+            data = isbnlib.meta(str(self.isbn), 'wcat')
 
-        self.title = data.get('Title')
-        self.year = data.get('Year')
-        self.publisher, _ = Publisher.objects.get_or_create(name=data.get('Publisher', 'Unknow'))
-        self.author.clear()
+            self.title = data.get('Title')
+            self.year = data.get('Year')
+            self.publisher, _ = Publisher.objects.get_or_create(name=data.get('Publisher', 'Unknow'))
+            self.author.clear()
 
-        for author in data.get('Authors', []):
-            for splited_author in author.split(', '):
-                author_object, _ = Author.objects.get_or_create(name=splited_author)
+            for author in data.get('Authors', []):
+                for splited_author in author.split(', '):
+                    author_object, _ = Author.objects.get_or_create(name=splited_author)
 
-                self.author.add(author_object)
+                    self.author.add(author_object)
+        except:
+            pass
 
         self.save()
 
