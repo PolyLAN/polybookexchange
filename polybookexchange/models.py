@@ -52,7 +52,12 @@ class Book(models.Model):
 
                     self.author.add(author_object)
         except:
-            pass
+
+            self.title = self.title or '?'
+            self.year = self.year or 1900
+
+            if not self.pk or not self.publisher:
+                self.publisher, _ = Publisher.objects.get_or_create(name='Unknow')
 
         self.save()
 
