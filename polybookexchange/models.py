@@ -42,7 +42,7 @@ class Book(models.Model):
             data = isbnlib.meta(str(self.isbn), 'wcat')
 
             self.title = data.get('Title')
-            self.year = data.get('Year')
+            self.year = data.get('Year') or 1900
             self.publisher, _ = Publisher.objects.get_or_create(name=data.get('Publisher', 'Unknow'))
             self.author.clear()
 

@@ -502,7 +502,7 @@ def add_book(request):
             return HttpResponseRedirect(reverse('polybookexchange.views.add_exemplar') + '?isbn=%s&sciper=%s%s' % (isbn, sciper, bonusC,))
         except Book.DoesNotExist:
             # Display the form
-            book = Book(edition='1', isbn=isbn, year=1900)
+            book = Book(edition='1', isbn=isbn)
             book.update_metadata()
 
             return render(request, 'polybookexchange/add_book_new_book.html', {'book': book})
