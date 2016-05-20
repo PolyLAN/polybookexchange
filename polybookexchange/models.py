@@ -56,7 +56,9 @@ class Book(models.Model):
             self.title = self.title or '?'
             self.year = self.year or 1900
 
-            if not self.pk or not self.publisher:
+            try:
+                truc = self.publisher
+            except:
                 self.publisher, _ = Publisher.objects.get_or_create(name='Unknow')
 
         self.save()
