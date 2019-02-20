@@ -27,7 +27,7 @@
         <dd>{{ book.avg_price|floatformat:2 }}</dd>
 
         <dt>{% trans "Stats" %}</dt>
-        <dd>{% blocktrans with p=book.qty_sold|pluralize sold=book.qty_sold stock=book.qty_in_stock %}{{sold}} book{{p}} sold, {{stock}} in sock{% endblocktrans %}</dd>
+        <dd>{% blocktrans with p=book.qty_sold|pluralize sold=book.qty_sold stock=book.qty_in_stock %}{{sold}} book{{p}} sold, {{stock}} in stock{% endblocktrans %}</dd>
 
         {% if show_details %}<a href="{% url 'polybookexchange.views.book' book.isbn %}" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-briefcase"></i> {% trans "More details" %}</a><br />{% endif %}
     </dl>
