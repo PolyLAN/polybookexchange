@@ -1255,7 +1255,7 @@ msgstr "Statistiques"
 
 #: templates/polybookexchange/templatetags/show_book.html:30
 #, python-format
-msgid "%(sold)s book%(p)s sold, %(stock)s in sock"
+msgid "%(sold)s book%(p)s sold, %(stock)s in stock"
 msgstr "%(sold)s livre%(p)s vendus, %(stock)s en stock"
 
 #: templates/polybookexchange/templatetags/show_book.html:32
