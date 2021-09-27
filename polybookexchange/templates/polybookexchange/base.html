@@ -87,7 +87,7 @@
             <li id="polybook-menu-sales"><a href="{% url 'polybookexchange.views.sales' %}">{% trans "Books sold or in sale" %}</a></li>
           </ul>
 
-          {% if user.is_superuser %}
+          {% if user.is_staff %}
             <ul class="nav nav-sidebar">
                 <li class="dropdown-header">{% trans "Admin" %}</li>
                 <li id="polybook-menu-admin"><a href="{% url 'polybookexchange.views.admin' %}">{% trans "Administration's home" %}</a></li>
