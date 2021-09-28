@@ -448,6 +448,35 @@ def clean_candidates(request):
 
 @login_required
 @staff_member_required
+def edit_book(request, isbn):
+
+    book = get_object_or_404(Book, isbn=isbn)
+
+    if request.method == 'POST':
+        book.title = request.POST.get('title')
+        book.year = request.POST.get('year')
+        book.edition = request.POST.get('edition')
+
+        book.save()
+
+        book.publisher, _ = Publisher.objects.get_or_create(name=request.POST.get('publisher', 'Unknown').strip())
+        book.author.clear()
+
+        for author in request.POST.get('authors', '').split(','):
+            author = author.strip()
+
+            if author:
+                author_object, _ = Author.objects.get_or_create(name=author)
+                book.author.add(author_object)
+
+        book.update_cover()
+        return HttpResponseRedirect(reverse('polybookexchange.views.book', kwargs={'isbn': isbn}))
+
+    return render(request, 'polybookexchange/edit_book.html', {'book': book})
+
+
+@login_required
+@staff_member_required
 def add_book(request):
 
     candidate = None
@@ -483,7 +512,7 @@ def add_book(request):
 
             book.save()
 
-            book.publisher, _ = Publisher.objects.get_or_create(name=request.POST.get('publisher', 'Unknow').strip())
+            book.publisher, _ = Publisher.objects.get_or_create(name=request.POST.get('publisher', 'Unknown').strip())
             book.author.clear()
 
             for author in request.POST.get('authors', '').split(','):

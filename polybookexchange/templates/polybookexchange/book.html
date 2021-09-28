@@ -10,6 +10,18 @@
 
     {% show_book book "False" %}
 
+    {% if user.is_staff %}
+
+        <span class="pull-right">
+
+            <a href="{% url 'polybookexchange.views.edit_book' book.isbn %}" class="btn btn-info"><i class="glyphicon glyphicon-edit"></i> {% trans "Edit book details" %}</a>
+
+        </span>
+
+        <br /><br /><br />
+
+    {% endif %}
+
     <h3>{% trans "Exemplars of this book currently available:" %}</h3>
 
     {% if book.sellable %}
