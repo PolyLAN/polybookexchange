@@ -32,7 +32,14 @@
                 <label>{% trans "Exemplar ID:" %}</label>
                 <input name="exemplar_id" type="text" class="form-control">
             </div>
-
+            <div class="form-group">
+                <label>{% trans "Reason:" %}</label>
+                <select name="out_reason" id="out_reason" class="form-control">
+                    <option value="expired">Donné à la bibliothèque centrale</option>
+                    <option value="retrieved">Rendu à son propriétaire</option>
+                    <option value="lost">Perdu</option>
+                </select>
+            </div>
             <button type="submit" class="pull-right btn btn-primary"><i class="glyphicon glyphicon-trash"></i> {% trans "Remove" %}</button>
         </form>
 

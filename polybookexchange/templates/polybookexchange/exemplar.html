@@ -60,6 +60,11 @@
                         <b>{% trans "Buyer:" %}</b> {% show_name_from_sciper exemplar.buyer_id %}
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <b>{% trans "Out Reason:" %}</b> {{ exemplar.out_reason }}
+                    </div>    
+                </div>
             {% endif %}
 
         </div>
