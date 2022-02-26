@@ -154,6 +154,7 @@ class Exemplar(models.Model):
     posted_date = models.DateTimeField(auto_now_add=True)
     sold_date = models.DateTimeField(null=True, blank=True)
     out_reason = models.CharField(null=True, max_length=50, choices=OUT_REASONS)
+    money_given_date = models.DateTimeField(null=True, blank=True)
     annotated = models.BooleanField(default=False)
     highlighted = models.BooleanField(default=False)
     state = models.CharField(max_length=10, choices=STATE_CHOICES)

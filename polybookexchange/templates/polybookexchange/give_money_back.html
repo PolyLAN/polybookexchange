@@ -1,0 +1,122 @@
+{% extends "polybookexchange/base.html" %}
+{% load i18n %}
+{% load polybookexchange_extras %}
+
+{% block title %}{{block.super}} :: {% trans "Give Money" %}{% endblock %}
+
+{% block content %}
+
+    <h1 class="page-header">{% trans "Give Money" %}</h1>
+        {% if sciper and total %}
+            <div>
+                    <p> {% if status == 'ok' %}
+                           {% trans "Total rendu :" %}
+                        {% else %}
+                            {% trans "Total à rendre :" %}
+                        {% endif %}
+                        <strong>{{ total }}</strong>
+                    </p>
+            </div>
+        <div id='printable_report'>
+            <style type="text/css" id="print-ignore">
+                @media screen {
+                    .print-only {
+                        display: none;
+                    }
+                }
+             </style>
+            <div class="print-only">
+                <h1>
+                    {% trans "AGEPoly Book Exchange Seller Receipt" %} - {% show_name_from_sciper sciper %}
+                </h1>
+                <p>
+                   {% trans "This report was issued on:"%} {% now "SHORT_DATETIME_FORMAT" %}
+                </p>
+            </div>
+            <table style="width: 100%;" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>{% trans "ID" %}</th>
+                    <th>{% trans "Title" %}</th>
+                    <th>{% trans "Price" %}</th>
+                    <th>{% trans "Submited date" %}</th>
+                    <th>{% trans "Buy date" %}</th>
+                    <th>{% trans "Buyer" %}</th>                    
+                </tr>
+                </thead>
+
+                <tbody>
+                    {% for ex in exemplars %}
+                    <tr>
+                        <td><a href="{% url 'polybookexchange.views.exemplar' ex.pk %}">{{ex.pk}}</a></td>
+                        <td>{{ex.book.title}}</td>
+                        <td>{{ex.price|floatformat:2}}</td>
+                        <td>{{ex.posted_date}}</td>
+                        <td>{{ex.sold_date}}</td>
+                        <td>
+                            {% if not ex.out_reason == 'lost' %}
+                                {% show_name_from_sciper ex.buyer_id  %}
+                            {% else %}
+                                {% trans "Livre Perdu (AGEPoly)" %}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+             </table>
+             <div class="print-only">
+                <p>
+                {% trans "Je soussigné·e" %}{% show_name_from_sciper sciper %},
+                {% blocktrans %}
+                    atteste à voir recu la somme de {{ total }} CHF correspondant à la vente des livres listés ci-dessus aux acheteurs mentionées. Cette vente ne comporte pas de TVA.
+                {% endblocktrans %}
+                </p>
+             </div>
+             <div class="print-only">
+               </br>
+               </br>
+               <p><b>Signature : </b></p>
+             </div>
+         </div>
+        {% endif %}
+    {% if status == "ok" %}
+        <script type="text/javascript">
+            window.addEventListener('load', function () {
+                printJS({ 
+                    printable: 'printable_report',
+                    type: 'html',
+                    style: ".print-only { display: block !important; }",
+                })
+            })
+        </script>
+        <div class="alert alert-success">
+            {% trans "Success !" %}
+        </div>
+    {% elif status == "error" %}
+            <div class="alert alert-danger">
+                {% trans "Sciper invalid ! (or other error)" %}
+            </div>
+    {% endif %}
+    {% if sciper and exemplars|length == 0 %}
+            <div class="alert alert-warning">
+                {% trans "No book to reimburse !" %}
+            </div>
+    {% endif %}
+
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            {% if total and sciper %}
+                   <input type="hidden" value="{{total | stringformat:'.2f' }}" name="total">
+                <input type="hidden" value="{{sciper}}" name="sciper">
+                <button type="submit" class="pull-right btn btn-success"><i class="glyphicon glyphicon-check"></i> {% trans "Confirm" %}</button>
+            {% else %}
+                <div class="form-group">
+                    <label>{% trans "Sciper :" %}</label>
+                    <input name="sciper" type="text" class="form-control">
+                    <button type="submit" class="pull-right btn btn-primary"><i class="glyphicon glyphicon-question-sign"></i> {% trans "Go" %}</button>
+                </div>
+            {% endif %}
+        </form>
+    <script type="text/javascript">$('#polybook-menu-admin').addClass('active');</script>
+{% endblock %}

@@ -404,6 +404,34 @@ def sell_book(request):
 
     return render(request, 'polybookexchange/sell_book.html', {'exemplar_id': exemplar_id, 'status': status})
 
+@login_required
+@staff_member_required
+def give_money_back(request):
+
+    status = 'need_data'
+    total = None
+    exemplars = []
+
+    sciper = request.GET.get('sciper', request.POST.get('sciper'))
+    total_given = request.GET.get('total', request.POST.get('total'))
+
+    exemplars = Exemplar.objects.all().filter(seller_id=sciper, out_reason__in=['sold', 'lost'], money_given_date=None)
+    total = sum([e.price for e in exemplars])
+
+    if sciper and total_given:
+        try:
+            total_given = float(total_given)
+        except:
+            total_given = 0
+        
+        status = 'error'
+        if total_given != 0 and total_given == total:
+            status = 'ok'
+            for exemplar in exemplars:
+                exemplar.money_given_date = datetime.now()
+                exemplar.save()
+
+    return render(request, 'polybookexchange/give_money_back.html', {'status': status, 'total': total, 'exemplars': exemplars, 'sciper': sciper})
 
 @login_required
 @staff_member_required

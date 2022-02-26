@@ -30,6 +30,14 @@
             <div class="col-md-2">
                 <div class="thumbnail">
                 <div class="caption" style="text-align: center;">
+                    <h3><i class="glyphicon glyphicon-dollar"></i></h3>
+                    <p><a href="{% url "polybookexchange.views.give_money_back" %}" class="btn btn-success" role="button">{% trans "Give money" %}</a></p>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="thumbnail">
+                <div class="caption" style="text-align: center;">
                     <h3><i class="glyphicon glyphicon-trash"></i></h3>
                     <p><a href="{% url "polybookexchange.views.remove_book" %}" class="btn btn-danger" role="button">{% trans "Remove a book" %}</a></p>
                 </div>
