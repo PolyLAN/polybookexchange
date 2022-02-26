@@ -1,3 +1,9 @@
 *.pyc
 PolyBookExchange.egg-info
 .ropeproject
+bin
+include
+lib
+manifest
+share
+src

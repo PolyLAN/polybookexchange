@@ -443,11 +443,11 @@ msgstr "Détails de la proposition"
 
 #: templates/polybookexchange/candidate_fiche.html:8
 msgid ""
-"You have to <a href='javascript:window.print()'>print</a> this page et put "
-"it inside the book you bring to AGEPoly's desk "
+"You have to <a href='javascript:window.print()'>print</a> this page and put "
+"it inside the book you bring to AGEPoly's event from Tuesday, March 1, 2022 to Thursday, March 3, 2022 between 9:00 AM and 5:00 PM at CE1 515(or present this document there) "
 msgstr ""
 "Vous devez <a href='javascript:window.print()'>imprimer</a> cette page et la "
-"mettre dans le livre, puis ammener le livre au bureau de l'AGEPoly"
+"mettre dans le livre, puis ammener le livre à l'évènement de l'AGEPoly du Mardi 1er Mars au Jeudi 3 Mars entre 9h et 17h en CE1 515 (ou bien présenter le document sur votre téléphone avec le livre)"
 
 #: templates/polybookexchange/candidate_fiche.html:13
 msgid "CandidateID:"
@@ -455,11 +455,11 @@ msgstr "Candidat n° :"
 
 #: templates/polybookexchange/candidate_fiche.html:35
 msgid ""
-"Your book will only be available in the sell area when you brigen him to "
-"AGEPoly's desk and we validated it"
+"Your book will only be available in the sell area when you bring him to "
+"AGEPoly's event and we validated it"
 msgstr ""
-"Votre livre sera mis en vente seulement lorsque vous l'aurez apporté au "
-"bureau de l'AGEPoly et que nous l'auront confirmé"
+"Votre livre sera mis en vente seulement lorsque vous l'aurez apporté à "
+"l'évènement de l'AGEPoly et que nous l'auront confirmé"
 
 #: templates/polybookexchange/candidate_fiche.html:37
 msgid ""
@@ -468,14 +468,6 @@ msgid ""
 msgstr ""
 "Vous pouvez accéder à cette page plus tard en utilisant le menu à gauche si "
 "vous ne pouvez pas imprimer maintenant."
-
-#: templates/polybookexchange/candidate_fiche.html:39
-msgid ""
-"You now have 14 days to bring the book to AGEPoly's desk, after the delay "
-"you will have to start over."
-msgstr ""
-"Vous avez maintenant 14 jours pour apporter le livre au bureau de l'AGEPoly. "
-"Après ce délai, vous devrez recommencer."
 
 #: templates/polybookexchange/candidate_fiche.html:41
 msgid "Close this window"
@@ -589,10 +581,10 @@ msgstr "Acheteur :"
 #: templates/polybookexchange/exemplar.html:70
 #, python-format
 msgid ""
-"To buy this book, please come to AGEPoly's desk and ask for the book with ID "
+"To buy this book, please come to AGEPoly's book exchange from Tuesday, March 1, 2022 to Thursday, March 3, 2022 between 9:00 AM and 5:00 PM at CE1 515 and find the book number "
 "<b>%(id)s</b> !"
 msgstr ""
-"Pour acheter de livre, merci de venir au bureau de l'AGEPoly et demander le "
+"Pour acheter ce livre, merci de venir à la bourse aux bouquins en CE1 515 entre 9h et 17h du Mardi 1er Mars au Jeudi 3 Mars et trouvez le "
 "livre n°<b>%(id)s</b> !"
 
 #: templates/polybookexchange/exemplar.html:81
@@ -682,9 +674,9 @@ msgstr ""
 "Vous remplissez les informations requises et vous imprimez la page générée."
 
 #: templates/polybookexchange/howto.html:28
-msgid "You bring your book, with the printed page at the AGEPoly's desk."
+msgid "You bring your book, with the printed page at AGEPoly's event."
 msgstr ""
-"Vous apportez votre livre, avec la page imprimée, au bureau de l'AGEPoly."
+"Vous apportez votre livre, avec la page imprimée, à l'évènement de l'AGEPoly."
 
 #: templates/polybookexchange/howto.html:31
 msgid "Second step"
@@ -700,7 +692,7 @@ msgstr "Vous recevrez une confirmation automatique sur votre adresse @epfl.ch."
 
 #: templates/polybookexchange/howto.html:36
 msgid ""
-"When your book has been sold by another student, you will also recive an "
+"When your book has been sold to another student, you will also receive an "
 "automatic email"
 msgstr ""
 "Quand votre livre sera acheté par un autre étudiant, vous recevrez aussi un "
@@ -708,7 +700,7 @@ msgstr ""
 
 #: templates/polybookexchange/howto.html:37
 msgid ""
-"At least, you can comme back to the AGEPoly's desk, with you student card "
+"At least, you can come back to AGEPoly's desk, with you student card "
 "(Camipro) to collect your money"
 msgstr ""
 "Enfin, vous pouvez revenir au bureau de l'AGEPoly, avec votre carte "
@@ -728,11 +720,11 @@ msgstr "Vous mémorisez le numéro du livre (PAS LE NUMÉRO ISBN !)"
 
 #: templates/polybookexchange/howto.html:45
 msgid ""
-"If you found what you needed, you can come to the AGEPoly's desk with the "
-"money (only in cash !)"
+"If you found what you needed, you can come to AGEPoly's event with the "
+"money (in cash or camipro !)"
 msgstr ""
-"Si vous avez trouvé ce que vous cherchiez, vous pouvez venir au bureau de "
-"AGEPoly avec l'argent (uniquement en cash!)"
+"Si vous avez trouvé ce que vous cherchiez, vous pouvez venir à l'évènement de "
+"l'AGEPoly avec l'argent (en cash ou en camipro!)"
 
 #: templates/polybookexchange/howto.html:46
 msgid "You now have a new book !"
@@ -840,10 +832,9 @@ msgstr ""
 
 #: templates/polybookexchange/propose.html:19
 msgid ""
-"One the book submited, you have 14 days to bring it to the AGEPoly's desk!"
+"Once the book submited, you have to bring it to AGEPoly's book exchange at CE1 515 from Tuesday, March 1, 2022 to Thursday, March 3, 2022 between 9:00 AM and 5:00 PM!"
 msgstr ""
-"Dès que livre est enregistré, vous avez 14 jours pour l'apporter au bureau de "
-"l'AGEPoly !"
+"Dès que livre est enregistré, vous devez l'amener à la bourse aux livres de l'AGEPoly en CE1 515 entre Mardi 1er Mars et Mercredi 3 Mars 2022 de 9h à 17h ! "
 
 #: templates/polybookexchange/propose.html:22
 msgid "Please accepts terms !"
@@ -898,10 +889,9 @@ msgid "this page (open a new windows)"
 msgstr "cette page (s'ouvre dans une nouvelle fenêtre)"
 
 #: templates/polybookexchange/propose_ok.html:12
-msgid "and put it inside the book. Don't forget to bring the book in 14 days !"
+msgid "and put it inside the book. Don't forget to bring the book to the event !"
 msgstr ""
-"et mettre la page dans le livre. N'oubliez pas d'apporter le livre dans les "
-"14 jours !"
+"et mettre la page dans le livre. N'oubliez pas d'apporter le livre à l'évènement !"
 
 #: templates/polybookexchange/propose_ok.html:17
 msgid "Back to the home page"
@@ -910,14 +900,6 @@ msgstr "Retourner sur la page d'accueil"
 #: templates/polybookexchange/proposed.html:11
 msgid "Proposition are deleted after 15 days."
 msgstr "Les propositions sont supprimées après 15 jours."
-
-#: templates/polybookexchange/proposed.html:12
-msgid ""
-"You only have 14 days to bring us your book after your submited into the "
-"system"
-msgstr ""
-"Vous avez seulement 14 jours pour apporter votre livre après que vous l'ayez "
-"entré dans le système"
 
 #: templates/polybookexchange/proposed.html:25
 msgid "ISBN::"
@@ -1146,7 +1128,7 @@ msgstr ""
 "Bonjour !<br />\n"
 "<br />\n"
 "Comme décrit dans nos conditions, votre livre (exemplaire n°: <b>%(id)s</b>) "
-"a été retiré de notre système et donné à la bilbiothèque centrale.<br />\n"
+"a été retiré de notre système et donné à la bibliothèque centrale.<br />\n"
 "<br />\n"
 "Merci d'utiliser la bourse aux livres !<br />\n"
 "<br />\n"
@@ -1197,7 +1179,7 @@ msgid ""
 "Hi !<br />\n"
 "<br />\n"
 "One of your book (Title: <b>%(title)s</b>, exemplar id: <b>%(id)s</b>) has "
-"been sold ! You can come to AGEPoly's desk to claim your money.<br />\n"
+"been sold ! You will soon receive informations about how to receive your money ! <br />\n"
 "<br />\n"
 "Thanks you for using the book exchange !<br />\n"
 "<br />\n"
@@ -1212,8 +1194,7 @@ msgstr ""
 "Bonjour !<br />\n"
 "<br />\n"
 "Un de vos livres (Titre: <b>%(title)s</b>, exemplaire n°: <b>%(id)s</b>) à "
-"été vendu ! Vous pouvez venir au bureau de l'AGEPoly récupérer votre "
-"argent<br />\n"
+"été vendu ! Vous allez recevoir bientôt les informations pour recevoir votre argent ! <br />\n"
 "<br />\n"
 "Merci d'utiliser la bourse aux livres !<br />\n"
 "<br />\n"
@@ -1231,7 +1212,7 @@ msgid ""
 "Hi !\n"
 "\n"
 "One of your book (Title: %(title)s, exemplar id: %(id)s) has been sold ! You "
-"can come to AGEPoly's desk to claim your money.\n"
+" will soon receive informations about how to receive your money !\n"
 "\n"
 "Thanks you for using the book exchange !\n"
 "\n"
@@ -1246,7 +1227,7 @@ msgstr ""
 "Bonjour !\n"
 "\n"
 "Un de vos livres (Titre: %(title)s, exemplaire n°:%(id)s) a été vendu ! Vous "
-"pouvez maintent venir au bureau de l'AGEPoly récupérer votre argent.\n"
+"Vous allez recevoir bientôt les informations pour recevoir votre argent !\n"
 "\n"
 "Merci d'utiliser la bourse aux livres !\n"
 "\n"
