@@ -3,11 +3,11 @@ Hi !
 
 One of your book (Title: {{title}}, exemplar id: {{id}}) has been sold ! You can come to AGEPoly's desk to claim your money.
 
-Thanks you for using the book exchange !
+Thank you for using the book exchange !
 
-Bests,
+Best,
 
-The AGEPoly's book exchange,
+AGEPoly's book exchange,
 
 
 (This email is sent automaticaly when a book is sold){% endblocktrans %}

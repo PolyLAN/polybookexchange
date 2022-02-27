@@ -3,6 +3,6 @@ Hi !
 
 The book exemplar {{id}} has a new price: {{price}} !
 
-Bests,
+Best,
 
-The book exchange,{% endblocktrans %}
+AGEPoly's book exchange,{% endblocktrans %}

@@ -3,11 +3,15 @@ Hi !
 
 One of your book (exemplar id: {{id}}) is now in sale !
 
-Thanks you for using the book exchange !
+At the end of the book exchange event, your book will be automaticaly transfered to the online book exchange (this website). Please note that it is your responsibility to get your book back : if you haven't asked for your book in 13 months, it will be automaticaly given to the central library, without the possibility to get it or your money back.
 
-Bests,
+If you have any questions, don't hesitate to email services@agepoly.ch ! 
 
-The AGEPoly's book exchange,
+Thank you for using the book exchange !
+
+Best,
+
+AGEPoly's book exchange,
 
 
 (This email is sent automaticaly when a book is validated){% endblocktrans %}
