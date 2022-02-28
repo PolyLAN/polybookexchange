@@ -3,7 +3,7 @@ Hi !
 
 One of your book (Title: {{title}}, exemplar id: {{id}}) has been sold ! You can come to AGEPoly's desk to claim your money.
 
-Thank you for using the book exchange !
+Thank you for using the book exchange!
 
 Best,
 
