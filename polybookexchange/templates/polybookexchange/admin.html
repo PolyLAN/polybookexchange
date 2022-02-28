@@ -8,71 +8,70 @@
 
     <h1 class="page-header">{% trans "Administration" %}</h1>
 
-
     <div class="container">
         <div class="row">
             <div class="col-md-2">
                 <div class="thumbnail">
-                <div class="caption" style="text-align: center;">
-                    <h3><i class="glyphicon glyphicon-plus"></i></h3>
-                    <p><a href="{% url "polybookexchange.views.add_book" %}" class="btn btn-primary" role="button">{% trans "Add a book" %}</a></p>
-                </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="thumbnail">
-                <div class="caption" style="text-align: center;">
-                    <h3><i class="glyphicon glyphicon-shopping-cart"></i></h3>
-                    <p><a href="{% url "polybookexchange.views.sell_book" %}" class="btn btn-success" role="button">{% trans "Sell a book" %}</a></p>
-                </div>
+                    <div class="caption" style="text-align: center;">
+                        <h3><i class="glyphicon glyphicon-plus"></i></h3>
+                        <p><a href="{% url "polybookexchange.views.add_book" %}" class="btn btn-primary" role="button">{% trans "Add a book" %}</a></p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="thumbnail">
-                <div class="caption" style="text-align: center;">
-                    <h3><i class="glyphicon glyphicon-dollar"></i></h3>
-                    <p><a href="{% url "polybookexchange.views.give_money_back" %}" class="btn btn-success" role="button">{% trans "Give money" %}</a></p>
-                </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="thumbnail">
-                <div class="caption" style="text-align: center;">
-                    <h3><i class="glyphicon glyphicon-trash"></i></h3>
-                    <p><a href="{% url "polybookexchange.views.remove_book" %}" class="btn btn-danger" role="button">{% trans "Remove a book" %}</a></p>
-                </div>
+                    <div class="caption" style="text-align: center;">
+                        <h3><i class="glyphicon glyphicon-shopping-cart"></i></h3>
+                        <p><a href="{% url "polybookexchange.views.sell_book" %}" class="btn btn-success" role="button">{% trans "Sell a book" %}</a></p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="thumbnail">
-                <div class="caption" style="text-align: center;">
-                    <h3><i class="glyphicon glyphicon-list"></i></h3>
-                    <p><a href="{% url "polybookexchange.views.list_candidates" %}" class="btn btn-info" role="button">{% trans "List all candidates" %}</a></p>
-                </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="thumbnail">
-                <div class="caption" style="text-align: center;">
-                    <h3><i class="glyphicon glyphicon-random"></i></h3>
-                    <p><a href="{% url "polybookexchange.views.transactions" %}" class="btn btn-primary" role="button">{% trans "List all transactions" %}</a></p>
-                </div>
+                    <div class="caption" style="text-align: center;">
+                        <h3><i class="glyphicon glyphicon-dollar"></i></h3>
+                        <p><a href="{% url "polybookexchange.views.give_money_back" %}" class="btn btn-success" role="button">{% trans "Give money" %}</a></p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="thumbnail">
-                <div class="caption" style="text-align: center;">
-                    <h3><i class="glyphicon glyphicon-refresh"></i></h3>
-                    <p><a href="{% url "polybookexchange.views.clean_candidates" %}" class="btn btn-warning" role="button">{% trans "Clean candidates" %}</a></p>
-                </div>
+                    <div class="caption" style="text-align: center;">
+                        <h3><i class="glyphicon glyphicon-trash"></i></h3>
+                        <p><a href="{% url "polybookexchange.views.remove_book" %}" class="btn btn-danger" role="button">{% trans "Remove a book" %}</a></p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="thumbnail">
-                <div class="caption" style="text-align: center;">
-                    <h3><i class="glyphicon glyphicon-dollar"></i></h3>
-                    <p><a href="{% url "polybookexchange.views.financial_infos" %}" class="btn btn-warning" role="button">{% trans "Financial Infos" %}</a></p>
+                    <div class="caption" style="text-align: center;">
+                        <h3><i class="glyphicon glyphicon-list"></i></h3>
+                        <p><a href="{% url "polybookexchange.views.list_candidates" %}" class="btn btn-info" role="button">{% trans "List all candidates" %}</a></p>
+                    </div>
                 </div>
+            </div>
+            <div class="col-md-2">
+                <div class="thumbnail">
+                    <div class="caption" style="text-align: center;">
+                        <h3><i class="glyphicon glyphicon-random"></i></h3>
+                        <p><a href="{% url "polybookexchange.views.transactions" %}" class="btn btn-primary" role="button">{% trans "List all transactions" %}</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="thumbnail">
+                    <div class="caption" style="text-align: center;">
+                        <h3><i class="glyphicon glyphicon-refresh"></i></h3>
+                        <p><a href="{% url "polybookexchange.views.clean_candidates" %}" class="btn btn-warning" role="button">{% trans "Clean candidates" %}</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="thumbnail">
+                    <div class="caption" style="text-align: center;">
+                        <h3><i class="glyphicon glyphicon-dollar"></i></h3>
+                        <p><a href="{% url "polybookexchange.views.financial_infos" %}" class="btn btn-warning" role="button">{% trans "Financial Infos" %}</a></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,49 +79,49 @@
 
             <div class="col-md-4">
                 <div class="thumbnail">
-                <div class="caption" style="text-align: center;">
-                    <h3><i class="glyphicon glyphicon-ok"></i></h3>
-                    <p>
-                        <form action="{% url "polybookexchange.views.add_book" %}" method="GET">
-                            <div class="form-group">
-                                <input name="candidate_id" type="text" class="form-control" placeholder="{% trans "Exemplar ID" %}">
-                            </div>
-                            <input type="submit" class="btn btn-success" role="button" value="{% trans "Validate the candidate" %}">
-                        </form>
-                    </p>
-                </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="thumbnail">
-                <div class="caption" style="text-align: center;">
-                    <h3><i class="glyphicon glyphicon-book"></i></h3>
-                    <p>
-                        <form action="{% url "polybookexchange.views.exemplar" '' %}" method="GET" onsubmit="$(this).attr('action', $(this).attr('action') + $('#polybookexchange_exemplar').val());">
-                            <div class="form-group">
-                                <input id="polybookexchange_exemplar" type="text" class="form-control" placeholder="{% trans "Exemplar ID" %}">
-                            </div>
-                            <input type="submit" class="btn btn-primary" role="button" value="{% trans "Exemplar details" %}">
-                        </form>
-                    </p>
-                </div>
+                    <div class="caption" style="text-align: center;">
+                        <h3><i class="glyphicon glyphicon-ok"></i></h3>
+                        <p>
+                            <form action="{% url "polybookexchange.views.add_book" %}" method="GET">
+                                <div class="form-group">
+                                    <input name="candidate_id" type="text" class="form-control" placeholder="{% trans "Exemplar ID" %}">
+                                </div>
+                                <input type="submit" class="btn btn-success" role="button" value="{% trans "Validate the candidate" %}">
+                            </form>
+                        </p>
+                    </div>
                 </div>
             </div>
 
             <div class="col-md-4">
                 <div class="thumbnail">
-                <div class="caption" style="text-align: center;">
-                    <h3><i class="glyphicon glyphicon-barcode"></i></h3>
-                    <p>
-                        <form action="{% url "polybookexchange.views.book" '' %}" method="GET" onsubmit="$(this).attr('action', $(this).attr('action') + $('#polybookexchange_isbn').val());">
-                            <div class="form-group">
-                                <input id="polybookexchange_isbn" type="text" class="form-control" placeholder="{% trans "ISBN" %}">
-                            </div>
-                            <input type="submit" class="btn btn-info" role="button" value="{% trans "Book details" %}">
-                        </form>
-                    </p>
+                    <div class="caption" style="text-align: center;">
+                        <h3><i class="glyphicon glyphicon-book"></i></h3>
+                        <p>
+                            <form action="{% url "polybookexchange.views.exemplar" '' %}" method="GET" onsubmit="$(this).attr('action', $(this).attr('action') + $('#polybookexchange_exemplar').val());">
+                                <div class="form-group">
+                                    <input id="polybookexchange_exemplar" type="text" class="form-control" placeholder="{% trans "Exemplar ID" %}">
+                                </div>
+                                <input type="submit" class="btn btn-primary" role="button" value="{% trans "Exemplar details" %}">
+                            </form>
+                        </p>
+                    </div>
                 </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div class="caption" style="text-align: center;">
+                        <h3><i class="glyphicon glyphicon-barcode"></i></h3>
+                        <p>
+                            <form action="{% url "polybookexchange.views.book" '' %}" method="GET" onsubmit="$(this).attr('action', $(this).attr('action') + $('#polybookexchange_isbn').val());">
+                                <div class="form-group">
+                                    <input id="polybookexchange_isbn" type="text" class="form-control" placeholder="{% trans "ISBN" %}">
+                                </div>
+                                <input type="submit" class="btn btn-info" role="button" value="{% trans "Book details" %}">
+                            </form>
+                        </p>
+                    </div>
                 </div>
             </div>
 

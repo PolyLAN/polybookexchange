@@ -4,14 +4,15 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse
 from django.conf import settings
 from .models import Book, Exemplar, Section, Semester, Candidate, CandidateUsage, Author, Publisher, UsedBy
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
-from django.db.models import Avg
+from django.db.models import Avg, Sum
 from datetime import datetime, timedelta
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
+
 
 import isbnlib
 import barcode
@@ -345,24 +346,24 @@ def remove_book(request):
             status = 'error'
             exemplar_id = ''
 
-    if exemplar:
+        if exemplar:
 
-        status = 'ok'
+            status = 'ok'
 
-        exemplar.buyer_id = exemplar.seller_id
-        exemplar.sold_date = datetime.now()
-        exemplar.out_reason = out_reason
-        exemplar.save()
+            exemplar.buyer_id = exemplar.seller_id
+            exemplar.sold_date = datetime.now()
+            exemplar.out_reason = out_reason
+            exemplar.save()
 
-        exemplar.book.qty_in_stock -= 1
-        exemplar.book.save()
+            exemplar.book.qty_in_stock -= 1
+            exemplar.book.save()
 
-        if out_reason == 'expired':
-            send_templated_mail(_('AGEPoly\'s book exchange: Exemplar removed'), settings.POLYBOOKEXCHANGE_EMAIL_FROM, [sciper2mail(exemplar.seller_id)], 'book_removed', {'exemplar': exemplar})
+            if out_reason == 'expired':
+                send_templated_mail(_('AGEPoly\'s book exchange: Exemplar removed'), settings.POLYBOOKEXCHANGE_EMAIL_FROM, [sciper2mail(exemplar.seller_id)], 'book_removed', {'exemplar': exemplar})
 
-        if out_reason == 'lost':
-             pass  # write an email to tell them to come to boutique to get theit money
-        #    send_templated_mail(_('AGEPoly\'s book exchange: Exemplar removed'), settings.POLYBOOKEXCHANGE_EMAIL_FROM, [sciper2mail(exemplar.seller_id)], 'book_removed', {'exemplar': exemplar})
+            if out_reason == 'lost':
+                 pass  # write an email to tell them to come to boutique to get theit money
+            #    send_templated_mail(_('AGEPoly\'s book exchange: Exemplar removed'), settings.POLYBOOKEXCHANGE_EMAIL_FROM, [sciper2mail(exemplar.seller_id)], 'book_removed', {'exemplar': exemplar})
 
     return render(request, 'polybookexchange/remove_book.html', {'exemplar_id': exemplar_id, 'status': status, 'Exemplar': Exemplar})
 
@@ -376,7 +377,7 @@ def sell_book(request):
     exemplar_id = request.GET.get('exemplar_id', request.POST.get('exemplar_id'))
     exemplar = None
 
-    if exemplar_id:
+    if exemplar_id and request.method == 'POST':
 
         try:
             exemplar = Exemplar.objects.get(pk=exemplar_id, buyer_id=None)
@@ -384,22 +385,22 @@ def sell_book(request):
             status = 'error'
             exemplar_id = ''
 
-    sciper = request.POST.get('sciper')
+        sciper = request.POST.get('sciper')
 
-    if sciper and exemplar:
+        if sciper and exemplar:
 
-        status = 'ok'
+            status = 'ok'
 
-        exemplar.buyer_id = sciper
-        exemplar.sold_date = datetime.now()
-        exemplar.out_reason = 'sold'
-        exemplar.save()
+            exemplar.buyer_id = sciper
+            exemplar.sold_date = datetime.now()
+            exemplar.out_reason = 'sold'
+            exemplar.save()
 
-        exemplar.book.qty_in_stock -= 1
-        exemplar.book.qty_sold += 1
-        exemplar.book.save()
+            exemplar.book.qty_in_stock -= 1
+            exemplar.book.qty_sold += 1
+            exemplar.book.save()
 
-        send_templated_mail(_('AGEPoly\'s book exchange: Exemplar sold'), settings.POLYBOOKEXCHANGE_EMAIL_FROM, [sciper2mail(exemplar.seller_id)], 'book_sold', {'exemplar': exemplar})
+            send_templated_mail(_('AGEPoly\'s book exchange: Exemplar sold'), settings.POLYBOOKEXCHANGE_EMAIL_FROM, [sciper2mail(exemplar.seller_id)], 'book_sold', {'exemplar': exemplar})
 
     return render(request, 'polybookexchange/sell_book.html', {'exemplar_id': exemplar_id, 'status': status})
 
@@ -417,7 +418,7 @@ def give_money_back(request):
     exemplars = Exemplar.objects.filter(seller_id=sciper, out_reason__in=['sold', 'lost'], money_given_date=None)
     total = sum([e.price for e in exemplars])
 
-    if sciper and total_given:
+    if sciper and total_given and request.method == 'POST':
         try:
             total_given = float(total_given)
         except:
@@ -649,7 +650,6 @@ def add_exemplar(request):
 @login_required
 @staff_member_required
 def financial_infos(request):
-    from django.db.models import Sum
     all_sold_books = Exemplar.objects.filter(out_reason='sold').aggregate(sum=Sum('price', default=0))
     all_lost_books = Exemplar.objects.filter(out_reason='lost').aggregate(sum=Sum('price', default=0))
     all_given_money = Exemplar.objects.filter(money_given_date=None).aggregate(sum=Sum('price', default=0))
