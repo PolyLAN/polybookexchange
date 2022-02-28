@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 from django.db import models
 from django.db.models import Min
 import requests
@@ -8,6 +10,7 @@ from django.templatetags.static import static
 from django.conf import settings
 import datetime
 from django.utils.timezone import now
+from django.utils.translation import ugettext_lazy as _
 
 
 class Book(models.Model):
@@ -87,10 +90,10 @@ class Book(models.Model):
 class Candidate(models.Model):
 
     STATE_CHOICES = (
-        (u'neuf', u'neuf'),
-        (u'bon', u'bon'),
-        (u'acceptable', u'acceptable'),
-        (u'mauvais', u'mauvais'),
+        (u'neuf', _(u'neuf')),
+        (u'bon', _(u'bon')),
+        (u'acceptable', _(u'acceptable')),
+        (u'mauvais', _(u'mauvais')),
     )
 
     isbn = models.DecimalField(max_digits=13, decimal_places=0)
@@ -133,10 +136,17 @@ class CandidateUsage(models.Model):
 class Exemplar(models.Model):
 
     STATE_CHOICES = (
-        (u'neuf', u'neuf'),
-        (u'bon', u'bon'),
-        (u'acceptable', u'acceptable'),
-        (u'mauvais', u'mauvais'),
+        (u'neuf', _(u'neuf')),
+        (u'bon', _(u'bon')),
+        (u'acceptable', _(u'acceptable')),
+        (u'mauvais', _(u'mauvais')),
+    )
+
+    OUT_REASON_CHOICES = (
+        (u'sold', _(u'Vendu')),
+        (u'expired', _(u'Donné à la bibliothèque centrale')),  # given to EPFL library
+        (u'retrieved', _(u'Rendu à son propriétaire')),  # user got it back
+        (u'lost', _(u'Perdu')),
     )
 
     book = models.ForeignKey('Book')
@@ -145,6 +155,8 @@ class Exemplar(models.Model):
     buyer_id = models.PositiveIntegerField(null=True, blank=True)
     posted_date = models.DateTimeField(auto_now_add=True)
     sold_date = models.DateTimeField(null=True, blank=True)
+    out_reason = models.CharField(null=True, max_length=50, choices=OUT_REASON_CHOICES)
+    money_given_date = models.DateTimeField(null=True, blank=True)
     annotated = models.BooleanField(default=False)
     highlighted = models.BooleanField(default=False)
     state = models.CharField(max_length=10, choices=STATE_CHOICES)

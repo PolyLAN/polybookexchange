@@ -60,6 +60,20 @@
                         <b>{% trans "Buyer:" %}</b> {% show_name_from_sciper exemplar.buyer_id %}
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <b>{% trans "Out Reason:" %}</b> {{ exemplar.get_out_reason_display }}
+                    </div>
+                    <div class="col-md-6">
+                    {% if exemplar.money_given_date %}
+                        <b>{% trans "Money Given to Seller On:" %}</b> {{exemplar.money_given_date}}
+                    {% elif exemplar.out_reason == 'sold' or exemplar.out_reason == 'lost' %}
+                        {% trans "Money has not been given yet" %}
+                    {% else %}
+                        {% trans "No Money to give to Seller" %}
+                    {% endif %}
+                    </div>
+                </div>
             {% endif %}
 
         </div>

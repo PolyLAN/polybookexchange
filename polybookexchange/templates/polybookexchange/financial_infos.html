@@ -1,0 +1,39 @@
+{% extends "polybookexchange/base.html" %}
+{% load i18n %}
+{% load polybookexchange_extras %}
+
+{% block title %}{{block.super}} :: {% trans "Financial Infos" %}{% endblock %}
+
+{% block content %}
+
+    <h1 class="page-header">{% trans "Financials Infos" %}</h1>
+    <div><p>{% blocktrans %} Total price of book sold: {{all_sold_books}} CHF{% endblocktrans %}</p></div>
+    <div><p>{% blocktrans %} Total value of books lost: {{all_lost_books}} CHF{% endblocktrans %}</p></div>
+    <div><p>{% blocktrans %} Total amount of money already given to sellers: {{all_given_money}} CHF{% endblocktrans %}</p></div>
+    <div><p>{% blocktrans %} Total money owed to sellers: {{result}} CHF{% endblocktrans %}</p></div>
+
+    <h2>{% trans "Money owed to sellers since more than one year"%}</h2>
+    <table style="width: 100%;" class="table table-striped">
+        <thead>
+            <tr>
+                <th>{% trans "ID" %}</th>
+                <th>{% trans "Title" %}</th>
+                <th>{% trans "Price" %}</th>
+                <th>{% trans "Sold date" %}</th>
+                <th>{% trans "Seller" %}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for ex in old_money_to_give %}
+                <tr>
+                    <td><a href="{% url 'polybookexchange.views.exemplar' ex.pk %}">{{ex.pk}}</a></td>
+                    <td>{{ex.book.title}}</td>
+                    <td>{{ex.price|floatformat:2}}</td>
+                    <td>{{ex.sold_date}}</td>
+                    <td><a href="{% url 'polybookexchange.views.give_money_back' %}?sciper={{ex.seller_id}}">{{ex.seller_id}}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

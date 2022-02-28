@@ -14,7 +14,7 @@
         <div class="alert alert-success">
             {% trans "Book removed successfuly !" %}
 
-            <a href="{% url 'polybookexchange.views.exemplar' exemplar_id %}" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-print"></i> {% trans "Show the recepie" %}</a>
+            <a href="{% url 'polybookexchange.views.exemplar' exemplar_id %}" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-print"></i> {% trans "Show the receipt" %}</a>
             <br /><br />
 
     {% else %}
@@ -27,12 +27,20 @@
 
         <form method="POST" action="">
             {% csrf_token %}
-
             <div class="form-group">
                 <label>{% trans "Exemplar ID:" %}</label>
                 <input name="exemplar_id" type="text" class="form-control">
             </div>
-
+            <div class="form-group">
+                <label>{% trans "Reason:" %}</label>
+                <select name="out_reason" id="out_reason" class="form-control">
+                    {% for value, label in Exemplar.OUT_REASON_CHOICES %}
+                        {% if value != "sold" %}
+                            <option value="{{value}}">{{label}}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
             <button type="submit" class="pull-right btn btn-primary"><i class="glyphicon glyphicon-trash"></i> {% trans "Remove" %}</button>
         </form>
 
@@ -42,4 +50,3 @@
     <script type="text/javascript">$('#polybook-menu-admin').addClass('active');</script>
 
 {% endblock %}
-
