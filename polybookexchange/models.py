@@ -8,6 +8,7 @@ from django.templatetags.static import static
 from django.conf import settings
 import datetime
 from django.utils.timezone import now
+from django.utils.translation import ugettext_lazy as _
 
 
 class Book(models.Model):
@@ -139,12 +140,12 @@ class Exemplar(models.Model):
         (u'mauvais', u'mauvais'),
     )
 
-
-    OUT_REASONS = (
-        (u'sold', u'sold'),
-        (u'expired', u'expired'),  # given to EPFL library
-        (u'retrieved', u'retrieved'),  # user got it back
-        (u'lost', u'lost'),
+    
+    OUT_REASON_CHOICES = (
+        (u'sold', unicode(_('sold'))),
+        (u'expired', unicode(_('expired'))),  # given to EPFL library
+        (u'retrieved', unicode(_('retrieved'))),  # user got it back
+        (u'lost', unicode(_('lost'))),
     )
 
     book = models.ForeignKey('Book')
@@ -153,7 +154,7 @@ class Exemplar(models.Model):
     buyer_id = models.PositiveIntegerField(null=True, blank=True)
     posted_date = models.DateTimeField(auto_now_add=True)
     sold_date = models.DateTimeField(null=True, blank=True)
-    out_reason = models.CharField(null=True, max_length=50, choices=OUT_REASONS)
+    out_reason = models.CharField(null=True, max_length=50, choices=OUT_REASON_CHOICES)
     money_given_date = models.DateTimeField(null=True, blank=True)
     annotated = models.BooleanField(default=False)
     highlighted = models.BooleanField(default=False)

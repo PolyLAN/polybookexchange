@@ -14,7 +14,7 @@
         <div class="alert alert-success">
             {% trans "Book removed successfuly !" %}
 
-            <a href="{% url 'polybookexchange.views.exemplar' exemplar_id %}" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-print"></i> {% trans "Show the recepie" %}</a>
+            <a href="{% url 'polybookexchange.views.exemplar' exemplar_id %}" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-print"></i> {% trans "Show the receipt" %}</a>
             <br /><br />
 
     {% else %}
@@ -27,7 +27,6 @@
 
         <form method="POST" action="">
             {% csrf_token %}
-
             <div class="form-group">
                 <label>{% trans "Exemplar ID:" %}</label>
                 <input name="exemplar_id" type="text" class="form-control">
@@ -35,9 +34,9 @@
             <div class="form-group">
                 <label>{% trans "Reason:" %}</label>
                 <select name="out_reason" id="out_reason" class="form-control">
-                    <option value="expired">Donné à la bibliothèque centrale</option>
-                    <option value="retrieved">Rendu à son propriétaire</option>
-                    <option value="lost">Perdu</option>
+                    <option value="expired">{% trans "Donné à la bibliothèque centrale" %}</option>
+                    <option value="retrieved">{% trans "Rendu à son propriétaire" %}</option>
+                    <option value="lost">{% trans "Perdu" %}</option>
                 </select>
             </div>
             <button type="submit" class="pull-right btn btn-primary"><i class="glyphicon glyphicon-trash"></i> {% trans "Remove" %}</button>

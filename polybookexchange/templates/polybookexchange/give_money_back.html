@@ -9,13 +9,13 @@
     <h1 class="page-header">{% trans "Give Money" %}</h1>
         {% if sciper and total %}
             <div>
-                    <p> {% if status == 'ok' %}
-                           {% trans "Total rendu :" %}
-                        {% else %}
-                            {% trans "Total à rendre :" %}
-                        {% endif %}
-                        <strong>{{ total }}</strong>
-                    </p>
+                <p> {% if status == 'ok' %}
+                        {% trans "Total rendu :" %}
+                    {% else %}
+                        {% trans "Total à rendre :" %}
+                    {% endif %}
+                    <strong>{{total}}</strong>
+                </p>
             </div>
         <div id='printable_report'>
             <style type="text/css" id="print-ignore">
@@ -41,7 +41,7 @@
                     <th>{% trans "Price" %}</th>
                     <th>{% trans "Submited date" %}</th>
                     <th>{% trans "Buy date" %}</th>
-                    <th>{% trans "Buyer" %}</th>                    
+                    <th>{% trans "Buyer" %}</th>
                 </tr>
                 </thead>
 
@@ -57,7 +57,7 @@
                             {% if not ex.out_reason == 'lost' %}
                                 {% show_name_from_sciper ex.buyer_id  %}
                             {% else %}
-                                {% trans "Livre Perdu (AGEPoly)" %}
+                                {% trans "Lost Book (AGEPoly)" %}
                             {% endif %}
                         </td>
                     </tr>
@@ -68,14 +68,14 @@
                 <p>
                 {% trans "Je soussigné·e" %}{% show_name_from_sciper sciper %},
                 {% blocktrans %}
-                    atteste à voir recu la somme de {{ total }} CHF correspondant à la vente des livres listés ci-dessus aux acheteurs mentionées. Cette vente ne comporte pas de TVA.
+                    atteste à voir recu la somme de {{total}} CHF correspondant à la vente des livres listés ci-dessus aux acheteurs mentionées. Cette vente ne comporte pas de TVA.
                 {% endblocktrans %}
                 </p>
              </div>
              <div class="print-only">
                </br>
                </br>
-               <p><b>Signature : </b></p>
+               <p><b>{% trans "Signature :" %}</b></p>
              </div>
          </div>
         {% endif %}
@@ -93,21 +93,19 @@
             {% trans "Success !" %}
         </div>
     {% elif status == "error" %}
-            <div class="alert alert-danger">
-                {% trans "Sciper invalid ! (or other error)" %}
-            </div>
+        <div class="alert alert-danger">
+            {% trans "Sciper invalid ! (or other error)" %}
+        </div>
     {% endif %}
     {% if sciper and exemplars|length == 0 %}
-            <div class="alert alert-warning">
-                {% trans "No book to reimburse !" %}
-            </div>
+        <div class="alert alert-warning">
+            {% trans "No book to reimburse !" %}
+        </div>
     {% endif %}
-
         <form method="POST" action="">
             {% csrf_token %}
-
             {% if total and sciper %}
-                   <input type="hidden" value="{{total | stringformat:'.2f' }}" name="total">
+                <input type="hidden" value="{{total | stringformat:'.2f' }}" name="total">
                 <input type="hidden" value="{{sciper}}" name="sciper">
                 <button type="submit" class="pull-right btn btn-success"><i class="glyphicon glyphicon-check"></i> {% trans "Confirm" %}</button>
             {% else %}

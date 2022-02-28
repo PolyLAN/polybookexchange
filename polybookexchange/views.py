@@ -415,7 +415,7 @@ def give_money_back(request):
     sciper = request.GET.get('sciper', request.POST.get('sciper'))
     total_given = request.GET.get('total', request.POST.get('total'))
 
-    exemplars = Exemplar.objects.all().filter(seller_id=sciper, out_reason__in=['sold', 'lost'], money_given_date=None)
+    exemplars = Exemplar.objects.filter(seller_id=sciper, out_reason__in=['sold', 'lost'], money_given_date=None)
     total = sum([e.price for e in exemplars])
 
     if sciper and total_given:
@@ -645,10 +645,10 @@ def add_exemplar(request):
 @staff_member_required
 def financial_infos(request):
     from django.db.models import Sum
-    all_sold_books = Exemplar.objects.all().filter(out_reason='sold').aggregate(sum=Sum('price', default=0))
-    all_lost_books = Exemplar.objects.all().filter(out_reason='lost').aggregate(sum=Sum('price', default=0))
-    all_given_money = Exemplar.objects.all().filter(money_given_date=None).aggregate(sum=Sum('price', default=0))
-    old_money_to_give = Exemplar.objects.all().filter(out_reason='sold', money_given_date=None, sold_date__lte=datetime.now() + timedelta(days=365))
+    all_sold_books = Exemplar.objects.filter(out_reason='sold').aggregate(sum=Sum('price', default=0))
+    all_lost_books = Exemplar.objects.filter(out_reason='lost').aggregate(sum=Sum('price', default=0))
+    all_given_money = Exemplar.objects.filter(money_given_date=None).aggregate(sum=Sum('price', default=0))
+    old_money_to_give = Exemplar.objects.filter(out_reason='sold', money_given_date=None, sold_date__lte=datetime.now() - timedelta(days=365))
     result = (all_sold_books['sum'] or 0) + (all_lost_books['sum'] or 0) - (all_given_money['sum'] or 0)
     return render(request, 'polybookexchange/financial_infos.html', {'all_sold_books': (all_sold_books['sum'] or 0), 'all_lost_books': (all_lost_books['sum'] or 0), 'all_given_money': (all_given_money['sum'] or 0), 'result': result, 'old_money_to_give': old_money_to_give})
 
