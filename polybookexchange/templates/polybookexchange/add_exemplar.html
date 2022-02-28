@@ -31,11 +31,11 @@
 
                             <div class="form-group">
                                 <label>{% trans "Annotated:" %}</label>
-                                <input type="checkbox" name="annotated" value="annotated" {% if annotated %}checked{% endif %}>
+                                <input type="checkbox" name="annotated" value="annotated" {% if candidate.annotated %}checked{% endif %}>
                             </div>
                             <div class="form-group">
                                 <label>{% trans "Surligned:" %}</label>
-                                <input type="checkbox" name="highlighted" value="highlighted" {% if highlighted %}checked{% endif %}>
+                                <input type="checkbox" name="highlighted" value="highlighted" {% if candidate.highlighted %}checked{% endif %}>
                             </div>
                             <div class="form-group">
                                 <label>{% trans "Condition" %}</label>
@@ -60,6 +60,24 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        {% if error %}
+        <div class="alert alert-danger">
+            <p>{{error}}</p>
+        </div>
+        {% endif %}
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{% trans "Book ID" %}</h3>
+            </div>
+            <div class="panel-body">
+                <label>{% trans "Exemplar Identifier:" %}</label>
+                <input name="force_id" required="true" type="number" class="form-control">
+                <script type="text/javascript">$('input[name=force_id]').focus();</script>
+
             </div>
         </div>
 

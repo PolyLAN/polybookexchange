@@ -580,6 +580,7 @@ def add_book(request):
 @login_required
 @staff_member_required
 def add_exemplar(request):
+    error = None
 
     candidate = None
     candidate_id = request.GET.get('candidate_id')
@@ -612,14 +613,18 @@ def add_exemplar(request):
 
         book = Book.objects.get(isbn=isbn)
 
-        if request.method == 'POST':
+        force_id = request.GET.get('force_id') or request.POST.get('force_id') or None
+        if force_id and Exemplar.objects.filter(id=force_id).count() != 0:
+            error = _('Book Number already in use !')
+
+        if request.method == 'POST' and not error:
             annotated = request.POST.get('annotated') == 'annotated'
             highlighted = request.POST.get('highlighted') == 'highlighted'
             state = request.POST.get('state')
             comment = request.POST.get('comment')
             price = request.POST.get('price')
 
-            e = Exemplar(book=book, price=price, seller_id=sciper, annotated=annotated, highlighted=highlighted, state=state, comments=comment)
+            e = Exemplar(id=force_id, book=book, price=price, seller_id=sciper, annotated=annotated, highlighted=highlighted, state=state, comments=comment)
             e.save()
 
             book.qty_in_stock += 1
@@ -639,7 +644,7 @@ def add_exemplar(request):
             return redirect('polybookexchange.views.exemplar', e.pk)
 
         else:
-            return render(request, 'polybookexchange/add_exemplar.html', {'book': book, 'sciper': sciper, 'candidate': candidate, 'sections': sections, 'semestres': semestres})
+            return render(request, 'polybookexchange/add_exemplar.html', {'book': book, 'sciper': sciper, 'candidate': candidate, 'sections': sections, 'semestres': semestres, 'error': error})
 
 @login_required
 @staff_member_required
