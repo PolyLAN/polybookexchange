@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 from django.db import models
 from django.db.models import Min
 import requests
@@ -8,7 +10,6 @@ from django.templatetags.static import static
 from django.conf import settings
 import datetime
 from django.utils.timezone import now
-from django.utils.translation import ugettext_lazy as _
 
 
 class Book(models.Model):
@@ -140,12 +141,11 @@ class Exemplar(models.Model):
         (u'mauvais', u'mauvais'),
     )
 
-    
     OUT_REASON_CHOICES = (
-        (u'sold', unicode(_('sold'))),
-        (u'expired', unicode(_('expired'))),  # given to EPFL library
-        (u'retrieved', unicode(_('retrieved'))),  # user got it back
-        (u'lost', unicode(_('lost'))),
+        (u'sold', u'Vendu'),
+        (u'expired', u'Donné à la bibliothèque centrale'),  # given to EPFL library
+        (u'retrieved', u'Rendu à son propriétaire'),  # user got it back
+        (u'lost', u'Perdu'),
     )
 
     book = models.ForeignKey('Book')

@@ -64,9 +64,9 @@
         </div>
 
         {% if error %}
-        <div class="alert alert-danger">
-            <p>{{error}}</p>
-        </div>
+            <div class="alert alert-danger">
+                <p>{{error}}</p>
+            </div>
         {% endif %}
 
         <div class="panel panel-default">
@@ -76,8 +76,6 @@
             <div class="panel-body">
                 <label>{% trans "Exemplar Identifier:" %}</label>
                 <input name="force_id" required="true" type="number" class="form-control">
-                <script type="text/javascript">$('input[name=force_id]').focus();</script>
-
             </div>
         </div>
 
@@ -124,5 +122,6 @@
     </form>
 
     <script type="text/javascript">$('#polybook-menu-admin').addClass('active');</script>
+    <script type="text/javascript">$('input[name=force_id]').focus();</script>
 
 {% endblock %}

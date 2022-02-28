@@ -29,7 +29,9 @@
                     {% trans "AGEPoly Book Exchange Seller Receipt" %} - {% show_name_from_sciper sciper %}
                 </h1>
                 <p>
-                   {% trans "This report was issued on:"%} {% now "SHORT_DATETIME_FORMAT" %}
+                    {% blocktrans %}
+                        This report was issued on: {{now}}
+                    {% endblocktrans %}
                 </p>
             </div>
             <table style="width: 100%;" class="table table-striped">
@@ -80,7 +82,7 @@
     {% if status == "ok" %}
         <script type="text/javascript">
             window.addEventListener('load', function () {
-                printJS({ 
+                printJS({
                     printable: 'printable_report',
                     type: 'html',
                     style: ".print-only { display: block !important; }",

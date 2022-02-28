@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from django.shortcuts import get_object_or_404, render, redirect
-from django.template import RequestContext
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.conf import settings
 from .models import Book, Exemplar, Section, Semester, Candidate, CandidateUsage, Author, Publisher, UsedBy
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
@@ -331,6 +330,9 @@ def admin(request):
 @staff_member_required
 def remove_book(request):
 
+    if request.method != 'POST':
+        raise Http404
+
     status = 'need_data'
 
     exemplar_id = request.GET.get('exemplar_id', request.POST.get('exemplar_id'))
@@ -423,7 +425,7 @@ def give_money_back(request):
             total_given = float(total_given)
         except:
             total_given = 0
-        
+
         status = 'error'
         if total_given != 0 and total_given == total:
             status = 'ok'
@@ -431,7 +433,8 @@ def give_money_back(request):
                 exemplar.money_given_date = datetime.now()
                 exemplar.save()
 
-    return render(request, 'polybookexchange/give_money_back.html', {'status': status, 'total': total, 'exemplars': exemplars, 'sciper': sciper})
+    return render(request, 'polybookexchange/give_money_back.html', {'status': status, 'total': total, 'exemplars': exemplars, 'sciper': sciper, 'now': datetime.now()})
+
 
 @login_required
 @staff_member_required
@@ -614,7 +617,7 @@ def add_exemplar(request):
         book = Book.objects.get(isbn=isbn)
 
         force_id = request.GET.get('force_id') or request.POST.get('force_id') or None
-        if force_id and Exemplar.objects.filter(id=force_id).count() != 0:
+        if force_id and Exemplar.objects.filter(id=force_id).exists():
             error = _('Book Number already in use !')
 
         if request.method == 'POST' and not error:
