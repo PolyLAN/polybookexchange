@@ -10,6 +10,7 @@ from django.templatetags.static import static
 from django.conf import settings
 import datetime
 from django.utils.timezone import now
+from django.utils.translation import ugettext_lazy as _
 
 
 class Book(models.Model):
@@ -89,10 +90,10 @@ class Book(models.Model):
 class Candidate(models.Model):
 
     STATE_CHOICES = (
-        (u'neuf', u'neuf'),
-        (u'bon', u'bon'),
-        (u'acceptable', u'acceptable'),
-        (u'mauvais', u'mauvais'),
+        (u'neuf', _(u'neuf')),
+        (u'bon', _(u'bon')),
+        (u'acceptable', _(u'acceptable')),
+        (u'mauvais', _(u'mauvais')),
     )
 
     isbn = models.DecimalField(max_digits=13, decimal_places=0)
@@ -135,17 +136,17 @@ class CandidateUsage(models.Model):
 class Exemplar(models.Model):
 
     STATE_CHOICES = (
-        (u'neuf', u'neuf'),
-        (u'bon', u'bon'),
-        (u'acceptable', u'acceptable'),
-        (u'mauvais', u'mauvais'),
+        (u'neuf', _(u'neuf')),
+        (u'bon', _(u'bon')),
+        (u'acceptable', _(u'acceptable')),
+        (u'mauvais', _(u'mauvais')),
     )
 
     OUT_REASON_CHOICES = (
-        (u'sold', u'Vendu'),
-        (u'expired', u'Donné à la bibliothèque centrale'),  # given to EPFL library
-        (u'retrieved', u'Rendu à son propriétaire'),  # user got it back
-        (u'lost', u'Perdu'),
+        (u'sold', _(u'Vendu')),
+        (u'expired', _(u'Donné à la bibliothèque centrale')),  # given to EPFL library
+        (u'retrieved', _(u'Rendu à son propriétaire')),  # user got it back
+        (u'lost', _(u'Perdu')),
     )
 
     book = models.ForeignKey('Book')
