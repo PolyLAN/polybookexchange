@@ -19,7 +19,7 @@
         {% trans "Once the book is submitted, you have to bring it to AGEPoly's book exchange at CE1 515 from Tuesday, March 1, 2022 to Thursday, March 3, 2022 between 9:00 AM and 5:00 PM!" %}
     </div>
 
-    <form method="POST" onsubmit="if (!$('#terms').is(':checked')) { alert('{% trans "Please accepts terms !" %}'); return false }">
+    <form method="POST" onsubmit="if (!$('#terms').is(':checked')) { alert('{% trans "Please accepts terms!" %}'); return false }">
         {% csrf_token %}
 
         <div class="form-group" id="form-group-isbn">
