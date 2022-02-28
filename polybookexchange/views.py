@@ -330,9 +330,6 @@ def admin(request):
 @staff_member_required
 def remove_book(request):
 
-    if request.method != 'POST':
-        raise Http404
-
     status = 'need_data'
 
     exemplar_id = request.GET.get('exemplar_id', request.POST.get('exemplar_id'))
@@ -340,7 +337,7 @@ def remove_book(request):
 
     out_reason = request.GET.get('out_reason', request.POST.get('out_reason'))
 
-    if exemplar_id:
+    if exemplar_id and request.method == 'POST':
 
         try:
             exemplar = Exemplar.objects.get(pk=exemplar_id, buyer_id=None)
@@ -367,7 +364,7 @@ def remove_book(request):
              pass  # write an email to tell them to come to boutique to get theit money
         #    send_templated_mail(_('AGEPoly\'s book exchange: Exemplar removed'), settings.POLYBOOKEXCHANGE_EMAIL_FROM, [sciper2mail(exemplar.seller_id)], 'book_removed', {'exemplar': exemplar})
 
-    return render(request, 'polybookexchange/remove_book.html', {'exemplar_id': exemplar_id, 'status': status})
+    return render(request, 'polybookexchange/remove_book.html', {'exemplar_id': exemplar_id, 'status': status, 'Exemplar': Exemplar})
 
 
 @login_required

@@ -34,9 +34,11 @@
             <div class="form-group">
                 <label>{% trans "Reason:" %}</label>
                 <select name="out_reason" id="out_reason" class="form-control">
-                    <option value="expired">{% trans "Donné à la bibliothèque centrale" %}</option>
-                    <option value="retrieved">{% trans "Rendu à son propriétaire" %}</option>
-                    <option value="lost">{% trans "Perdu" %}</option>
+                    {% for value, label in Exemplar.OUT_REASON_CHOICES %}
+                        {% if value != "sold" %}
+                            <option value="{{value}}">{{label}}</option>
+                        {% endif %}
+                    {% endfor %}
                 </select>
             </div>
             <button type="submit" class="pull-right btn btn-primary"><i class="glyphicon glyphicon-trash"></i> {% trans "Remove" %}</button>
@@ -48,4 +50,3 @@
     <script type="text/javascript">$('#polybook-menu-admin').addClass('active');</script>
 
 {% endblock %}
-
