@@ -1,3 +1,4 @@
 *.pyc
 PolyBookExchange.egg-info
 .ropeproject
+.python-version
