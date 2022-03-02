@@ -2,6 +2,7 @@ import ldap
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 from django.template import Context
+from django.utils.translation import ugettext as _
 
 
 def search_attr_in_ldap(sciper, attr):
@@ -15,8 +16,11 @@ def search_attr_in_ldap(sciper, attr):
 
     val = ''
 
-    for someone in con.search_s(base_dn, ldap.SCOPE_SUBTREE, filter, attrs):
-        val = someone[1][attr][0]
+    try:
+        for someone in con.search_s(base_dn, ldap.SCOPE_SUBTREE, filter, attrs):
+            val = someone[1][attr][0]
+    except:
+        pass
 
     return val
 
@@ -28,7 +32,7 @@ def sciper2mail(sciper):
 
 def sciper2name(sciper):
     """Convert a sciper to a name, using EPFL's LDAP"""
-    return search_attr_in_ldap(sciper, 'cn')
+    return search_attr_in_ldap(sciper, 'cn') or _("Unknown name")
 
 
 def send_templated_mail(subject, email_from, emails_to, template, context):
