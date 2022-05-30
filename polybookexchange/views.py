@@ -602,7 +602,7 @@ def add_exemplar(request):
         try:
             candidate = Candidate.objects.get(pk=request.GET.get('candidate_id'))
         except:
-            pass
+            error = _('This candidate does not exist anymore. Maybe it was already validated.')
 
     if isbn and sciper and isbnlib.is_isbn13(isbn) or candidate:
 
@@ -625,27 +625,31 @@ def add_exemplar(request):
             comment = request.POST.get('comment')
             price = request.POST.get('price')
 
-            e = Exemplar(id=force_id, book=book, price=price, seller_id=sciper, annotated=annotated, highlighted=highlighted, state=state, comments=comment)
-            e.save()
+            # This might fail since we don't validate form data before
+            try:
+                e = Exemplar(id=force_id, book=book, price=price, seller_id=sciper, annotated=annotated, highlighted=highlighted, state=state, comments=comment)
+                e.save()
+            except:
+                error = _('Invalid form data.')
 
-            book.qty_in_stock += 1
-            book.avg_price = Exemplar.objects.filter(book=book).aggregate(Avg('price'))['price__avg']
-            book.save()
+            else:
+                book.qty_in_stock += 1
+                book.avg_price = Exemplar.objects.filter(book=book).aggregate(Avg('price'))['price__avg']
+                book.save()
 
-            for sec in sections:
-                for sem in semestres:
-                    if request.POST.get('c_' + str(sec.pk) + '_' + str(sem.pk)):
-                        UsedBy.objects.get_or_create(book=book, section=sec, semester=sem)
+                for sec in sections:
+                    for sem in semestres:
+                        if request.POST.get('c_' + str(sec.pk) + '_' + str(sem.pk)):
+                            UsedBy.objects.get_or_create(book=book, section=sec, semester=sem)
 
-            send_templated_mail(_('AGEPoly\'s book exchange: Exemplar in sale'), settings.POLYBOOKEXCHANGE_EMAIL_FROM, [sciper2mail(e.seller_id)], 'book_insale', {'exemplar': e})
+                send_templated_mail(_('AGEPoly\'s book exchange: Exemplar in sale'), settings.POLYBOOKEXCHANGE_EMAIL_FROM, [sciper2mail(e.seller_id)], 'book_insale', {'exemplar': e})
 
-            if candidate:
-                candidate.delete()
+                if candidate:
+                    candidate.delete()
 
-            return redirect('polybookexchange.views.exemplar', e.pk)
+                return redirect('polybookexchange.views.exemplar', e.pk)
 
-        else:
-            return render(request, 'polybookexchange/add_exemplar.html', {'book': book, 'sciper': sciper, 'candidate': candidate, 'sections': sections, 'semestres': semestres, 'error': error})
+        return render(request, 'polybookexchange/add_exemplar.html', {'book': book, 'sciper': sciper, 'candidate': candidate, 'sections': sections, 'semestres': semestres, 'error': error})
 
 @login_required
 @staff_member_required
