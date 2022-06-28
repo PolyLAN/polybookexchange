@@ -98,8 +98,8 @@ class Candidate(models.Model):
 
     isbn = models.DecimalField(max_digits=13, decimal_places=0)
     sciper = models.PositiveIntegerField()
-    annotated = models.BooleanField()
-    highlighted = models.BooleanField()
+    annotated = models.BooleanField(default=False)
+    highlighted = models.BooleanField(default=False)
     state = models.CharField(max_length=10, choices=STATE_CHOICES)
     comments = models.TextField()
     price = models.FloatField()
