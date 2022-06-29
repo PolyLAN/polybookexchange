@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
     name='PolyBookExchange',
-    version='0.1.15',
+    version='0.2.0',
     description='A small django application for book exchange at AGEPoly.',
     long_description='PolyBookExchange is a small django application used for book exchange at AGEPoly, the student association of EPFL.',
     author='Maximilien Cuony',
@@ -26,6 +26,6 @@ setup(
         'django (>=1.11, <2)',
         'isbnlib',
         'requests',
-        'pyBarcode',
+        'viivakoodi', # Fork of pyBarcode
     ]
 )

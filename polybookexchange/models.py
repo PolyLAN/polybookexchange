@@ -90,10 +90,10 @@ class Book(models.Model):
 class Candidate(models.Model):
 
     STATE_CHOICES = (
-        (u'neuf', _(u'neuf')),
-        (u'bon', _(u'bon')),
-        (u'acceptable', _(u'acceptable')),
-        (u'mauvais', _(u'mauvais')),
+        ('neuf', _('neuf')),
+        ('bon', _('bon')),
+        ('acceptable', _('acceptable')),
+        ('mauvais', _('mauvais')),
     )
 
     isbn = models.DecimalField(max_digits=13, decimal_places=0)
@@ -136,17 +136,17 @@ class CandidateUsage(models.Model):
 class Exemplar(models.Model):
 
     STATE_CHOICES = (
-        (u'neuf', _(u'neuf')),
-        (u'bon', _(u'bon')),
-        (u'acceptable', _(u'acceptable')),
-        (u'mauvais', _(u'mauvais')),
+        ('neuf', _('neuf')),
+        ('bon', _('bon')),
+        ('acceptable', _('acceptable')),
+        ('mauvais', _('mauvais')),
     )
 
     OUT_REASON_CHOICES = (
-        (u'sold', _(u'Vendu')),
-        (u'expired', _(u'Donné à la bibliothèque centrale')),  # given to EPFL library
-        (u'retrieved', _(u'Rendu à son propriétaire')),  # user got it back
-        (u'lost', _(u'Perdu')),
+        ('sold', _('Vendu')),
+        ('expired', _('Donné à la bibliothèque centrale')),  # given to EPFL library
+        ('retrieved', _('Rendu à son propriétaire')),  # user got it back
+        ('lost', _('Perdu')),
     )
 
     book = models.ForeignKey('Book')

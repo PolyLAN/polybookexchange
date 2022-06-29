@@ -15,9 +15,9 @@ This version is adapted from a previous django version made in 2010, who was mad
 
 ## Assumptions
 
-The module can be used in any django 1.11 project, but some additionnal work may be needed:
+The module can be used in any django 1.11 project in python 3, but some additionnal work may be needed:
 
-* The system assume all users have a `get_sciper()` method, returing an unique ID for the current user. The system will use the EPFL's LDAP and the sciper to make queries for user's details.
+* The system assume all users have a `get_sciper()` method, returing an unique ID for the current user. The system will use the EPFL's LDAP and the sciper to make queries for user's details. If the method does not exist, the username is assumed to be the sciper
 
 ## Setup
 
