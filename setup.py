@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
     name='PolyBookExchange',
-    version='0.1.14',
+    version='0.1.15',
     description='A small django application for book exchange at AGEPoly.',
     long_description='PolyBookExchange is a small django application used for book exchange at AGEPoly, the student association of EPFL.',
     author='Maximilien Cuony',
@@ -23,7 +23,7 @@ setup(
     ],
     include_package_data=True,
     install_requires=[
-        'django (>=1.7, <2)',
+        'django (>=1.11, <2)',
         'isbnlib',
         'requests',
         'pyBarcode',

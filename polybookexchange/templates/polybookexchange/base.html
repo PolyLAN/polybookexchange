@@ -28,7 +28,7 @@
     <!-- print.js -->
     <script src="{% static 'polybookexchange/print.min.js' %}"></script>
     <link href="{% static 'polybookexchange/print.min.css' %}" rel="stylesheet">
-  
+
 </head>
 
 <body>
@@ -54,7 +54,7 @@
                         {% for lang in LANGUAGES %}
                             <li>
                                 <a href="#" onclick="document.setLang{{ lang.1 }}.submit();return false;">{{ lang.1 }}</a>
-                                <form name="setLang{{lang.1}}" action="{% url 'django.views.i18n.set_language' %}" method="POST">{% csrf_token %}
+                                <form name="setLang{{lang.1}}" action="{% url 'set_language' %}" method="POST">{% csrf_token %}
                                     <input type="hidden" name="language" value="{{ lang.0 }}" />
                                 </form>
                             </li>
@@ -63,7 +63,7 @@
                 </li>
 
               </li>
-              <li><a href="{% url 'django.contrib.auth.views.logout' %}?next={% url 'polybookexchange.views.home' %}">{% trans "Logout" %}</a></li>
+              <li><a href="{% url 'logout' %}?next={% url 'polybookexchange.views.home' %}">{% trans "Logout" %}</a></li>
               <li><a href="https://agepoly.ch">{% trans "Back to the AGEPoly's website" %}</a></li>
           </ul>
         </div>
@@ -121,7 +121,7 @@
     </div>
 
     {% if settings.GOOGLE_ANALYTICS_ID %}
-        <script> 
+        <script>
 
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

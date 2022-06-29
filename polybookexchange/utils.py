@@ -41,10 +41,8 @@ def send_templated_mail(subject, email_from, emails_to, template, context):
     plaintext = get_template('polybookexchange/emails/%s.txt' % (template, ))
     htmly = get_template('polybookexchange/emails/%s.html' % (template, ))
 
-    d = Context(context)
-
-    text_content = plaintext.render(d)
-    html_content = htmly.render(d)
+    text_content = plaintext.render(context)
+    html_content = htmly.render(context)
     msg = EmailMultiAlternatives(subject, text_content, email_from, emails_to)
     msg.attach_alternative(html_content, "text/html")
     msg.send()

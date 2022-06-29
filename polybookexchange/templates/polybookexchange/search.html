@@ -43,7 +43,7 @@
                         <select name="sec" class="form-control">
                             <option value="-1">{% trans "All" %}</option>
                             {% for sec in sections %}
-                                <option value="{{sec.pk}}" {% if sec.pk = section.pk %}selected = "selected"{% endif %}>{{sec.name|safe}}</option>
+                                <option value="{{sec.pk}}" {% if sec.pk == section.pk %}selected = "selected"{% endif %}>{{sec.name|safe}}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -54,7 +54,7 @@
                         <select name="sem" class="form-control">
                             <option value="-1">{% trans "All" %}</option>
                             {% for sem in semestres %}
-                                <option value="{{sem.pk}}" {% if sem.pk = semestre.pk %}selected = "selected"{% endif %}>{{sem.name|safe}}</option>
+                                <option value="{{sem.pk}}" {% if sem.pk == semestre.pk %}selected = "selected"{% endif %}>{{sem.name|safe}}</option>
                             {% endfor %}
                         </select>
                     </div>

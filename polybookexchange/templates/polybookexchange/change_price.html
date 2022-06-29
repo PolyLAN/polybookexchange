@@ -8,7 +8,7 @@
 
     <h1 class="page-header">{% trans "Change price" %}</h1>
 
-    {% if status = "ok" %}
+    {% if status == "ok" %}
 
         <div class="alert alert-success">
             {% trans "New price has been saved !" %}
@@ -19,7 +19,7 @@
 
     {% else %}
 
-        {% if status = "err" %}
+        {% if status == "err" %}
             <div class="alert alert-danger">
                 {% trans "Please enter a price greather than 0, without cents" %}
             </div>
@@ -45,4 +45,3 @@
     <script type="text/javascript">$('#polybook-menu-sales').addClass('active');</script>
 
 {% endblock %}
-
