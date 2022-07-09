@@ -11,7 +11,7 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.db.models import Avg, Sum
 from datetime import datetime, timedelta
 from django.utils.translation import ugettext_lazy as _
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 
 import isbnlib
@@ -685,6 +685,6 @@ def gen_bar_code(request, code):
     wr = barcode.writer.ImageWriter()
     wr.format = 'JPEG'
 
-    barcode.generate('isbn' if isbnlib.is_isbn13(code) else 'code39', str(code), writer=wr, output=fp, writer_options={'write_text': False, 'module_width': 0.1, 'module_height': 2.0, 'quiet_zone': 0.0})
+    barcode.generate('isbn' if isbnlib.is_isbn13(str(code)) else 'code39', str(code), writer=wr, output=fp, writer_options={'write_text': False, 'module_width': 0.1, 'module_height': 2.0, 'quiet_zone': 0.0})
 
     return HttpResponse(fp.getvalue(), content_type="image/jpg")

@@ -23,7 +23,7 @@ class Book(models.Model):
     avg_price = models.FloatField(default=0, blank=True, null=True)
     qty_in_stock = models.IntegerField(default=0)
     qty_sold = models.IntegerField(default=0)
-    publisher = models.ForeignKey('Publisher')
+    publisher = models.ForeignKey('Publisher', on_delete=models.CASCADE)
     author = models.ManyToManyField('Author')
     cover = models.ImageField(upload_to='poylbookexchange/covers')
 
@@ -128,9 +128,9 @@ class Candidate(models.Model):
 
 class CandidateUsage(models.Model):
 
-    candidate = models.ForeignKey('Candidate')
-    section = models.ForeignKey('Section')
-    semester = models.ForeignKey('Semester')
+    candidate = models.ForeignKey('Candidate', on_delete=models.CASCADE)
+    section = models.ForeignKey('Section', on_delete=models.CASCADE)
+    semester = models.ForeignKey('Semester', on_delete=models.CASCADE)
 
 
 class Exemplar(models.Model):
@@ -149,7 +149,7 @@ class Exemplar(models.Model):
         ('lost', _('Perdu')),
     )
 
-    book = models.ForeignKey('Book')
+    book = models.ForeignKey('Book', on_delete=models.CASCADE)
     price = models.FloatField()
     seller_id = models.PositiveIntegerField()
     buyer_id = models.PositiveIntegerField(null=True, blank=True)
@@ -179,14 +179,14 @@ class Exemplar(models.Model):
 class Publisher(models.Model):
     name = models.CharField(max_length=255)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
 class Author(models.Model):
     name = models.CharField(max_length=255)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -201,6 +201,6 @@ class Semester(models.Model):
 
 
 class UsedBy(models.Model):
-    book = models.ForeignKey('Book')
-    section = models.ForeignKey('Section')
-    semester = models.ForeignKey('Semester')
+    book = models.ForeignKey('Book', on_delete=models.CASCADE)
+    section = models.ForeignKey('Section', on_delete=models.CASCADE)
+    semester = models.ForeignKey('Semester', on_delete=models.CASCADE)

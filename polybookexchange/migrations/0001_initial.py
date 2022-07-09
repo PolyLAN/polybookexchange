@@ -59,7 +59,7 @@ class Migration(migrations.Migration):
             name='CandidateUsage',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('candidate', models.ForeignKey(to='polybookexchange.Candidate')),
+                ('candidate', models.ForeignKey(on_delete=models.CASCADE, to='polybookexchange.Candidate')),
             ],
             options={
             },
@@ -80,7 +80,7 @@ class Migration(migrations.Migration):
                 ('highlighted', models.BooleanField(default=False)),
                 ('state', models.CharField(max_length=10, choices=[('neuf', 'neuf'), ('bon', 'bon'), ('acceptable', 'acceptable'), ('mauvais', 'mauvais')])),
                 ('comments', models.TextField(null=True, blank=True)),
-                ('book', models.ForeignKey(to='polybookexchange.Book')),
+                ('book', models.ForeignKey(on_delete=models.CASCADE, to='polybookexchange.Book')),
             ],
             options={
             },
@@ -122,9 +122,9 @@ class Migration(migrations.Migration):
             name='UsedBy',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('book', models.ForeignKey(to='polybookexchange.Book')),
-                ('section', models.ForeignKey(to='polybookexchange.Section')),
-                ('semester', models.ForeignKey(to='polybookexchange.Semester')),
+                ('book', models.ForeignKey(on_delete=models.CASCADE, to='polybookexchange.Book')),
+                ('section', models.ForeignKey(on_delete=models.CASCADE, to='polybookexchange.Section')),
+                ('semester', models.ForeignKey(on_delete=models.CASCADE, to='polybookexchange.Semester')),
             ],
             options={
             },
@@ -133,19 +133,19 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='candidateusage',
             name='section',
-            field=models.ForeignKey(to='polybookexchange.Section'),
+            field=models.ForeignKey(on_delete=models.CASCADE, to='polybookexchange.Section'),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='candidateusage',
             name='semester',
-            field=models.ForeignKey(to='polybookexchange.Semester'),
+            field=models.ForeignKey(on_delete=models.CASCADE, to='polybookexchange.Semester'),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='book',
             name='publisher',
-            field=models.ForeignKey(to='polybookexchange.Publisher'),
+            field=models.ForeignKey(on_delete=models.CASCADE, to='polybookexchange.Publisher'),
             preserve_default=True,
         ),
     ]

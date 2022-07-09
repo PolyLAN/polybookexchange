@@ -18,7 +18,7 @@ def search_attr_in_ldap(sciper, attr):
 
     try:
         for someone in con.search_s(base_dn, ldap.SCOPE_SUBTREE, filter, attrs):
-            val = someone[1][attr][0]
+            val = someone[1][attr][0].decode()
     except:
         pass
 
