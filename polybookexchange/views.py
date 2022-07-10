@@ -10,7 +10,7 @@ from .models import Book, Exemplar, Section, Semester, Candidate, CandidateUsage
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.db.models import Avg, Sum
 from datetime import datetime, timedelta
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
 
 
