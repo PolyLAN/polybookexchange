@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 class PolyBookExchangeConfig(AppConfig):
 
     name = "polybookexchange"
+    default_auto_field = 'django.db.models.BigAutoField'
 
     def ready(self):
         super(PolyBookExchangeConfig, self).ready()
