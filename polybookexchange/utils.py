@@ -1,8 +1,10 @@
-import ldap
 from django.core.mail import EmailMultiAlternatives
-from django.template.loader import get_template
 from django.template import Context
+from django.template.loader import get_template
 from django.utils.translation import gettext as _
+
+
+import ldap
 
 
 def search_attr_in_ldap(sciper, attr):

@@ -1,3 +1,12 @@
 [tool.black]
 line-length = 150
 target-version = ['py38']
+
+[tool.isort]
+profile = 'black'
+line_length = 150
+skip_gitignore = true
+known_django = 'django'
+sections = 'FUTURE,DJANGO,LOCALFOLDER,FIRSTPARTY,STDLIB,THIRDPARTY'
+lines_between_sections = 2
+lines_after_imports = 2

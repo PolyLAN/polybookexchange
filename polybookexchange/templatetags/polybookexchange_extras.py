@@ -1,6 +1,9 @@
 from django import template
-from polybookexchange.models import Exemplar
 from django.db.models import Avg, Sum
+
+
+from polybookexchange.models import Exemplar
+
 
 register = template.Library()
 

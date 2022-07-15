@@ -1,25 +1,29 @@
 # -*- coding: utf-8 -*-
 
-from django.shortcuts import get_object_or_404, render, redirect
+from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
-from django.http import HttpResponse
-from django.conf import settings
-from .models import Book, Exemplar, Section, Semester, Candidate, CandidateUsage, Author, Publisher, UsedBy
-from django.core.paginator import Paginator, InvalidPage, EmptyPage
+from django.core.paginator import EmptyPage, InvalidPage, Paginator
 from django.db.models import Avg, Sum
-from datetime import datetime, timedelta
-from django.utils.translation import gettext_lazy as _
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 
 
-import isbnlib
-import barcode
-import io
-import re
+from .models import Author, Book, Candidate, CandidateUsage, Exemplar, Publisher, Section, Semester, UsedBy
+
 
 from polybookexchange.utils import sciper2mail, send_templated_mail
+
+
+import io
+import re
+from datetime import datetime, timedelta
+
+
+import barcode
+import isbnlib
 
 
 @login_required
