@@ -8,13 +8,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('polybookexchange', '0001_initial'),
+        ("polybookexchange", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='book',
-            name='cover',
-            field=models.ImageField(upload_to='poylbookexchange/covers'),
+            model_name="book",
+            name="cover",
+            field=models.ImageField(upload_to="poylbookexchange/covers"),
         ),
     ]
