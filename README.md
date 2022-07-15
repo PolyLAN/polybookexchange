@@ -63,3 +63,17 @@ Add something like this:
 ### Install initial data
 
 `python manage.py loaddata polybookexchange_epfl.yaml`
+
+## Contributing
+The code is formatted using [black](https://github.com/psf/black) and [isort](https://github.com/pycqa/isort). You can install the tools with
+```
+pip install black isort
+```
+
+You can run the formating by running
+```
+$ black
+$ isort
+```
+
+To run the formatters in the pre-commit hook, install pre-commit (`pip install pre-commit`) and run `$ pre-commit install` at the root of the repository
