@@ -1,151 +1,160 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import models, migrations
+
+from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Author',
+            name="Author",
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('name', models.CharField(max_length=255)),
+                ("id", models.AutoField(verbose_name="ID", serialize=False, auto_created=True, primary_key=True)),
+                ("name", models.CharField(max_length=255)),
             ],
-            options={
-            },
+            options={},
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='Book',
+            name="Book",
             fields=[
-                ('isbn', models.DecimalField(serialize=False, primary_key=True, decimal_places=0, max_digits=13)),
-                ('title', models.CharField(max_length=255)),
-                ('original_title', models.CharField(max_length=255)),
-                ('edition', models.PositiveSmallIntegerField()),
-                ('year', models.PositiveIntegerField()),
-                ('avg_price', models.FloatField(default=0, null=True, blank=True)),
-                ('qty_in_stock', models.IntegerField(default=0)),
-                ('qty_sold', models.IntegerField(default=0)),
-                ('cover', models.ImageField(upload_to=b'poylbookexchange/covers')),
-                ('author', models.ManyToManyField(to='polybookexchange.Author')),
+                ("isbn", models.DecimalField(serialize=False, primary_key=True, decimal_places=0, max_digits=13)),
+                ("title", models.CharField(max_length=255)),
+                ("original_title", models.CharField(max_length=255)),
+                ("edition", models.PositiveSmallIntegerField()),
+                ("year", models.PositiveIntegerField()),
+                ("avg_price", models.FloatField(default=0, null=True, blank=True)),
+                ("qty_in_stock", models.IntegerField(default=0)),
+                ("qty_sold", models.IntegerField(default=0)),
+                ("cover", models.ImageField(upload_to=b"poylbookexchange/covers")),
+                ("author", models.ManyToManyField(to="polybookexchange.Author")),
             ],
-            options={
-            },
+            options={},
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='Candidate',
+            name="Candidate",
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('isbn', models.DecimalField(max_digits=13, decimal_places=0)),
-                ('sciper', models.PositiveIntegerField()),
-                ('annotated', models.BooleanField(default=False)),
-                ('highlighted', models.BooleanField(default=False)),
-                ('state', models.CharField(max_length=10, choices=[('neuf', 'neuf'), ('bon', 'bon'), ('acceptable', 'acceptable'), ('mauvais', 'mauvais')])),
-                ('comments', models.TextField()),
-                ('price', models.FloatField()),
-                ('creation_date', models.DateTimeField(auto_now_add=True)),
+                ("id", models.AutoField(verbose_name="ID", serialize=False, auto_created=True, primary_key=True)),
+                ("isbn", models.DecimalField(max_digits=13, decimal_places=0)),
+                ("sciper", models.PositiveIntegerField()),
+                ("annotated", models.BooleanField(default=False)),
+                ("highlighted", models.BooleanField(default=False)),
+                (
+                    "state",
+                    models.CharField(max_length=10, choices=[("neuf", "neuf"), ("bon", "bon"), ("acceptable", "acceptable"), ("mauvais", "mauvais")]),
+                ),
+                ("comments", models.TextField()),
+                ("price", models.FloatField()),
+                ("creation_date", models.DateTimeField(auto_now_add=True)),
             ],
-            options={
-            },
+            options={},
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='CandidateUsage',
+            name="CandidateUsage",
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('candidate', models.ForeignKey(on_delete=models.CASCADE, to='polybookexchange.Candidate')),
+                ("id", models.AutoField(verbose_name="ID", serialize=False, auto_created=True, primary_key=True)),
+                ("candidate", models.ForeignKey(on_delete=models.CASCADE, to="polybookexchange.Candidate")),
             ],
-            options={
-            },
+            options={},
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='Exemplar',
+            name="Exemplar",
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('price', models.FloatField()),
-                ('seller_id', models.PositiveIntegerField()),
-                ('buyer_id', models.PositiveIntegerField(null=True, blank=True)),
-                ('posted_date', models.DateTimeField(auto_now_add=True)),
-                ('sold_date', models.DateTimeField(null=True, blank=True)),
-                ('out_reason', models.CharField(max_length=50, null=True, choices=[('sold', 'Vendu'), ('expired', 'Donn\xe9 \xe0 la biblioth\xe8que centrale'), ('retrieved', 'Rendu \xe0 son propri\xe9taire'), ('lost', 'Perdu')])),
-                ('money_given_date', models.DateTimeField(null=True, blank=True)),
-                ('annotated', models.BooleanField(default=False)),
-                ('highlighted', models.BooleanField(default=False)),
-                ('state', models.CharField(max_length=10, choices=[('neuf', 'neuf'), ('bon', 'bon'), ('acceptable', 'acceptable'), ('mauvais', 'mauvais')])),
-                ('comments', models.TextField(null=True, blank=True)),
-                ('book', models.ForeignKey(on_delete=models.CASCADE, to='polybookexchange.Book')),
+                ("id", models.AutoField(verbose_name="ID", serialize=False, auto_created=True, primary_key=True)),
+                ("price", models.FloatField()),
+                ("seller_id", models.PositiveIntegerField()),
+                ("buyer_id", models.PositiveIntegerField(null=True, blank=True)),
+                ("posted_date", models.DateTimeField(auto_now_add=True)),
+                ("sold_date", models.DateTimeField(null=True, blank=True)),
+                (
+                    "out_reason",
+                    models.CharField(
+                        max_length=50,
+                        null=True,
+                        choices=[
+                            ("sold", "Vendu"),
+                            ("expired", "Donn\xe9 \xe0 la biblioth\xe8que centrale"),
+                            ("retrieved", "Rendu \xe0 son propri\xe9taire"),
+                            ("lost", "Perdu"),
+                        ],
+                    ),
+                ),
+                ("money_given_date", models.DateTimeField(null=True, blank=True)),
+                ("annotated", models.BooleanField(default=False)),
+                ("highlighted", models.BooleanField(default=False)),
+                (
+                    "state",
+                    models.CharField(max_length=10, choices=[("neuf", "neuf"), ("bon", "bon"), ("acceptable", "acceptable"), ("mauvais", "mauvais")]),
+                ),
+                ("comments", models.TextField(null=True, blank=True)),
+                ("book", models.ForeignKey(on_delete=models.CASCADE, to="polybookexchange.Book")),
             ],
-            options={
-            },
+            options={},
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='Publisher',
+            name="Publisher",
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('name', models.CharField(max_length=255)),
+                ("id", models.AutoField(verbose_name="ID", serialize=False, auto_created=True, primary_key=True)),
+                ("name", models.CharField(max_length=255)),
             ],
-            options={
-            },
+            options={},
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='Section',
+            name="Section",
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('name', models.CharField(max_length=255)),
-                ('acronym', models.CharField(max_length=10)),
+                ("id", models.AutoField(verbose_name="ID", serialize=False, auto_created=True, primary_key=True)),
+                ("name", models.CharField(max_length=255)),
+                ("acronym", models.CharField(max_length=10)),
             ],
-            options={
-            },
+            options={},
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='Semester',
+            name="Semester",
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('name', models.CharField(max_length=255)),
-                ('acronym', models.CharField(max_length=10)),
+                ("id", models.AutoField(verbose_name="ID", serialize=False, auto_created=True, primary_key=True)),
+                ("name", models.CharField(max_length=255)),
+                ("acronym", models.CharField(max_length=10)),
             ],
-            options={
-            },
+            options={},
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='UsedBy',
+            name="UsedBy",
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('book', models.ForeignKey(on_delete=models.CASCADE, to='polybookexchange.Book')),
-                ('section', models.ForeignKey(on_delete=models.CASCADE, to='polybookexchange.Section')),
-                ('semester', models.ForeignKey(on_delete=models.CASCADE, to='polybookexchange.Semester')),
+                ("id", models.AutoField(verbose_name="ID", serialize=False, auto_created=True, primary_key=True)),
+                ("book", models.ForeignKey(on_delete=models.CASCADE, to="polybookexchange.Book")),
+                ("section", models.ForeignKey(on_delete=models.CASCADE, to="polybookexchange.Section")),
+                ("semester", models.ForeignKey(on_delete=models.CASCADE, to="polybookexchange.Semester")),
             ],
-            options={
-            },
+            options={},
             bases=(models.Model,),
         ),
         migrations.AddField(
-            model_name='candidateusage',
-            name='section',
-            field=models.ForeignKey(on_delete=models.CASCADE, to='polybookexchange.Section'),
+            model_name="candidateusage",
+            name="section",
+            field=models.ForeignKey(on_delete=models.CASCADE, to="polybookexchange.Section"),
             preserve_default=True,
         ),
         migrations.AddField(
-            model_name='candidateusage',
-            name='semester',
-            field=models.ForeignKey(on_delete=models.CASCADE, to='polybookexchange.Semester'),
+            model_name="candidateusage",
+            name="semester",
+            field=models.ForeignKey(on_delete=models.CASCADE, to="polybookexchange.Semester"),
             preserve_default=True,
         ),
         migrations.AddField(
-            model_name='book',
-            name='publisher',
-            field=models.ForeignKey(on_delete=models.CASCADE, to='polybookexchange.Publisher'),
+            model_name="book",
+            name="publisher",
+            field=models.ForeignKey(on_delete=models.CASCADE, to="polybookexchange.Publisher"),
             preserve_default=True,
         ),
     ]

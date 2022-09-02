@@ -2,15 +2,16 @@
 
 from distutils.core import setup
 
+
 setup(
-    name='PolyBookExchange',
-    version='0.2.2',
-    description='A small django application for book exchange at AGEPoly.',
-    long_description='PolyBookExchange is a small django application used for book exchange at AGEPoly, the student association of EPFL.',
-    author='Maximilien Cuony',
-    author_email='theglu@theglu.org',
-    url='https://github.com/PolyLAN/polybookexchange',
-    download_url='https://github.com/PolyLAN/polybookexchange',
+    name="PolyBookExchange",
+    version="0.2.2",
+    description="A small django application for book exchange at AGEPoly.",
+    long_description="PolyBookExchange is a small django application used for book exchange at AGEPoly, the student association of EPFL.",
+    author="Maximilien Cuony",
+    author_email="theglu@theglu.org",
+    url="https://github.com/PolyLAN/polybookexchange",
+    download_url="https://github.com/PolyLAN/polybookexchange",
     classifiers=[
         "Development Status :: 4 - Beta",
         "Framework :: Django",
@@ -19,13 +20,13 @@ setup(
         "Operating System :: OS Independent",
     ],
     packages=[
-        'polybookexchange',
+        "polybookexchange",
     ],
     include_package_data=True,
     install_requires=[
-        'django (>=4, <5)',
-        'isbnlib',
-        'requests',
-        'viivakoodi', # Fork of pyBarcode
-    ]
+        "django (>=4, <5)",
+        "isbnlib",
+        "requests",
+        "viivakoodi",  # Fork of pyBarcode
+    ],
 )
