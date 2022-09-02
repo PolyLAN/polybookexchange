@@ -10,13 +10,13 @@ from .models import Book, Exemplar, Section, Semester, Candidate, CandidateUsage
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.db.models import Avg, Sum
 from datetime import datetime, timedelta
-from django.utils.translation import ugettext_lazy as _
-from django.core.urlresolvers import reverse
+from django.utils.translation import gettext_lazy as _
+from django.urls import reverse
 
 
 import isbnlib
 import barcode
-from StringIO import StringIO
+import io
 import re
 
 from polybookexchange.utils import sciper2mail, send_templated_mail
@@ -241,14 +241,14 @@ def check_isbn(request):
     isbn = clean_isbn(request.GET.get('isbn', ''))
 
     if not isbnlib.is_isbn13(isbn):
-        return HttpResponse('<script type="text/javascript">$(\'#form-group-isbn\').attr(\'class\', \'has-warning\');</script><span class="text-warning"><i class="glyphicon glyphicon-warning-sign"></i> %s</span>' % (unicode(_('Not an ISBN')), ))
+        return HttpResponse('<script type="text/javascript">$(\'#form-group-isbn\').attr(\'class\', \'has-warning\');</script><span class="text-warning"><i class="glyphicon glyphicon-warning-sign"></i> %s</span>' % (str(_('Not an ISBN')), ))
 
     data = isbnlib.meta(str(isbn))
 
     if not data or not data.get('Authors'):
-        return HttpResponse('<script type="text/javascript">$(\'#form-group-isbn\').attr(\'class\', \'has-danger\');</script><span class="text-danger"><i class="glyphicon glyphicon-remove"></i> %s</span>' % (unicode(_('Cannot found this ISBN in online databases')), ))
+        return HttpResponse('<script type="text/javascript">$(\'#form-group-isbn\').attr(\'class\', \'has-danger\');</script><span class="text-danger"><i class="glyphicon glyphicon-remove"></i> %s</span>' % (str(_('Cannot found this ISBN in online databases')), ))
 
-    return HttpResponse('<script type="text/javascript">$(\'#form-group-isbn\').attr(\'class\', \'has-success\');</script><span class="text-success"><i class="glyphicon glyphicon-ok"></i> %s</span>' % (unicode(_('Good ISBN !')), ))
+    return HttpResponse('<script type="text/javascript">$(\'#form-group-isbn\').attr(\'class\', \'has-success\');</script><span class="text-success"><i class="glyphicon glyphicon-ok"></i> %s</span>' % (str(_('Good ISBN !')), ))
 
 
 def clean_isbn(isbn):
@@ -665,11 +665,26 @@ def financial_infos(request):
 def gen_bar_code(request, code):
     """Generate a bar code"""
 
-    fp = StringIO()
+    # Hacky wrapper, the proper fix is in https://github.com/kxepal/viivakoodi/pull/14
+    class ImageIO:
+        def __init__(self, format):
+            self.fp = io.BytesIO()
+            self.format = format
+
+        def write(self, im):
+            # Disable the wrapper transparently when the PR is merged
+            if hasattr(im, "tobytes"):
+                return im.save(self.fp, format=self.format)
+            return self.fp.write(im)
+
+        def getvalue(self):
+            return self.fp.getvalue()
+
+    fp = ImageIO("JPEG")
 
     wr = barcode.writer.ImageWriter()
     wr.format = 'JPEG'
 
-    barcode.generate('isbn' if isbnlib.is_isbn13(code) else 'code39', str(code), writer=wr, output=fp, writer_options={'write_text': False, 'module_width': 0.1, 'module_height': 2.0, 'quiet_zone': 0.0})
+    barcode.generate('isbn' if isbnlib.is_isbn13(str(code)) else 'code39', str(code), writer=wr, output=fp, writer_options={'write_text': False, 'module_width': 0.1, 'module_height': 2.0, 'quiet_zone': 0.0})
 
-    return HttpResponse(fp.getvalue(), content_type="image/png")
+    return HttpResponse(fp.getvalue(), content_type="image/jpg")

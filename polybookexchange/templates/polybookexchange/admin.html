@@ -98,7 +98,7 @@
                     <div class="caption" style="text-align: center;">
                         <h3><i class="glyphicon glyphicon-book"></i></h3>
                         <p>
-                            <form action="{% url "polybookexchange.views.exemplar" '' %}" method="GET" onsubmit="$(this).attr('action', $(this).attr('action') + $('#polybookexchange_exemplar').val());">
+                            <form action="{% url "polybookexchange.views.exemplar" 0 %}" method="GET" onsubmit="$(this).attr('action', $(this).attr('action').slice(0, -1) + $('#polybookexchange_exemplar').val());">
                                 <div class="form-group">
                                     <input id="polybookexchange_exemplar" type="text" class="form-control" placeholder="{% trans "Exemplar ID" %}">
                                 </div>
@@ -114,7 +114,7 @@
                     <div class="caption" style="text-align: center;">
                         <h3><i class="glyphicon glyphicon-barcode"></i></h3>
                         <p>
-                            <form action="{% url "polybookexchange.views.book" '' %}" method="GET" onsubmit="$(this).attr('action', $(this).attr('action') + $('#polybookexchange_isbn').val());">
+                            <form action="{% url "polybookexchange.views.book" '0' %}" method="GET" onsubmit="$(this).attr('action', $(this).attr('action').slice(0, -1) + $('#polybookexchange_isbn').val());">
                                 <div class="form-group">
                                     <input id="polybookexchange_isbn" type="text" class="form-control" placeholder="{% trans "ISBN" %}">
                                 </div>

@@ -10,7 +10,7 @@ from django.templatetags.static import static
 from django.conf import settings
 import datetime
 from django.utils.timezone import now
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 class Book(models.Model):
@@ -23,7 +23,7 @@ class Book(models.Model):
     avg_price = models.FloatField(default=0, blank=True, null=True)
     qty_in_stock = models.IntegerField(default=0)
     qty_sold = models.IntegerField(default=0)
-    publisher = models.ForeignKey('Publisher')
+    publisher = models.ForeignKey('Publisher', on_delete=models.CASCADE)
     author = models.ManyToManyField('Author')
     cover = models.ImageField(upload_to='poylbookexchange/covers')
 
@@ -90,16 +90,16 @@ class Book(models.Model):
 class Candidate(models.Model):
 
     STATE_CHOICES = (
-        (u'neuf', _(u'neuf')),
-        (u'bon', _(u'bon')),
-        (u'acceptable', _(u'acceptable')),
-        (u'mauvais', _(u'mauvais')),
+        ('neuf', _('neuf')),
+        ('bon', _('bon')),
+        ('acceptable', _('acceptable')),
+        ('mauvais', _('mauvais')),
     )
 
     isbn = models.DecimalField(max_digits=13, decimal_places=0)
     sciper = models.PositiveIntegerField()
-    annotated = models.BooleanField()
-    highlighted = models.BooleanField()
+    annotated = models.BooleanField(default=False)
+    highlighted = models.BooleanField(default=False)
     state = models.CharField(max_length=10, choices=STATE_CHOICES)
     comments = models.TextField()
     price = models.FloatField()
@@ -128,28 +128,28 @@ class Candidate(models.Model):
 
 class CandidateUsage(models.Model):
 
-    candidate = models.ForeignKey('Candidate')
-    section = models.ForeignKey('Section')
-    semester = models.ForeignKey('Semester')
+    candidate = models.ForeignKey('Candidate', on_delete=models.CASCADE)
+    section = models.ForeignKey('Section', on_delete=models.CASCADE)
+    semester = models.ForeignKey('Semester', on_delete=models.CASCADE)
 
 
 class Exemplar(models.Model):
 
     STATE_CHOICES = (
-        (u'neuf', _(u'neuf')),
-        (u'bon', _(u'bon')),
-        (u'acceptable', _(u'acceptable')),
-        (u'mauvais', _(u'mauvais')),
+        ('neuf', _('neuf')),
+        ('bon', _('bon')),
+        ('acceptable', _('acceptable')),
+        ('mauvais', _('mauvais')),
     )
 
     OUT_REASON_CHOICES = (
-        (u'sold', _(u'Vendu')),
-        (u'expired', _(u'Donné à la bibliothèque centrale')),  # given to EPFL library
-        (u'retrieved', _(u'Rendu à son propriétaire')),  # user got it back
-        (u'lost', _(u'Perdu')),
+        ('sold', _('Vendu')),
+        ('expired', _('Donné à la bibliothèque centrale')),  # given to EPFL library
+        ('retrieved', _('Rendu à son propriétaire')),  # user got it back
+        ('lost', _('Perdu')),
     )
 
-    book = models.ForeignKey('Book')
+    book = models.ForeignKey('Book', on_delete=models.CASCADE)
     price = models.FloatField()
     seller_id = models.PositiveIntegerField()
     buyer_id = models.PositiveIntegerField(null=True, blank=True)
@@ -179,14 +179,14 @@ class Exemplar(models.Model):
 class Publisher(models.Model):
     name = models.CharField(max_length=255)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
 class Author(models.Model):
     name = models.CharField(max_length=255)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -201,6 +201,6 @@ class Semester(models.Model):
 
 
 class UsedBy(models.Model):
-    book = models.ForeignKey('Book')
-    section = models.ForeignKey('Section')
-    semester = models.ForeignKey('Semester')
+    book = models.ForeignKey('Book', on_delete=models.CASCADE)
+    section = models.ForeignKey('Section', on_delete=models.CASCADE)
+    semester = models.ForeignKey('Semester', on_delete=models.CASCADE)

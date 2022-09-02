@@ -2,7 +2,7 @@ import ldap
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 from django.template import Context
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 
 
 def search_attr_in_ldap(sciper, attr):
@@ -18,7 +18,7 @@ def search_attr_in_ldap(sciper, attr):
 
     try:
         for someone in con.search_s(base_dn, ldap.SCOPE_SUBTREE, filter, attrs):
-            val = someone[1][attr][0]
+            val = someone[1][attr][0].decode()
     except:
         pass
 
@@ -41,10 +41,8 @@ def send_templated_mail(subject, email_from, emails_to, template, context):
     plaintext = get_template('polybookexchange/emails/%s.txt' % (template, ))
     htmly = get_template('polybookexchange/emails/%s.html' % (template, ))
 
-    d = Context(context)
-
-    text_content = plaintext.render(d)
-    html_content = htmly.render(d)
+    text_content = plaintext.render(context)
+    html_content = htmly.render(context)
     msg = EmailMultiAlternatives(subject, text_content, email_from, emails_to)
     msg.attach_alternative(html_content, "text/html")
     msg.send()
