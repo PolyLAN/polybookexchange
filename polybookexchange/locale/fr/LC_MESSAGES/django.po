@@ -1541,7 +1541,7 @@ msgstr "Plus vieux"
 
 #: utils.py:37
 msgid "Unknown name"
-msgstr ""
+msgstr "Nom inconnu"
 
 #: views.py:239
 msgid "Bookexchange: Change of price"
@@ -1569,7 +1569,7 @@ msgstr "Bourse aux livres de l'AGEPoly: Exemplaire vendu"
 
 #: views.py:688
 msgid "This candidate does not exist anymore. Maybe it was already validated."
-msgstr ""
+msgstr "Ce candidat n'existe plus. Il a peut-être déjà été validé."
 
 #: views.py:702
 msgid "Book Number already in use !"
@@ -1577,7 +1577,7 @@ msgstr ""
 
 #: views.py:718
 msgid "Invalid form data."
-msgstr ""
+msgstr "Saisie invalide."
 
 #: views.py:731
 msgid "AGEPoly's book exchange: Exemplar in sale"
