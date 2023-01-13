@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PolyBookExchange\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-01 14:30+0100\n"
+"POT-Creation-Date: 2022-09-22 04:01+0200\n"
 "PO-Revision-Date: 2016-03-23 10:55+0100\n"
 "Last-Translator: Maximilien Cuony <theglu@theglu.org>\n"
 "Language-Team: Maximilien Cuony <theglu@theglu.org>\n"
@@ -19,35 +19,35 @@ msgstr ""
 "X-Generator: Poedit 1.8.7\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: models.py:93 models.py:139
+#: models.py:97 models.py:143
 msgid "neuf"
 msgstr ""
 
-#: models.py:94 models.py:140
+#: models.py:98 models.py:144
 msgid "bon"
 msgstr ""
 
-#: models.py:95 models.py:141
+#: models.py:99 models.py:145
 msgid "acceptable"
 msgstr "Acceptable"
 
-#: models.py:96 models.py:142
+#: models.py:100 models.py:146
 msgid "mauvais"
 msgstr ""
 
-#: models.py:146
+#: models.py:150
 msgid "Vendu"
 msgstr ""
 
-#: models.py:147
+#: models.py:151
 msgid "Donné à la bibliothèque centrale"
 msgstr ""
 
-#: models.py:148
+#: models.py:152
 msgid "Rendu à son propriétaire"
 msgstr ""
 
-#: models.py:149
+#: models.py:153
 msgid "Perdu"
 msgstr ""
 
@@ -469,14 +469,14 @@ msgstr "Détails de la proposition"
 #: templates/polybookexchange/candidate_fiche.html:8
 msgid ""
 "You have to <a href='javascript:window.print()'>print</a> this page and put "
-"it inside the book you bring to AGEPoly's event from Tuesday, March 1, 2022 "
-"to Thursday, March 3, 2022 between 9:00 AM and 5:00 PM at CE1 515 (or "
-"present this document there)"
+"it inside the book you bring to AGEPoly's event from Tuesday, September 27, "
+"2022 to Thursday, September 29, 2022 between 8:45 AM and 5:15 PM at CO floor "
+"0 (or present this document there)"
 msgstr ""
 "Vous devez <a href='javascript:window.print()'>imprimer</a> cette page et la "
 "mettre dans le livre, puis ammener le livre à l'évènement de l'AGEPoly du "
-"Mardi 1er Mars au Jeudi 3 Mars entre 9h et 17h en CE1 515 (ou bien présenter "
-"le document sur votre téléphone avec le livre)"
+"Mardi 29 septembre au Jeudi 29 septembre entre 8h45 et 17h15 au sous-sol CO "
+"(ou bien présenter le document sur votre téléphone avec le livre)"
 
 #: templates/polybookexchange/candidate_fiche.html:13
 msgid "CandidateID:"
@@ -563,6 +563,7 @@ msgid "Edit book in database"
 msgstr "Éditer un livre dans la base de données"
 
 #: templates/polybookexchange/emails/book_insale.html:1
+#, python-format
 msgid ""
 "\n"
 "Hi !<br />\n"
@@ -613,6 +614,7 @@ msgstr ""
 "<i>(Cet email est envoyé automatiquement lorsqu'un livre est validé)</i>"
 
 #: templates/polybookexchange/emails/book_insale.txt:1
+#, python-format
 msgid ""
 "\n"
 "Hi !\n"
@@ -726,6 +728,7 @@ msgstr ""
 "(Cet email est envoyé automatiquement lorsqu'un livre est retiré)"
 
 #: templates/polybookexchange/emails/book_sold.html:1
+#, python-format
 msgid ""
 "\n"
 "Hi !<br />\n"
@@ -760,6 +763,7 @@ msgstr ""
 "<i>(Cet email est envoyé automatiquement lorsqu'un livre est vendu)</i>"
 
 #: templates/polybookexchange/emails/book_sold.txt:1
+#, python-format
 msgid ""
 "\n"
 "Hi !\n"
@@ -792,6 +796,7 @@ msgstr ""
 "(Cet email est envoyé automatiquement lorsqu'un livre est vendu)"
 
 #: templates/polybookexchange/emails/price_change.html:1
+#, python-format
 msgid ""
 "\n"
 "Hi !<br />\n"
@@ -812,6 +817,7 @@ msgstr ""
 "La bourse aux livres,"
 
 #: templates/polybookexchange/emails/price_change.txt:1
+#, python-format
 msgid ""
 "\n"
 "Hi!\n"
@@ -895,13 +901,13 @@ msgstr ""
 #: templates/polybookexchange/exemplar.html:84
 #, python-format
 msgid ""
-"To buy this book, please come to AGEPoly's book exchange from Tuesday, March "
-"1, 2022 to Thursday, March 3, 2022 between 9:00 AM and 5:00 PM at CE1 515 "
-"and find the book number <b>%(id)s</b>!"
+"To buy this book, please come to AGEPoly's book exchange from Tuesday, "
+"September 27, 2022 to Thursday, September 29, 2022 between 8:45 AM and 5:15 "
+"PM at CO floor 0 and find the book number <b>%(id)s</b>!"
 msgstr ""
-"Pour acheter ce livre, merci de venir à la bourse aux bouquins en CE1 515 "
-"entre 9h et 17h du Mardi 1er Mars au Jeudi 3 Mars et trouvez le livre n°<b>"
-"%(id)s</b> !"
+"Pour acheter ce livre, merci de venir à la bourse aux bouquins au sous-sol "
+"CO entre 8h45 et 17h15 du mardi 27 septembre au jeudi 27 septembre et "
+"trouvez le livre n°<b>%(id)s</b> !"
 
 #: templates/polybookexchange/exemplar.html:95
 msgid "Print card"
@@ -996,7 +1002,6 @@ msgid "Total à rendre :"
 msgstr ""
 
 #: templates/polybookexchange/give_money_back.html:29
-#| msgid "AGEPoly's book exchange: Exemplar removed"
 msgid "AGEPoly Book Exchange Seller Receipt"
 msgstr "Bourse aux livres de l'AGEPoly: Exemplaire retiré"
 
@@ -1269,25 +1274,26 @@ msgstr ""
 #: templates/polybookexchange/propose.html:16
 msgid ""
 "This page is the first step in the process to sell your book. You will pre-"
-"register the book in our database. You will then get a recepie that you need "
-"to bring your book at AGEPoly's event (from Tuesday, March 1, 2022 to "
-"Thursday, March 3, 2022 between 9:00 AM and 5:00 PM at CE1 515)."
+"register the book in our database. You will then get a receipt that you need "
+"to bring your book at AGEPoly's event (from Tuesday, September 27, 2022 to "
+"Thursday, September 29, 2022 between 8:45 AM and 5:15 PM at CO floor 0)."
 msgstr ""
 "Cette page est la première étape du processus de mise en vente de votre "
 "livre. Vous allez pré-enregistrer le livre dans notre base de données. Vous "
 "recevrez ensuite une feuille que vous devrez apporter à l'évènement de "
-"l'AGEPoly du Mardi 1er Mars au Jeudi 3 Mars entre 9h et 17h en CE1 515 (ou "
-"bien présenter le document sur votre téléphone avec le livre)."
+"l'AGEPoly du mardi 27 Septembre au jeudi 29 Septembre entre 8h45 et 17h15 en "
+"CO sous-sol (ou bien présenter le document sur votre téléphone avec le "
+"livre)."
 
 #: templates/polybookexchange/propose.html:19
 msgid ""
 "Once the book is submitted, you have to bring it to AGEPoly's book exchange "
-"at CE1 515 from Tuesday, March 1, 2022 to Thursday, March 3, 2022 between "
-"9:00 AM and 5:00 PM!"
+"at CO floor 0 from Tuesday, September 27, 2022 to Thursday, September 29, "
+"2022 between 8:45 AM and 5:15 PM!"
 msgstr ""
 "Dès que livre est enregistré, vous devez l'amener à la bourse aux livres de "
-"l'AGEPoly en CE1 515 entre Mardi 1er Mars et Mercredi 3 Mars 2022 de 9h à "
-"17h ! "
+"l'AGEPoly en CO sous-sol entre mardi 27 septembre et jeudi 29 septembre 2022 "
+"de 8h45 à 17h15 ! "
 
 #: templates/polybookexchange/propose.html:22
 msgid "Please accepts terms!"
@@ -1533,35 +1539,47 @@ msgstr "Plus récents"
 msgid "Older"
 msgstr "Plus vieux"
 
-#: views.py:217
+#: utils.py:37
+msgid "Unknown name"
+msgstr "Nom inconnu"
+
+#: views.py:239
 msgid "Bookexchange: Change of price"
 msgstr "Bourse aux livres: Changement de prix"
 
-#: views.py:244
+#: views.py:273
 msgid "Not an ISBN"
 msgstr "Pas un ISBN"
 
-#: views.py:249
+#: views.py:281
 msgid "Cannot found this ISBN in online databases"
 msgstr "Impossible de trouver les détails de l'ISBN en ligne"
 
-#: views.py:251
+#: views.py:286
 msgid "Good ISBN !"
 msgstr "ISBN ok !"
 
-#: views.py:362
+#: views.py:421
 msgid "AGEPoly's book exchange: Exemplar removed"
 msgstr "Bourse aux livres de l'AGEPoly: Exemplaire retiré"
 
-#: views.py:403
+#: views.py:468
 msgid "AGEPoly's book exchange: Exemplar sold"
 msgstr "Bourse aux livres de l'AGEPoly: Exemplaire vendu"
 
-#: views.py:619
+#: views.py:688
+msgid "This candidate does not exist anymore. Maybe it was already validated."
+msgstr "Ce candidat n'existe plus. Il a peut-être déjà été validé."
+
+#: views.py:702
 msgid "Book Number already in use !"
 msgstr ""
 
-#: views.py:640
+#: views.py:718
+msgid "Invalid form data."
+msgstr "Saisie invalide."
+
+#: views.py:731
 msgid "AGEPoly's book exchange: Exemplar in sale"
 msgstr "Bourse aux livres de l'AGEPoly: Exemplaire en vente"
 

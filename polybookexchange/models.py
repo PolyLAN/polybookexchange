@@ -46,7 +46,7 @@ class Book(models.Model):
     def update_metadata(self):
 
         try:
-            data = isbnlib.meta(str(self.isbn), "wcat")
+            data = isbnlib.meta(str(self.isbn))
 
             self.title = data.get("Title")
             self.year = data.get("Year") or 1900
