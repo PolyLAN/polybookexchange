@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.template import Context
 from django.template.loader import get_template
@@ -48,3 +49,7 @@ def send_templated_mail(subject, email_from, emails_to, template, context):
     msg = EmailMultiAlternatives(subject, text_content, email_from, emails_to)
     msg.attach_alternative(html_content, "text/html")
     msg.send()
+
+
+def settings_context_processor(request):
+    return {"settings": settings}
