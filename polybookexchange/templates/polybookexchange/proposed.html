@@ -5,7 +5,8 @@
 
 {% block content %}
 
-    <h1 class="page-header">{% trans "Your propositions" %}</h2>
+    <h1 class="page-header">{% trans "Your propositions" %}</h1>
+    <hr />
 
     {% if liste %}
 
@@ -13,17 +14,23 @@
             <div class="row">
                 {% for c in liste %}
                     <div class="col-md-2">
-                        <div class="thumbnail">
-                            <div class="caption" style="text-align: center;">
+                        <div class="card text-center">
+                            <div class="card-body">
                                 <h3>{{c.pk}}</h3>
                                 <p>
-                                    {% trans "ISBN::" %} {{c.isbn}}<br />
+                                    {% trans "ISBN:" %} {{c.isbn}}<br />
                                     {% trans "Price:" %} {{c.price|floatformat:2}} CHF
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-{{c.days_left_color}}" role="progressbar" style="width: {{c.days_left_percent}}%;" aria-valuenow="{{c.days_left_percent}}" aria-valuemin="0" aria-valuemax="100">{% blocktrans with d=c.days_left %}{{d}} day(s) left{% endblocktrans %}</div>
-                                    </div>
                                 </p>
-                                <p><a href="{% url "polybookexchange.views.candidate_card" c.pk %}" class="btn btn-success" role="button" target="_blank"><i class="glyphicon glyphicon-print"></i> {% trans "Print" %}</a></p>
+                                <div class="progress mb-3">
+                                    <div class="progress-bar bg-{{c.days_left_color}}" role="progressbar" style="width: {{c.days_left_percent}}%;" aria-valuenow="{{c.days_left_percent}}" aria-valuemin="0" aria-valuemax="100">
+                                        {% blocktrans with d=c.days_left %}{{d}} day(s) left{% endblocktrans %}
+                                    </div>
+                                </div>
+                                <p>
+                                    <a href="{% url 'polybookexchange.views.candidate_card' c.pk %}" class="btn btn-success" role="button" target="_blank">
+                                        <i class="fas fa-print"></i> {% trans "Print" %}
+                                    </a>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -41,6 +48,8 @@
 
     {% endif %}
 
-    <script type="text/javascript">$('#polybook-menu-proposed').addClass('active');</script>
+    <script type="text/javascript">
+        $('#polybook-menu-proposed').addClass('active');
+    </script>
 
 {% endblock %}

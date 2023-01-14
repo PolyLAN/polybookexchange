@@ -1,11 +1,10 @@
 {% load i18n %}
 
 
-{% blocktrans with nb_exemplaires=nb_exemplaires nb_exemplaires_vendu=nb_exemplaires_vendu moyen=moyen %}
+{% blocktrans with nb_exemplaires=nb_exemplaires nb_exemplaires_vendu=nb_exemplaires_vendu moyen=moyen average=average|floatformat:2 %}
 
     {{ nb_exemplaires }} books to sell and {{ nb_exemplaires_vendu }} books sold<br />
     Average price: {{ average }} CHF<br />
     since 23.10.2006.
 
 {% endblocktrans %}
-

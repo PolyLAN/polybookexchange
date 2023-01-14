@@ -6,34 +6,25 @@
 {% block content %}
 
     <h1 class="page-header">{% trans "Your candidate has been saved!" %}</h1>
+    <hr />
 
     {% trans "You now have to print" %}
         <a href="{% url 'polybookexchange.views.candidate_card' c.pk %}" target="_blank">{% trans "this page (open a new windows)" %}</a>
     {% trans "and put it inside the book. Don't forget to bring the book to the event!" %}
 
 
-    <span class="pull-right">
-        <a href="{% url 'polybookexchange.views.propose' %}" class="btn btn-success"><i class="glyphicon glyphicon-repeat"></i> {% trans "Propose a new book" %}</a>
-        <a href="{% url 'polybookexchange.views.home' %}" class="btn btn-primary"><i class="glyphicon glyphicon-home"></i> {% trans "Back to the home page" %}</a>
+    <span class="float-end">
+        <a href="{% url 'polybookexchange.views.propose' %}" class="btn btn-success">
+            <i class="fas fa-repeat"></i> {% trans "Propose a new book" %}
+        </a>
+        <a href="{% url 'polybookexchange.views.home' %}" class="btn btn-primary">
+            <i class="fas fa-home"></i> {% trans "Back to the home page" %}
+        </a>
     </span>
 
 
-    <script type="text/javascript">$('#polybook-menu-propose').addClass('active');</script>
+    <script type="text/javascript">
+        $('#polybook-menu-propose').addClass('active');
+    </script>
 
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

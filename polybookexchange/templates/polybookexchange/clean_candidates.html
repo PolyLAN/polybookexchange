@@ -1,12 +1,12 @@
 {% extends "polybookexchange/base.html" %}
-{% load i18n %}
-{% load polybookexchange_extras %}
+{% load i18n polybookexchange_extras %}
 
 {% block title %}{{block.super}} :: {% trans "Old candidates cleanup" %}{% endblock %}
 
 {% block content %}
 
     <h1 class="page-header">{% trans "Old candidates cleanup" %}</h1>
+    <hr />
 
     {% if done %}
         <div class="alert alert-success">
@@ -23,9 +23,10 @@
 
         {% for c in to_delete %}
 
-            <input type="checkbox" name="to_delete[]" value="{{c.pk}}" checked>
-            {{c.id}} - {{c.isbn}} - {{c.sciper}} - {{c.creation_date}} ({{c.creation_date|timesince}})
-            <br />
+            <div class="form-check">
+                <input type="checkbox" name="to_delete[]" value="{{c.pk}}" class="form-check-input" checked>
+                <label class="form-check-label">{{c.id}} - {{c.isbn}} - {{c.sciper}} - {{c.creation_date}} ({{c.creation_date|timesince}})</label>
+            </div>
         {% empty %}
 
             <div class="alert alert-warning">
@@ -35,11 +36,13 @@
         {% endfor %}
 
 
-        <button type="submit" class="btn btn-danger pull-right"><i class="glyphicon glyphicon-trash"></i> {% trans "Cleanup" %}</button>
+        <button type="submit" class="btn btn-danger float-end"><i class="fas fa-trash"></i> {% trans "Cleanup" %}</button>
 
     </form>
 
 
-    <script type="text/javascript">$('#polybook-menu-admin').addClass('active');</script>
+    <script type="text/javascript">
+        $('#polybook-menu-admin').addClass('active');
+    </script>
 
 {% endblock %}

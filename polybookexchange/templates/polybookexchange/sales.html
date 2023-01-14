@@ -1,12 +1,12 @@
 {% extends "polybookexchange/base.html" %}
-{% load i18n %}
-{% load polybookexchange_extras %}
+{% load i18n polybookexchange_extras %}
 
 {% block title %}{{block.super}} :: {% trans "Sold books" %}{% endblock %}
 
 {% block content %}
 
-    <h1 class="page-header">{% trans "Books you're solding or you sold" %}</h1>
+    <h1 class="page-header">{% trans "Books you're selling or you sold" %}</h1>
+    <hr />
 
     {% if liste %}
 
@@ -17,7 +17,7 @@
                     <th>{% trans "ID" %}</th>
                     <th>{% trans "Title" %}</th>
                     <th>{% trans "Price" %}</th>
-                    <th>{% trans "Minimum price" %} <i class="glyphicon glyphicon-info-sign" title="{% trans "Minimum sold price of similar books" %}"></i></th>
+                    <th>{% trans "Minimum price" %} <i class="fas fa-circle-info" title="{% trans 'Minimum sold price of similar books' %}"></i></th>
                     <th>{% trans "Submited date" %}</th>
                     <th>{% trans "Sold date" %}</th>
                     <th></th>
@@ -27,7 +27,7 @@
             <tbody>
 
                 {% for ex in liste %}
-                    <tr class="{% if ex.sold_date %}success{% else %}warning{% endif %}">
+                    <tr class="table-{% if ex.sold_date %}success{% else %}warning{% endif %}">
                         <td><a href="{% url 'polybookexchange.views.exemplar' ex.pk %}">{{ex.pk}}</a></td>
                         <td>{{ex.book.title}}</td>
                         <td>{{ex.price|floatformat:2}}</td>
@@ -38,11 +38,13 @@
                                 {{ex.sold_date}}
                             {% else %}
                                 {% trans "Not sold since" %} {{ex.posted_date|timesince}}
-                            {% endif %} 
+                            {% endif %}
                         </td>
                         <td>
                             {% if not ex.sold_date %}
-                            <a href="{% url 'polybookexchange.views.change_price' ex.pk %}" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-euro"></i> {% trans "Change price" %}</a>
+                                <a href="{% url 'polybookexchange.views.change_price' ex.pk %}" class="btn btn-info btn-sm">
+                                    <i class="fas fa-euro"></i> {% trans "Change price" %}
+                                </a>
                             {% endif %}
                         </td>
                     </tr>
@@ -55,12 +57,15 @@
     {% else %}
 
         <div class="alert alert-info">
-            {% trans "You didn't sold a book yet" %}
+            {% trans "You didn't sell any books yet" %}
         </div>
 
     {% endif %}
 
 
-    <script type="text/javascript">$('#polybook-menu-sales').addClass('active');</script>
+    <script type="text/javascript">
+        $('#polybook-menu-sales').addClass('active');
+        $('table').DataTable();
+    </script>
 
 {% endblock %}

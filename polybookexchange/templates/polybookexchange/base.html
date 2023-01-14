@@ -1,61 +1,68 @@
-{% load i18n %}
-{% load static %}
-{% load polybookexchange_extras %}
+{% load i18n static polybookexchange_extras %}
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Maximilien Cuony">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Maximilien Cuony" />
 
     <title>{% block title %}AGEPoly :: {% trans "Book exchange" %}{% endblock %}</title>
 
-    <link href="{% static 'polybookexchange/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Bootstrap Version 5.1.3 -->
+    <link href="{% static 'polybookexchange/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
 
-    <link href="{% static 'polybookexchange/style.css' %}" rel="stylesheet">
+    <!-- Fontawesome Free Version 6.1.1 -->
+    <link href="{% static 'polybookexchange/fontawesome/css/all.min.css' %}" rel="stylesheet" />
 
-    <!-- jQuery Version 1.11.0 -->
-    <script src="{% static 'polybookexchange/bootstrap/js/jquery.min.js' %}"></script>
+    <!-- DataTables Version 1.12.1 Bootstrap 5 integration -->
+    <link href="{% static 'polybookexchange/dataTables/css/dataTables.bootstrap5.min.css' %}" rel="stylesheet" />
+
+    <!-- Custom style -->
+    <link href="{% static 'polybookexchange/style.css' %}" rel="stylesheet" />
+
+    <!-- jQuery Version 3.6.0 -->
+    <script src="{% static 'polybookexchange/jquery/jquery.min.js' %}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="{% static 'polybookexchange/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'polybookexchange/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- DataTables Version 1.12.1 -->
+    <script src="{% static 'polybookexchange/dataTables/js/jquery.dataTables.js' %}"></script>
+    <script src="{% static 'polybookexchange/dataTables/js/dataTables.bootstrap5.js' %}"></script>
 
     <!-- print.js -->
-    <script src="{% static 'polybookexchange/print.min.js' %}"></script>
-    <link href="{% static 'polybookexchange/print.min.css' %}" rel="stylesheet">
+    <script src="{% static 'polybookexchange/print.js/print.min.js' %}"></script>
+    <link href="{% static 'polybookexchange/print.js/print.min.css' %}" rel="stylesheet" />
 
 </head>
 
 <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- Top navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top fixed-top">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{% url 'polybookexchange.views.home' %}">
-                    <img src="{% static 'polybookexchange/logo-agep.png' %}" height="40" style="margin-top: -8px;"> {% trans "AGEPoly's book exchange" %}
-                </a>
+            <a class="navbar-brand" href="{% url 'polybookexchange.views.home' %}">
+                <img src="{% static 'polybookexchange/logo-agep.png' %}" height="40" style="margin-top: -8px;"> {% trans "AGEPoly's book exchange" %}
+            </a>
 
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" onclick="return false;">{% trans "Welcome" %} {{user.get_full_name}}</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Language" %}<b class="caret"></b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse collapse" id="navbarCollapse">
+                <ul class="nav navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="return false;">{% trans "Welcome" %} {{user.get_full_name}}</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button">{% trans "Language" %}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             {% for lang in LANGUAGES %}
                                 <li>
-                                    <a href="#" onclick="document.setLang{{ lang.1 }}.submit();return false;">{{ lang.1 }}</a>
+                                    <a class="dropdown-item" href="#" onclick="document.setLang{{ lang.1 }}.submit();return false;">{{ lang.1 }}</a>
                                     <form name="setLang{{lang.1}}" action="{% url 'set_language' %}" method="POST">{% csrf_token %}
                                         <input type="hidden" name="language" value="{{ lang.0 }}" />
                                     </form>
@@ -63,47 +70,43 @@
                             {% endfor %}
                         </ul>
                     </li>
-                    <li><a href="{% url 'logout' %}?next={% url 'polybookexchange.views.home' %}">{% trans "Logout" %}</a></li>
-                    <li><a href="https://agepoly.ch">{% trans "Back to the AGEPoly's website" %}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}?next={% url 'polybookexchange.views.home' %}">{% trans "Logout" %}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://agepoly.ch">{% trans "Back to the AGEPoly's website" %}</a></li>
                 </ul>
             </div>
         </div>
-    </div>
+    </nav>
 
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
-                <ul class="nav nav-sidebar">
+                <ul class="nav nav-pills flex-column nav-sidebar">
                     <li class="dropdown-header">{% trans "General" %}</li>
-                    <li id="polybook-menu-home"><a href="{% url 'polybookexchange.views.home' %}">{% trans "Home" %}</a></li>
-                    <li id="polybook-menu-howto"><a href="{% url 'polybookexchange.views.howto' %}">{% trans "How does it works ?" %}</a></li>
-                </ul>
-                <ul class="nav nav-sidebar">
-                    <li class="dropdown-header">{% trans "Buy books" %}</li>
-                    <li id="polybook-menu-search"><a href="{% url 'polybookexchange.views.search' %}">{% trans "Search" %}</a></li>
-                    <li id="polybook-menu-browse"><a href="{% url 'polybookexchange.views.browse' %}">{% trans "Browse" %}</a></li>
-                    <li id="polybook-menu-buyedbooks"><a href="{% url 'polybookexchange.views.purchases' %}">{% trans "Purchases" %}</a></li>
-                </ul>
-                <ul class="nav nav-sidebar">
-                    <li class="dropdown-header">{% trans "Sell books" %}</li>
-                    <li id="polybook-menu-propose"><a href="{% url 'polybookexchange.views.propose' %}">{% trans "Propose a new book" %}</a></li>
-                    <li id="polybook-menu-proposed"><a href="{% url 'polybookexchange.views.proposed' %}">{% trans "Your propositions" %}</a></li>
-                    <li id="polybook-menu-sales"><a href="{% url 'polybookexchange.views.sales' %}">{% trans "Books sold or in sale" %}</a></li>
-                </ul>
+                    <li id="polybook-menu-home" class="nav-item"><a class="nav-link" href="{% url 'polybookexchange.views.home' %}">{% trans "Home" %}</a></li>
+                    <li id="polybook-menu-howto" class="nav-item"><a class="nav-link" href="{% url 'polybookexchange.views.howto' %}">{% trans "How does it work ?" %}</a></li>
 
-                {% if user.is_staff %}
-                    <ul class="nav nav-sidebar">
+                    <li class="dropdown-header">{% trans "Buy books" %}</li>
+                    <li id="polybook-menu-search" class="nav-item"><a class="nav-link" href="{% url 'polybookexchange.views.search' %}">{% trans "Search" %}</a></li>
+                    <li id="polybook-menu-browse" class="nav-item"><a class="nav-link" href="{% url 'polybookexchange.views.browse' %}">{% trans "Browse" %}</a></li>
+                    <li id="polybook-menu-buyedbooks" class="nav-item"><a class="nav-link" href="{% url 'polybookexchange.views.purchases' %}">{% trans "Purchases" %}</a></li>
+
+                    <li class="dropdown-header">{% trans "Sell books" %}</li>
+                    <li id="polybook-menu-propose" class="nav-item"><a class="nav-link" href="{% url 'polybookexchange.views.propose' %}">{% trans "Propose a new book" %}</a></li>
+                    <li id="polybook-menu-proposed" class="nav-item"><a class="nav-link" href="{% url 'polybookexchange.views.proposed' %}">{% trans "Your propositions" %}</a></li>
+                    <li id="polybook-menu-sales" class="nav-item"><a class="nav-link" href="{% url 'polybookexchange.views.sales' %}">{% trans "Books sold or in sale" %}</a></li>
+
+                    {% if user.is_staff %}
                         <li class="dropdown-header">{% trans "Admin" %}</li>
-                        <li id="polybook-menu-admin"><a href="{% url 'polybookexchange.views.admin' %}">{% trans "Administration's home" %}</a></li>
-                    </ul>
-                {% endif %}
+                        <li id="polybook-menu-admin" class="nav-item"><a class="nav-link" href="{% url 'polybookexchange.views.admin' %}">{% trans "Administration's home" %}</a></li>
+                    {% endif %}
+                </ul>
 
                 <h4>{% trans "Statistics" %}</h4>
 
                 {% show_stats %}
 
             </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="col-9 offset-3 col-md-10 offset-md-2 main">
                 {% block content %}
                 {% endblock %}
             </div>

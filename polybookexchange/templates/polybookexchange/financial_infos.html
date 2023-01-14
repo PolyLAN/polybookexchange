@@ -1,12 +1,13 @@
 {% extends "polybookexchange/base.html" %}
-{% load i18n %}
-{% load polybookexchange_extras %}
+{% load i18n polybookexchange_extras %}
 
 {% block title %}{{block.super}} :: {% trans "Financial Infos" %}{% endblock %}
 
 {% block content %}
 
     <h1 class="page-header">{% trans "Financials Infos" %}</h1>
+    <hr />
+
     <div><p>{% blocktrans %} Total price of book sold: {{all_sold_books}} CHF{% endblocktrans %}</p></div>
     <div><p>{% blocktrans %} Total value of books lost: {{all_lost_books}} CHF{% endblocktrans %}</p></div>
     <div><p>{% blocktrans %} Total amount of money already given to sellers: {{all_given_money}} CHF{% endblocktrans %}</p></div>
@@ -21,6 +22,7 @@
                 <th>{% trans "Price" %}</th>
                 <th>{% trans "Sold date" %}</th>
                 <th>{% trans "Seller" %}</th>
+                <th></th>
             </tr>
         </thead>
 
@@ -31,7 +33,12 @@
                     <td>{{ex.book.title}}</td>
                     <td>{{ex.price|floatformat:2}}</td>
                     <td>{{ex.sold_date}}</td>
-                    <td><a href="{% url 'polybookexchange.views.give_money_back' %}?sciper={{ex.seller_id}}">{{ex.seller_id}}</a></td>
+                    <td>{{ex.seller_id}}</td>
+                    <td>
+                        <a href="{% url 'polybookexchange.views.give_money_back' %}?sciper={{ex.seller_id}}" class="btn btn-sm btn-success">
+                            <i class="fas fa-dollar">{% trans "Give money" %}</i>
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

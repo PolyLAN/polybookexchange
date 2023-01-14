@@ -1,31 +1,28 @@
-{% load i18n %}
-{% load humanize %}
+{% load i18n humanize %}
 
-<div class="panel panel-default">
-    <div class="panel-body">
+<div class="card">
+    <div class="card-body">
         <h3 style="margin-top: -5px;"><a href="{% url 'polybookexchange.views.book' book.isbn %}">{{book.title}}</a></h3>
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-6 col-md-3">
                     {# <b>{% trans "Authors:" %}</b>: #}
-                    {% for a in book.author.all %}
-                        {% if not forloop.first %}, {% endif %}{{ a.name }}
-                    {% endfor %}
+                    {% for a in book.author.all %}{% if not forloop.first %}, {% endif %}{{ a.name }}{% endfor %}
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-6 col-md-3">
                     {{ book.publisher.name }}
                 </div>
-                <div class="col-md-3">
+                <div class="col-6 col-md-3">
                     {{ book.edition|ordinal|safe }} edition
                 </div>
-                <div class="col-md-3">
+                <div class="col-6 col-md-3">
                     ISBN: {{ book.isbn }}
                 </div>
             </div>
         </div>
 
-        <a href="{% url 'polybookexchange.views.book' book.isbn %}" class="btn btn-info btn-xs pull-right"><i class="glyphicon glyphicon-briefcase"></i> {% trans "Details" %}</a>
+        <a href="{% url 'polybookexchange.views.book' book.isbn %}" class="btn btn-info btn-sm float-end"><i class="fa fa-briefcase"></i> {% trans "Details" %}</a>
     </div>
 </div>
