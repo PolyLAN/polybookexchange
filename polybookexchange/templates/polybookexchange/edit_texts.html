@@ -1,0 +1,43 @@
+{% extends "polybookexchange/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ block.super }} :: {% trans "Edit texts" %}{% endblock %}
+
+{% block content %}
+    <h1 class="page-header">{% trans "Edit texts" %}</h1>
+    <hr />
+
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="offset-2 col-5 text-center mb-3">
+                    {% trans "English" %}
+                </div>
+                <div class="col-5 text-center mb-3">
+                    {% trans "French" %}
+                </div>
+
+                {% for text in texts %}
+                    <div class="col-2 mb-3">
+                        <label class="form-label">{{text.get_key_display}}</label>
+                    </div>
+
+                    <div class="col-5 mb-3">
+                        <textarea class="form-control" name="text-{{text.pk}}-en">{{text.text_en}}</textarea>
+                    </div>
+
+                    <div class="col-5 mb-3">
+                        <textarea class="form-control" name="text-{{text.pk}}-fr">{{text.text_fr}}</textarea>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+            <button class="btn btn-success float-end" type="submit"><i class="fas fa-check"></i> {% trans "Submit" %}</button>
+        </div>
+
+    </form>
+{% endblock %}

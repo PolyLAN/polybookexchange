@@ -14,10 +14,17 @@
         </div>
     {% endif %}
 
-    {% trans "This page is the first step in the process to sell your book. You will pre-register the book in our database. You will then get a receipt that you need to bring your book at AGEPoly's event (from Tuesday, September 27, 2022 to Thursday, September 29, 2022 between 8:45 AM and 5:15 PM at CO floor 0)." %}<br /><br />
+    {% blocktrans %}
+        This page is the first step in the process to sell your book. You will pre-register the book in our database.
+        You will then get a receipt that you need to bring your book at AGEPoly's event {{exchange_time}} {{exchange_location}}.
+    {% endblocktrans %}
+
+    <br /><br />
 
     <div class="alert alert-warning">
-        {% trans "Once the book is submitted, you have to bring it to AGEPoly's book exchange at CO floor 0 from Tuesday, September 27, 2022 to Thursday, September 29, 2022 between 8:45 AM and 5:15 PM!" %}
+        {% blocktrans %}
+            Once the book is submitted, you have to bring it to AGEPoly's book exchange {{exchange_time}} {{exchange_location}}.
+        {% endblocktrans %}
     </div>
 
     <form method="POST" class="needs-validation" novalidate>

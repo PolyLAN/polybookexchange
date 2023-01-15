@@ -8,7 +8,9 @@
         <h2>{% trans "Book proposition's details " %}</h2>
 
         <p>
-            {% trans "You have to <a href='javascript:window.print()'>print</a> this page and put it inside the book you bring to AGEPoly's event from Tuesday, September 27, 2022 to Thursday, September 29, 2022 between 8:45 AM and 5:15 PM at CO floor 0 (or present this document there)" %}
+            {% blocktrans %}
+                You have to <a href='javascript:window.print()'>print</a> this page and put it inside the book you bring to AGEPoly's event {{exchange_time}} {{exchange_location}} (or present this document there)
+            {% endblocktrans %}
             <br />
             <br />
 
