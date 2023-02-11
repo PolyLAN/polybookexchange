@@ -16,6 +16,6 @@ jobs:
       - name: Check formatting
         run: |
             pip install -U pip
-            pip install -U black isort
+            pip install -U "black<23" isort
             black --check .
             isort --check-only --diff .
