@@ -18,6 +18,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-3">
                 <div class="card text-center">
                     <div class="card-body">
@@ -26,6 +27,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-3">
                 <div class="card text-center">
                     <div class="card-body">
@@ -34,6 +36,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-3">
                 <div class="card text-center">
                     <div class="card-body">
@@ -42,6 +45,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-3">
                 <div class="card text-center">
                     <div class="card-body">
@@ -50,6 +54,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-3">
                 <div class="card text-center">
                     <div class="card-body">
@@ -58,6 +63,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-3">
                 <div class="card text-center">
                     <div class="card-body">
@@ -66,6 +72,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-3">
                 <div class="card text-center">
                     <div class="card-body">
@@ -74,6 +81,17 @@
                     </div>
                 </div>
             </div>
+
+            {% if settings.PRIVILEGE_ADMIN_VIEW  and user.is_superuser %}
+                <div class="col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h3><i class="fas fa-id-card"></i></h3>
+                            <p><a href="{% url settings.PRIVILEGE_ADMIN_VIEW %}" class="btn btn-success" role="button">{% trans "Privilege administration" %}</a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
         </div>
 
         <div class="row">
