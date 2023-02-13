@@ -32,5 +32,6 @@ urlpatterns = [
     path("admin/add_book", views.add_book, name="polybookexchange.views.add_book"),
     path("admin/add_exemplar", views.add_exemplar, name="polybookexchange.views.add_exemplar"),
     path("admin/exemplar_print/<int:id>", views.exemplar_print, name="polybookexchange.views.exemplar_print"),
+    path("admin/edit_texts", views.edit_texts, name="polybookexchange.views.edit_texts"),
     path("gen_bar_code/<int:code>", views.gen_bar_code, name="polybookexchange.views.gen_bar_code"),
 ]

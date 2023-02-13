@@ -11,7 +11,7 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 
-from .models import Author, Book, Candidate, CandidateUsage, Exemplar, Publisher, Section, Semester, UsedBy
+from .models import Author, Book, Candidate, CandidateUsage, Exemplar, Publisher, Section, Semester, Text, UsedBy
 
 
 from polybookexchange.utils import sciper2mail, send_templated_mail
@@ -54,7 +54,12 @@ def exemplar(request, id):
 
     exemplar = get_object_or_404(Exemplar, pk=id)
 
-    return render(request, "polybookexchange/exemplar.html", {"exemplar": exemplar})
+    exchange_location = Text.objects.get(key="exchange_location").text
+    exchange_time = Text.objects.get(key="exchange_time").text
+
+    return render(
+        request, "polybookexchange/exemplar.html", {"exemplar": exemplar, "exchange_location": exchange_location, "exchange_time": exchange_time}
+    )
 
 
 @login_required
@@ -259,7 +264,14 @@ def candidate_card(request, id):
 
     candidate = get_object_or_404(Candidate, pk=id, sciper=request.user.get_sciper())
 
-    return render(request, "polybookexchange/candidate_fiche.html", {"candidate": candidate})
+    exchange_location = Text.objects.get(key="exchange_location").text
+    exchange_time = Text.objects.get(key="exchange_time").text
+
+    return render(
+        request,
+        "polybookexchange/candidate_fiche.html",
+        {"candidate": candidate, "exchange_location": exchange_location, "exchange_time": exchange_time},
+    )
 
 
 @login_required
@@ -367,6 +379,9 @@ def propose(request):
             if request.POST.get(key):
                 checks_to_check.append(key)
 
+    exchange_location = Text.objects.get(key="exchange_location").text
+    exchange_time = Text.objects.get(key="exchange_time").text
+
     return render(
         request,
         "polybookexchange/propose.html",
@@ -380,6 +395,8 @@ def propose(request):
             "price": price,
             "comment": comment,
             "checks_to_check": checks_to_check,
+            "exchange_location": exchange_location,
+            "exchange_time": exchange_time,
         },
     )
 
@@ -793,3 +810,25 @@ def gen_bar_code(request, code):
     )
 
     return HttpResponse(fp.getvalue(), content_type="image/jpg")
+
+
+@login_required
+@staff_member_required
+def edit_texts(request):
+    """Edit the texts that change often"""
+
+    texts = Text.objects.all()
+
+    if request.method == "POST":
+        for text in texts:
+            if f"text-{text.pk}-fr" in request.POST:
+                text.text_fr = request.POST[f"text-{text.pk}-fr"]
+
+            if f"text-{text.pk}-en" in request.POST:
+                text.text_en = request.POST[f"text-{text.pk}-en"]
+
+            text.save()
+
+        return redirect("polybookexchange.views.admin")
+
+    return render(request, "polybookexchange/edit_texts.html", {"texts": texts})

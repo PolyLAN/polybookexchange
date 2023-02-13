@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PolyBookExchange\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-11 21:22+0100\n"
-"PO-Revision-Date: 2023-02-11 21:26+0100\n"
+"POT-Creation-Date: 2023-02-13 20:43+0100\n"
+"PO-Revision-Date: 2023-02-13 20:45+0100\n"
 "Last-Translator: Maximilien Cuony <theglu@theglu.org>\n"
 "Language-Team: Maximilien Cuony <theglu@theglu.org>\n"
 "Language: fr\n"
@@ -19,482 +19,314 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: polybookexchange/polybookexchange/models.py:97
-#: polybookexchange/polybookexchange/models.py:143
 msgid "neuf"
 msgstr "neuf"
 
-#: polybookexchange/polybookexchange/models.py:98
-#: polybookexchange/polybookexchange/models.py:144
 msgid "bon"
 msgstr "bon"
 
-#: polybookexchange/polybookexchange/models.py:99
-#: polybookexchange/polybookexchange/models.py:145
 msgid "acceptable"
 msgstr "acceptable"
 
-#: polybookexchange/polybookexchange/models.py:100
-#: polybookexchange/polybookexchange/models.py:146
 msgid "mauvais"
 msgstr "mauvais"
 
-#: polybookexchange/polybookexchange/models.py:150
 msgid "Vendu"
 msgstr ""
 
-#: polybookexchange/polybookexchange/models.py:151
 msgid "Donné à la bibliothèque centrale"
 msgstr ""
 
-#: polybookexchange/polybookexchange/models.py:152
 msgid "Rendu à son propriétaire"
 msgstr ""
 
-#: polybookexchange/polybookexchange/models.py:153
 msgid "Perdu"
 msgstr ""
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_book_new_book.html:4
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_book_request.html:4
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_book_request.html:8
+msgid "Location of the exchange"
+msgstr "Lieu de la bourse"
+
+msgid "Time of the exchange"
+msgstr "Horaires de la bourse"
+
 msgid "New book to sell"
 msgstr "Nouveau livre à vendre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_book_new_book.html:8
 msgid "New book in database"
 msgstr "Nouveau livre dans la base de données"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_book_new_book.html:15
-#: polybookexchange/polybookexchange/templates/polybookexchange/edit_book.html:15
 msgid "Title:"
 msgstr "Titre :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_book_new_book.html:20
-#: polybookexchange/polybookexchange/templates/polybookexchange/edit_book.html:20
-#: polybookexchange/polybookexchange/templates/polybookexchange/templatetags/show_book.html:13
 msgid "Author(s):"
 msgstr "Auteur(s) :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_book_new_book.html:22
-#: polybookexchange/polybookexchange/templates/polybookexchange/edit_book.html:22
 msgid "Use commas if more than one"
 msgstr "Utilisez des virgules si plus d'un auteur"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_book_new_book.html:26
-#: polybookexchange/polybookexchange/templates/polybookexchange/edit_book.html:26
 msgid "Editor:"
 msgstr "Editeur :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_book_new_book.html:30
-#: polybookexchange/polybookexchange/templates/polybookexchange/edit_book.html:31
 msgid "Year:"
 msgstr "Année :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_book_new_book.html:34
-#: polybookexchange/polybookexchange/templates/polybookexchange/edit_book.html:36
 msgid "Edition:"
 msgstr "Edition :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_book_new_book.html:38
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_book_request.html:29
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_exemplar.html:121
 msgid "Submit"
 msgstr "Envoyer"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_book_request.html:13
 msgid "Cannot find the candidate. Is it already validated ?"
 msgstr "Impossible de trouver le candidat. Est-il déjà validé ?"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_book_request.html:20
-#: polybookexchange/polybookexchange/templates/polybookexchange/candidate_fiche.html:27
-#: polybookexchange/polybookexchange/templates/polybookexchange/proposed.html:21
-#: polybookexchange/polybookexchange/templates/polybookexchange/templatetags/show_book.html:10
 msgid "ISBN:"
 msgstr "ISBN :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_book_request.html:24
-#: polybookexchange/polybookexchange/templates/polybookexchange/candidate_fiche.html:22
-#: polybookexchange/polybookexchange/templates/polybookexchange/sell_book.html:42
 msgid "Sciper:"
 msgstr "Sciper :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_book_request.html:26
 msgid "The sciper of the seller"
 msgstr "Sciper du vendeur"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_exemplar.html:4
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_exemplar.html:8
 msgid "New exemplar"
 msgstr "Nouvel exemplaire"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_exemplar.html:14
 msgid "The seller is"
 msgstr "Le vendeur est"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_exemplar.html:22
 msgid "About the exemplar"
 msgstr "À propos de l'exemplaire"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_exemplar.html:32
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar_print.html:27
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:55
 msgid "Annotated"
 msgstr "Annoté"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_exemplar.html:36
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:59
 msgid "Surligned"
 msgstr "Surligné"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_exemplar.html:40
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:63
 msgid "Condition:"
 msgstr "Condition :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_exemplar.html:42
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:65
 msgid "New"
 msgstr "Nouveau"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_exemplar.html:43
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:66
 msgid "Good"
 msgstr "Bon"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_exemplar.html:44
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:67
 msgid "Acceptable"
 msgstr "Acceptable"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_exemplar.html:45
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:68
 msgid "Bad"
 msgstr "Mauvais"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_exemplar.html:52
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:75
 msgid "Price asked:"
 msgstr "Prix demandé :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_exemplar.html:56
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:79
 msgid "Comments:"
 msgstr "Commentaires :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_exemplar.html:74
 msgid "Book ID"
 msgstr "Livre n°"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_exemplar.html:77
 msgid "Exemplar Identifier:"
 msgstr "ID de l'exemplaire :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_exemplar.html:84
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:90
 msgid "Book usage"
 msgstr "Utilisation du livre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/add_exemplar.html:89
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:95
 msgid "Please select sections/years when this book is used."
 msgstr "Merci de sélectionner les sections/années où ce livre est utilisé."
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/admin.html:4
-#: polybookexchange/polybookexchange/templates/polybookexchange/admin.html:8
 msgid "Administration"
 msgstr "Administration"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/admin.html:17
 msgid "Add a book"
 msgstr "Ajouter un livre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/admin.html:26
 msgid "Sell a book"
 msgstr "Vendre un livre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/admin.html:35
-#: polybookexchange/polybookexchange/templates/polybookexchange/financial_infos.html:39
 msgid "Give money"
 msgstr "Donner de l'argent"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/admin.html:44
 msgid "Remove a book"
 msgstr "Retirer un livre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/admin.html:53
 msgid "List all candidates"
 msgstr "Lister tous les candidats"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/admin.html:62
 msgid "List all transactions"
 msgstr "Lister toutes les transactions"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/admin.html:71
 msgid "Clean candidates"
 msgstr "Nettoyer les candidats"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/admin.html:80
-#: polybookexchange/polybookexchange/templates/polybookexchange/financial_infos.html:4
 msgid "Financial Infos"
 msgstr "Informations financières"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/admin.html:90
+msgid "Edit texts"
+msgstr ""
+
 msgid "Privilege administration"
 msgstr "Gestion des privilèges"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/admin.html:104
 msgid "Candidate ID"
 msgstr "Candidat n°"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/admin.html:105
 msgid "Validate the candidate"
 msgstr "Valider le candidat"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/admin.html:116
 msgid "Exemplar ID"
 msgstr "Exemplaire N°"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/admin.html:117
 msgid "Exemplar details"
 msgstr "Détails de l'exemplaire"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/admin.html:128
-#: polybookexchange/polybookexchange/templates/polybookexchange/list_candidates.html:18
-#: polybookexchange/polybookexchange/templates/polybookexchange/search.html:16
 msgid "ISBN"
 msgstr "ISBN"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/admin.html:129
-#: polybookexchange/polybookexchange/templates/polybookexchange/book.html:4
-#: polybookexchange/polybookexchange/templates/polybookexchange/book.html:8
 msgid "Book details"
 msgstr "Détails du livre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:14
-#: polybookexchange/polybookexchange/templates/polybookexchange/candidate_fiche.html:4
 msgid "Book exchange"
 msgstr "Bourse aux livres"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:50
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar_print.html:7
 msgid "AGEPoly's book exchange"
 msgstr "Bourse aux livres de l'AGEPoly"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:59
 msgid "Welcome"
 msgstr "Bienvenue"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:61
 msgid "Language"
 msgstr "Langue"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:73
 msgid "Logout"
 msgstr "Se déconnecter"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:74
 msgid "Back to the AGEPoly's website"
 msgstr "Retourner sur le site de l'AGEPoly"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:84
 msgid "General"
 msgstr "Général"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:85
-#: polybookexchange/polybookexchange/templates/polybookexchange/index.html:4
 msgid "Home"
 msgstr "Accueil"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:86
-#: polybookexchange/polybookexchange/templates/polybookexchange/index.html:11
 msgid "How does it work ?"
 msgstr "Comment ça marche ?"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:88
 msgid "Buy books"
 msgstr "Acheter des livres"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:89
-#: polybookexchange/polybookexchange/templates/polybookexchange/browse.html:44
-#: polybookexchange/polybookexchange/templates/polybookexchange/search.html:4
-#: polybookexchange/polybookexchange/templates/polybookexchange/search.html:8
-#: polybookexchange/polybookexchange/templates/polybookexchange/search.html:64
 msgid "Search"
 msgstr "Rechercher"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:90
-#: polybookexchange/polybookexchange/templates/polybookexchange/browse.html:4
-#: polybookexchange/polybookexchange/templates/polybookexchange/browse.html:8
 msgid "Browse"
 msgstr "Parcourir"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:91
 msgid "Purchases"
 msgstr "Achats"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:93
 msgid "Sell books"
 msgstr "Vendre des livres"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:94
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose_ok.html:18
 msgid "Propose a new book"
 msgstr "Proposer un nouveau livre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:95
-#: polybookexchange/polybookexchange/templates/polybookexchange/proposed.html:4
-#: polybookexchange/polybookexchange/templates/polybookexchange/proposed.html:8
 msgid "Your propositions"
 msgstr "Vos propositions"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:96
 msgid "Books sold or in sale"
 msgstr "Livres en vente ou vendus"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:99
 msgid "Admin"
 msgstr "Admin"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:100
 msgid "Administration's home"
 msgstr "Accueil de l'administration"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:104
 msgid "Statistics"
 msgstr "Statistiques"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/base.html:123
 msgid "Fork me on Github!"
 msgstr "Forkez moi sur GitHub !"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/book.html:18
 msgid "Edit book details"
 msgstr "Éditer les détails du livre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/book.html:27
 msgid "Exemplars of this book currently available:"
 msgstr "Exemplaires de ce livre actuellement disponibles :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/book.html:34
-#: polybookexchange/polybookexchange/templates/polybookexchange/book.html:80
-#: polybookexchange/polybookexchange/templates/polybookexchange/financial_infos.html:20
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:36
-#: polybookexchange/polybookexchange/templates/polybookexchange/list_candidates.html:16
-#: polybookexchange/polybookexchange/templates/polybookexchange/purchases.html:17
-#: polybookexchange/polybookexchange/templates/polybookexchange/sales.html:17
-#: polybookexchange/polybookexchange/templates/polybookexchange/transactions.html:16
 msgid "ID"
 msgstr "N°"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/book.html:35
-#: polybookexchange/polybookexchange/templates/polybookexchange/book.html:81
-#: polybookexchange/polybookexchange/templates/polybookexchange/candidate_fiche.html:32
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar_print.html:29
-#: polybookexchange/polybookexchange/templates/polybookexchange/financial_infos.html:22
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:38
-#: polybookexchange/polybookexchange/templates/polybookexchange/list_candidates.html:20
-#: polybookexchange/polybookexchange/templates/polybookexchange/purchases.html:19
-#: polybookexchange/polybookexchange/templates/polybookexchange/sales.html:19
 msgid "Price"
 msgstr "Prix"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/book.html:36
-#: polybookexchange/polybookexchange/templates/polybookexchange/book.html:82
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar_print.html:26
 msgid "State"
 msgstr "Etat"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/book.html:47
-#: polybookexchange/polybookexchange/templates/polybookexchange/book.html:88
 msgid "Exemplar n°"
 msgstr "Exemplaire N°"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/book.html:53
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:96
-#: polybookexchange/polybookexchange/templates/polybookexchange/sell_book.html:47
 msgid "Sell"
 msgstr "Vendre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/book.html:66
 msgid "This book is not available now, please try again later !"
 msgstr ""
 "Ce livre n'est pas disponible pour le moment, merci d'essayer plus tard !"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/book.html:73
 msgid "Exemplars solds:"
 msgstr "Exemplaires vendus :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/book.html:97
 msgid "No exemplar sold yet !"
 msgstr "Pas d'exemplaires vendus pour le moment !"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/book.html:103
 msgid "This book is used by:"
 msgstr "Ce livre est utilisé par :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/browse.html:11
 msgid "This page displays all exemplars in stock linked to a section"
 msgstr "Cette page affiche tous les exemplaires en stock liés à une section"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/browse.html:21
-#: polybookexchange/polybookexchange/templates/polybookexchange/search.html:39
 msgid "Section"
 msgstr "Section"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/browse.html:23
-#: polybookexchange/polybookexchange/templates/polybookexchange/browse.html:34
-#: polybookexchange/polybookexchange/templates/polybookexchange/search.html:41
-#: polybookexchange/polybookexchange/templates/polybookexchange/search.html:52
 msgid "All"
 msgstr "Tous"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/browse.html:32
-#: polybookexchange/polybookexchange/templates/polybookexchange/search.html:50
 msgid "Semester"
 msgstr "Semestre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/browse.html:62
-#: polybookexchange/polybookexchange/templates/polybookexchange/browse.html:64
-#: polybookexchange/polybookexchange/templates/polybookexchange/search.html:83
-#: polybookexchange/polybookexchange/templates/polybookexchange/search.html:85
 msgid "Previous"
 msgstr "Précédent"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/browse.html:67
-#: polybookexchange/polybookexchange/templates/polybookexchange/search.html:88
 #, python-format
 msgid "Page %(n)s of %(p)s"
 msgstr "Page %(n)s sur %(p)s"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/browse.html:70
-#: polybookexchange/polybookexchange/templates/polybookexchange/browse.html:72
-#: polybookexchange/polybookexchange/templates/polybookexchange/search.html:91
-#: polybookexchange/polybookexchange/templates/polybookexchange/search.html:93
 msgid "Next"
 msgstr "Suivant"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/candidate_fiche.html:8
 msgid "Book proposition's details "
 msgstr "Détails de la proposition "
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/candidate_fiche.html:11
+#, python-format
 msgid ""
-"You have to <a href='javascript:window.print()'>print</a> this page and put "
-"it inside the book you bring to AGEPoly's event from Tuesday, September 27, "
-"2022 to Thursday, September 29, 2022 between 8:45 AM and 5:15 PM at CO floor "
-"0 (or present this document there)"
+"\n"
+"                You have to <a href='javascript:window.print()'>print</a> "
+"this page and put it inside the book you bring to AGEPoly's event "
+"%(exchange_time)s %(exchange_location)s (or present this document there)\n"
+"            "
 msgstr ""
-"Vous devez <a href='javascript:window.print()'>imprimer</a> cette page et la "
-"mettre dans le livre, puis ammener le livre à l'évènement de l'AGEPoly du "
-"Mardi 29 septembre au Jeudi 29 septembre entre 8h45 et 17h15 au sous-sol CO "
-"(ou bien présenter le document sur votre téléphone avec le livre)"
+"\n"
+"                Vous devez <a href='javascript:window.print()'>imprimer</a> "
+"cette page et la mettre dans le livre, puis ammener le livre à l'évènement "
+"de l'AGEPoly %(exchange_time)s %(exchange_location)s (ou bien présenter le "
+"document sur votre téléphone avec le livre)\n"
+"            "
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/candidate_fiche.html:17
 msgid "Candidate ID:"
 msgstr "Candidat n° :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/candidate_fiche.html:39
 msgid ""
 "Your book will only be available in the sell area when you bring it to "
 "AGEPoly's event and we validated it"
@@ -502,7 +334,6 @@ msgstr ""
 "Votre livre sera mis en vente seulement lorsque vous l'aurez apporté à "
 "l'évènement de l'AGEPoly et que nous l'auront confirmé"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/candidate_fiche.html:42
 msgid ""
 "You can access this page later using the left menu if you cannot print it "
 "now."
@@ -510,71 +341,57 @@ msgstr ""
 "Vous pouvez accéder à cette page plus tard en utilisant le menu à gauche si "
 "vous ne pouvez pas imprimer maintenant."
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/candidate_fiche.html:46
 msgid "Close this window"
 msgstr "Fermer cette fenêtre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/change_price.html:4
-#: polybookexchange/polybookexchange/templates/polybookexchange/change_price.html:8
-#: polybookexchange/polybookexchange/templates/polybookexchange/sales.html:46
 msgid "Change price"
 msgstr "Changer le prix"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/change_price.html:14
 msgid "New price has been saved !"
 msgstr "Le nouveau prix a été sauvegardé !"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/change_price.html:16
 msgid "Back"
 msgstr "Retour"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/change_price.html:24
 msgid "Please enter a price greather than 0, without cents"
 msgstr "Merci d'entrer un prix suppérieur à 0, sans les centimes"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/change_price.html:32
 msgid "New price"
 msgstr "Nouveau prix"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/change_price.html:35
 msgid "The old price was"
 msgstr "L'ancien prix était"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/change_price.html:39
-#: polybookexchange/polybookexchange/templates/polybookexchange/edit_book.html:40
 msgid "Save"
 msgstr "Sauvegarder"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/clean_candidates.html:4
-#: polybookexchange/polybookexchange/templates/polybookexchange/clean_candidates.html:8
 msgid "Old candidates cleanup"
 msgstr "Nettoyage des anciens candidats"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/clean_candidates.html:13
 msgid "Candidates deleted !"
 msgstr "Candidats supprimés !"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/clean_candidates.html:18
 msgid "If needed, you can unselect some candidates"
 msgstr "Si nécessaire, vous pouvez déselectionner certains canditats"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/clean_candidates.html:33
 msgid "Nothing to cleanup !"
 msgstr "Rien à supprimer !"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/clean_candidates.html:39
 msgid "Cleanup"
 msgstr "Nettoyage"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/edit_book.html:4
 msgid "Edit a book"
 msgstr "Éditer un livre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/edit_book.html:8
 msgid "Edit book in database"
 msgstr "Éditer un livre dans la base de données"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/emails/book_insale.html:1
+msgid "English"
+msgstr "Anglais"
+
+msgid "French"
+msgstr "Français"
+
 #, python-format
 msgid ""
 "\n"
@@ -625,7 +442,6 @@ msgstr ""
 "<br />\n"
 "<i>(Cet email est envoyé automatiquement lorsqu'un livre est validé)</i>"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/emails/book_insale.txt:1
 #, python-format
 msgid ""
 "\n"
@@ -673,7 +489,6 @@ msgstr ""
 "\n"
 "(Cet email est envoyé automatiquement lorsqu'un livre est validé)"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/emails/book_removed.html:1
 #, python-format
 msgid ""
 "\n"
@@ -706,7 +521,6 @@ msgstr ""
 "<br />\n"
 "<i>(Cet email est envoyé automatiquement lorsqu'un livre est retiré)</i>"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/emails/book_removed.txt:1
 #, python-format
 msgid ""
 "\n"
@@ -739,7 +553,6 @@ msgstr ""
 "\n"
 "(Cet email est envoyé automatiquement lorsqu'un livre est retiré)"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/emails/book_sold.html:1
 #, python-format
 msgid ""
 "\n"
@@ -774,7 +587,6 @@ msgstr ""
 "<br />\n"
 "<i>(Cet email est envoyé automatiquement lorsqu'un livre est vendu)</i>"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/emails/book_sold.txt:1
 #, python-format
 msgid ""
 "\n"
@@ -807,7 +619,6 @@ msgstr ""
 "\n"
 "(Cet email est envoyé automatiquement lorsqu'un livre est vendu)"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/emails/price_change.html:1
 #, python-format
 msgid ""
 "\n"
@@ -828,7 +639,6 @@ msgstr ""
 "<br />\n"
 "La bourse aux livres,"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/emails/price_change.txt:1
 #, python-format
 msgid ""
 "\n"
@@ -849,93 +659,65 @@ msgstr ""
 "\n"
 "la bourse aux livres,"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:4
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:9
 msgid "Details of exemplar"
 msgstr "Détails de l'exemplaire"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:19
 msgid "State:"
 msgstr "Statut :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:22
 msgid "Annotated:"
 msgstr "Annoté :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:22
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:25
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar_print.html:27
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar_print.html:28
 msgid "Yes,No"
 msgstr "Oui,Non"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:25
 msgid "Highlighted:"
 msgstr "Surligné :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:28
-#: polybookexchange/polybookexchange/templates/polybookexchange/proposed.html:22
 msgid "Price:"
 msgstr "Prix :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:35
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar_print.html:34
 msgid "Seller's comments:"
 msgstr "Commentaires du vendeur :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:43
 msgid "Starting date of sale:"
 msgstr "Début de la vente :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:47
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar_print.html:42
 msgid "Sold date:"
 msgstr "Date de vente :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:49
 msgid "This exemplar hasen't been sold yet."
 msgstr "Cette exemplaire n'a pas encore été vendu."
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:59
 msgid "Seller:"
 msgstr "Vendeur :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:62
 msgid "Buyer:"
 msgstr "Acheteur :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:67
 msgid "Out Reason:"
 msgstr "Raison de sortie :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:71
 msgid "Money given to seller on:"
 msgstr "Argent donné au vendeur le :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:73
 msgid "Money has not been given yet"
 msgstr "L'argent n'a pas encore été donné"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:75
 msgid "No money to give to seller"
 msgstr "Pas d'argent à donner au vendeur"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:86
 #, python-format
 msgid ""
-"To buy this book, please come to AGEPoly's book exchange from Tuesday, "
-"September 27, 2022 to Thursday, September 29, 2022 between 8:45 AM and 5:15 "
-"PM at CO floor 0 and find the book number <b>%(id)s</b>!"
+"To buy this book, please come to AGEPoly's book exchange %(exchange_time)s "
+"%(exchange_location)s and find the book number <b>%(id)s</b>!"
 msgstr ""
-"Pour acheter ce livre, merci de venir à la bourse aux bouquins au sous-sol "
-"CO entre 8h45 et 17h15 du mardi 27 septembre au jeudi 27 septembre et "
-"trouvez le livre n°<b>%(id)s</b> !"
+"Pour acheter ce livre, merci de venir à la bourse aux bouquins "
+"%(exchange_time)s %(exchange_location)s et trouvez le livre n°<b>%(id)s</b> !"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar.html:100
 msgid "Print card"
 msgstr "Imprimer la fiche"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar_print.html:18
 #, python-format
 msgid ""
 "\n"
@@ -948,91 +730,62 @@ msgstr ""
 "(%(isbn)s)</u>\n"
 "        "
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar_print.html:28
 msgid "Highlighted"
 msgstr "Surligné"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar_print.html:39
 msgid "To sale since"
 msgstr "En vente depuis"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar_print.html:44
 msgid "Not sold yet"
 msgstr "Pas encore vendu"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar_print.html:51
-#: polybookexchange/polybookexchange/templates/polybookexchange/financial_infos.html:24
-#: polybookexchange/polybookexchange/templates/polybookexchange/list_candidates.html:19
-#: polybookexchange/polybookexchange/templates/polybookexchange/transactions.html:17
 msgid "Seller"
 msgstr "Vendeur"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/exemplar_print.html:52
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:41
-#: polybookexchange/polybookexchange/templates/polybookexchange/transactions.html:18
 msgid "Buyer"
 msgstr "Acheteur"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/financial_infos.html:8
 msgid "Financials Infos"
 msgstr "Informations financières"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/financial_infos.html:11
 #, python-format
 msgid " Total price of book sold: %(all_sold_books)s CHF"
 msgstr " Prix total des livres vendus : %(all_sold_books)s CHF"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/financial_infos.html:12
 #, python-format
 msgid " Total value of books lost: %(all_lost_books)s CHF"
 msgstr " Valeur totale des livres perdus : %(all_lost_books)s CHF"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/financial_infos.html:13
 #, python-format
 msgid ""
 " Total amount of money already given to sellers: %(all_given_money)s CHF"
 msgstr " Montant total donné aux vendeurs : %(all_given_money)s CHF"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/financial_infos.html:14
 #, python-format
 msgid " Total money owed to sellers: %(result)s CHF"
 msgstr " Montant total dû aux vendeurs : %(result)s CHF"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/financial_infos.html:16
 msgid "Money owed to sellers since more than one year"
 msgstr "Montant dû aux vendeurs depuis plus d'un an"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/financial_infos.html:21
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:37
-#: polybookexchange/polybookexchange/templates/polybookexchange/purchases.html:18
-#: polybookexchange/polybookexchange/templates/polybookexchange/sales.html:18
-#: polybookexchange/polybookexchange/templates/polybookexchange/search.html:27
 msgid "Title"
 msgstr "Titre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/financial_infos.html:23
-#: polybookexchange/polybookexchange/templates/polybookexchange/sales.html:22
 msgid "Sold date"
 msgstr "Date de vente"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:4
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:7
 msgid "Give Money"
 msgstr "Donner de l'argent"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:14
 msgid "Total rendu :"
 msgstr ""
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:16
 msgid "Total à rendre :"
 msgstr ""
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:25
 msgid "AGEPoly Book Exchange Seller Receipt"
 msgstr "Bourse aux livres de l'AGEPoly: Exemplaire retiré"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:28
 #, python-format
 msgid ""
 "\n"
@@ -1043,26 +796,18 @@ msgstr ""
 "                        Ce rapport a été généré le : %(now)s\n"
 "                    "
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:39
-#: polybookexchange/polybookexchange/templates/polybookexchange/purchases.html:20
-#: polybookexchange/polybookexchange/templates/polybookexchange/sales.html:21
 msgid "Submited date"
 msgstr "Date de soumission"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:40
-#: polybookexchange/polybookexchange/templates/polybookexchange/purchases.html:21
 msgid "Buy date"
 msgstr "Date d'achat"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:56
 msgid "Lost Book (AGEPoly)"
 msgstr "Livre perdu (AGEPoly)"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:65
 msgid "Je soussigné·e"
 msgstr ""
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:66
 #, python-format
 msgid ""
 "\n"
@@ -1072,43 +817,33 @@ msgid ""
 "                   "
 msgstr ""
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:74
 msgid "Signature :"
 msgstr ""
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:89
 msgid "Success !"
 msgstr "Succès !"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:93
 msgid "Sciper invalid ! (or other error)"
 msgstr "Sciper invalide ! (ou autre erreur)"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:98
 msgid "No book to reimburse !"
 msgstr "Pas de livre à rembourser !"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:106
 msgid "Confirm"
 msgstr "Confirmer"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:109
 msgid "Sciper :"
 msgstr "Sciper :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/give_money_back.html:112
 msgid "Go"
 msgstr "Valider"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:4
 msgid "How it works ?"
 msgstr "Comment ça marche ?"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:8
 msgid "What is the book exchange ?"
 msgstr "Qu'est-ce que la bourse au livres ?"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:11
 msgid ""
 "\n"
 "        The book exchange is a system who allows you to sell or buy used "
@@ -1126,49 +861,38 @@ msgstr ""
 "contreparties.\n"
 "\t"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:17
 msgid "How does the book exchange works ?"
 msgstr "Comment marche la bourse aux livres ?"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:20
 msgid "The system is very simple:"
 msgstr "Le système est très simple:"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:22
 msgid "To sell a book"
 msgstr "Pour vendre un livre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:24
 msgid "First step"
 msgstr "Première étape"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:27
 msgid "You click on 'Propose a new book' in the left menu"
 msgstr "Vous cliquez sur 'Proposer un nouveau livre' dans le menu de gauche"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:28
 msgid "You fill required informations and you print the generated page."
 msgstr ""
 "Vous remplissez les informations requises et vous imprimez la page générée."
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:29
 msgid "You bring your book, with the printed page at AGEPoly's event."
 msgstr ""
 "Vous apportez votre livre, avec la page imprimée, à l'évènement de l'AGEPoly."
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:32
 msgid "Second step"
 msgstr "Deuxième étape"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:35
 msgid "We put your book in the system."
 msgstr "Nous enregistrons votre livre dans le système."
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:36
 msgid "You get an automatic confirmation on your @epfl.ch address."
 msgstr "Vous recevrez une confirmation automatique sur votre adresse @epfl.ch."
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:37
 msgid ""
 "When your book has been sold to another student, you will also receive an "
 "automatic email"
@@ -1176,7 +900,6 @@ msgstr ""
 "Quand votre livre sera acheté par un autre étudiant, vous recevrez aussi un "
 "mail automatique"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:38
 msgid ""
 "At last, you can come back to AGEPoly's desk, with you student card "
 "(Camipro) to collect your money"
@@ -1184,19 +907,15 @@ msgstr ""
 "Enfin, vous pouvez revenir au bureau de l'AGEPoly, avec votre carte "
 "d'étudiant (Camipro) pour récupérer votre argent"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:41
 msgid "To buy a book"
 msgstr "Pour acheter un livre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:44
 msgid "You browse this website to find a book"
 msgstr "Vous parcourez le site à la recherche d'un livre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:45
 msgid "You memorise the number of the book (NOT THE ISBN NUMBER!)"
 msgstr "Vous mémorisez le numéro du livre (PAS LE NUMÉRO ISBN !)"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:46
 msgid ""
 "If you found what you needed, you can come to AGEPoly's event with the money "
 "(in cash or camipro!)"
@@ -1204,43 +923,34 @@ msgstr ""
 "Si vous avez trouvé ce que vous cherchiez, vous pouvez venir à l'évènement "
 "de l'AGEPoly avec l'argent (en cash ou en camipro!)"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:47
 msgid "You now have a new book !"
 msgstr "Vous avez un nouveau livre !"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:50
 msgid "Conditions"
 msgstr "Conditions"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:54
 msgid "The seller must be an EPFL student"
 msgstr "Le vendeur doit être un étudiant de l'EPFL"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:55
 msgid "AGEPoly won't be responsible for any lost or stolen book"
 msgstr "L'AGEPoly n'est pas responsable pour la perte ou de vol des livres"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:56
 msgid "AGEPoly won't be responsible for any deterioration of a book"
 msgstr ""
 "L'AGEPoly n'est pas responsable de l'éventuelle détérioration d'un livre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:57
 msgid ""
 "Handouts and language learning books cannot be sold using the book exchange"
 msgstr ""
 "Les polycopiés et les livres de langues ne peuvent pas être vendus via la "
 "bourse aux livres"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:58
 msgid "The service is free, for EPFL students"
 msgstr "Le service est gratuit, pour les étudiants EPFL"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:59
 msgid "If a book isn't sold or taken back after 14 months, "
 msgstr "Si un livre n'est pas vendu ou repris après 14 mois, "
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:59
 msgid ""
 "it's your responsibilty to get your book back at AGEPoly's desk, otherwise "
 "it will be given to the central library, without the possibility to get it "
@@ -1250,7 +960,6 @@ msgstr ""
 "l'AGEPoly, sans quoi il sera donné à la bibliothèque centrale, sans "
 "possiblité de récupérer le livre ou votre argent !"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/howto.html:60
 msgid ""
 "Il you left the EPFL, it's your responsibilty to follow your books. You have "
 "to contact AGEPoly as soon as possible."
@@ -1258,40 +967,30 @@ msgstr ""
 "Si vous quittez l'EPFL, c'est votre responsabilité de suivre le statut de "
 "vos livres. Vous devez contacter rapidement l'AGEPoly."
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/index.html:8
 msgid "Welcome to AGEPoly's book exchange!"
 msgstr "Bienvenue sur la bourse aux livres de l'AGEPoly !"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/index.html:13
 msgid "Last book to buy"
 msgstr "Dernier livre mis en vente"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/index.html:17
 msgid "A random book"
 msgstr "Un livre aléatoire"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/list_candidates.html:4
-#: polybookexchange/polybookexchange/templates/polybookexchange/list_candidates.html:8
 msgid "Candidates list"
 msgstr "Liste des candidats"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/list_candidates.html:21
 msgid "Days lefts"
 msgstr "Jours restants"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/list_candidates.html:32
 msgid "Validate"
 msgstr "Valider"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:4
 msgid "New candidate"
 msgstr "Nouveau candidat"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:8
 msgid "Add a new sales candidate"
 msgstr "Ajouter un nouveau candidat à la vente"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:13
 msgid ""
 "There was an error submiting your book. Did you fill all fields ? Please try "
 "again."
@@ -1299,236 +998,187 @@ msgstr ""
 "Il y a eu une erreur lors de l'envoi de votre livre. Avez-vous rempli tous "
 "les champs ? Merci d'essayer encore."
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:17
+#, python-format
 msgid ""
-"This page is the first step in the process to sell your book. You will pre-"
-"register the book in our database. You will then get a receipt that you need "
-"to bring your book at AGEPoly's event (from Tuesday, September 27, 2022 to "
-"Thursday, September 29, 2022 between 8:45 AM and 5:15 PM at CO floor 0)."
+"\n"
+"        This page is the first step in the process to sell your book. You "
+"will pre-register the book in our database.\n"
+"        You will then get a receipt that you need to bring your book at "
+"AGEPoly's event %(exchange_time)s %(exchange_location)s.\n"
+"    "
 msgstr ""
-"Cette page est la première étape du processus de mise en vente de votre "
-"livre. Vous allez pré-enregistrer le livre dans notre base de données. Vous "
-"recevrez ensuite une feuille que vous devrez apporter à l'évènement de "
-"l'AGEPoly du mardi 27 Septembre au jeudi 29 Septembre entre 8h45 et 17h15 en "
-"CO sous-sol (ou bien présenter le document sur votre téléphone avec le "
-"livre)."
+"\n"
+"        Cette page est la première étape du processus de mise en vente de "
+"votre livre. Vous allez pré-enregistrer le livre dans notre base de "
+"données.\n"
+"        Vous recevrez ensuite une feuille que vous devrez apporter à "
+"l'évènement de l'AGEPoly %(exchange_time)s %(exchange_location)s (ou bien "
+"présenter le document sur votre téléphone avec le livre).\n"
+"    "
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:20
+#, python-format
 msgid ""
-"Once the book is submitted, you have to bring it to AGEPoly's book exchange "
-"at CO floor 0 from Tuesday, September 27, 2022 to Thursday, September 29, "
-"2022 between 8:45 AM and 5:15 PM!"
+"\n"
+"            Once the book is submitted, you have to bring it to AGEPoly's "
+"book exchange %(exchange_time)s %(exchange_location)s.\n"
+"        "
 msgstr ""
-"Dès que livre est enregistré, vous devez l'amener à la bourse aux livres de "
-"l'AGEPoly en CO sous-sol entre mardi 27 septembre et jeudi 29 septembre 2022 "
-"de 8h45 à 17h15 !"
+"\n"
+"            Une fois que le livre est soumis, tu dois l'amener à la bourse "
+"aux livres de l'AGEPoly %(exchange_time)s %(exchange_location)s.\n"
+"        "
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:27
 msgid "ISBN of your book:"
 msgstr "ISBN de votre livre :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:33
 msgid "Begin by 978"
 msgstr "Commence par 978"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:35
 msgid "en"
 msgstr "fr"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:36
 msgid "What is an ISBN?"
 msgstr "Qu'est-ce qu'un ISBN ?"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:44
 msgid "About your exemplar"
 msgstr "À propos de votre exemplaire"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:131
 msgid "I accept "
 msgstr "J'accepte "
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:131
 msgid "the terms and conditions of the book exchange"
 msgstr "les conditions de la bourse aux livres"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:132
 msgid "You must accept the terms and conditions to propose your book."
 msgstr ""
 "Vous devez accepter les conditions de la bourse aux livres pour proposer "
 "votre livre."
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose.html:135
 msgid "Add"
 msgstr "Ajouter"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose_ok.html:4
 msgid "New candidate added"
 msgstr "Nouveau candidat ajouté"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose_ok.html:8
 msgid "Your candidate has been saved!"
 msgstr "Votre candidat a été sauvegardé !"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose_ok.html:11
 msgid "You now have to print"
 msgstr "Vous devez maintenant imprimer"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose_ok.html:12
 msgid "this page (open a new windows)"
 msgstr "cette page (s'ouvre dans une nouvelle fenêtre)"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose_ok.html:13
 msgid ""
 "and put it inside the book. Don't forget to bring the book to the event!"
 msgstr ""
 "et mettre la page dans le livre. N'oubliez pas d'apporter le livre à "
 "l'évènement !"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/propose_ok.html:21
 msgid "Back to the home page"
 msgstr "Retourner sur la page d'accueil"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/proposed.html:26
 #, python-format
 msgid "%(d)s day(s) left"
 msgstr "%(d)s jour(s) restant"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/proposed.html:31
 msgid "Print"
 msgstr "Imprimer"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/proposed.html:46
 msgid "You have no propositions yet!"
 msgstr "Vous n'avez pas encore de propositions !"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/purchases.html:4
-#: polybookexchange/polybookexchange/templates/polybookexchange/purchases.html:8
 msgid "Purchased books"
 msgstr "Livres achetés"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/purchases.html:44
 msgid "You didn't purchased a book yet"
 msgstr "Vous n'avez pas encore acheté de livres"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/remove_book.html:4
-#: polybookexchange/polybookexchange/templates/polybookexchange/remove_book.html:8
 msgid "Book removing"
 msgstr "Retirer un livre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/remove_book.html:14
 msgid "Book removed successfuly !"
 msgstr "Livre retiré avec succès !"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/remove_book.html:17
-#: polybookexchange/polybookexchange/templates/polybookexchange/sell_book.html:16
 msgid "Show the receipt"
 msgstr "Afficher le reçu"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/remove_book.html:25
-#: polybookexchange/polybookexchange/templates/polybookexchange/sell_book.html:25
 msgid "Exemplar invalid or already sold !"
 msgstr "Exemplaire invalide ou déjà vendu !"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/remove_book.html:32
-#: polybookexchange/polybookexchange/templates/polybookexchange/sell_book.html:36
 msgid "Exemplar ID:"
 msgstr "Exemplaire N° :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/remove_book.html:36
 msgid "Reason:"
 msgstr "Raison :"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/remove_book.html:45
 msgid "Remove"
 msgstr "Supprimer"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/sales.html:4
 msgid "Sold books"
 msgstr "Livres vendus"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/sales.html:8
 msgid "Books you're selling or you sold"
 msgstr "Livres en vente ou vendus"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/sales.html:20
 msgid "Minimum price"
 msgstr "Prix minimum"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/sales.html:20
 msgid "Minimum sold price of similar books"
 msgstr "Prix minimum de livres similaires"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/sales.html:40
 msgid "Not sold since"
 msgstr "Pas vendu depuis"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/sales.html:60
 msgid "You didn't sell any books yet"
 msgstr "Vous n'avez pas encore vendu de livre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/search.html:11
 msgid "This page allows you to search available books."
 msgstr "Cette page vous permet de rechercher parmi les livres disponibles."
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/search.html:20
 msgid "OR"
 msgstr "OU"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/search.html:33
 msgid "Author"
 msgstr "Auteur"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/search.html:65
 msgid "Clear"
 msgstr "Effacer"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/sell_book.html:4
-#: polybookexchange/polybookexchange/templates/polybookexchange/sell_book.html:8
 msgid "Book selling"
 msgstr "Vente de livre"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/sell_book.html:14
 msgid "Book sold successfuly !"
 msgstr "Livre vendu avec succès !"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/sell_book.html:44
 msgid "Of the buyer"
 msgstr "De l'acheteur"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/templatetags/show_book.html:18
 msgid "Publisher"
 msgstr "Editeur"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/templatetags/show_book.html:21
 msgid "Edition"
 msgstr "Edition"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/templatetags/show_book.html:24
 msgid "Average price"
 msgstr "Prix moyen"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/templatetags/show_book.html:27
 msgid "Stats"
 msgstr "Statistiques"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/templatetags/show_book.html:28
 #, python-format
 msgid "%(sold)s book%(p)s sold, %(stock)s in stock"
 msgstr "%(sold)s livre%(p)s vendus, %(stock)s en stock"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/templatetags/show_book.html:30
 msgid "More details"
 msgstr "Plus de détails"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/templatetags/show_name_from_sciper.html:5
 msgid "Nobody"
 msgstr "Personne"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/templatetags/show_small_book.html:26
 msgid "Details"
 msgstr "Détails"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/templatetags/stats.html:4
 #, python-format
 msgid ""
 "\n"
@@ -1547,78 +1197,29 @@ msgstr ""
 "    depuis le 23.10.2006.\n"
 "\n"
 
-#: polybookexchange/polybookexchange/templates/polybookexchange/transactions.html:4
-#: polybookexchange/polybookexchange/templates/polybookexchange/transactions.html:8
 msgid "Transactions list"
 msgstr "Liste des transactions"
 
-#: polybookexchange/polybookexchange/utils.py:38
 msgid "Unknown name"
 msgstr "Nom inconnu"
 
-#: polybookexchange/polybookexchange/views.py:239
 msgid "Bookexchange: Change of price"
 msgstr "Bourse aux livres: Changement de prix"
 
-#: polybookexchange/polybookexchange/views.py:427
 msgid "AGEPoly's book exchange: Exemplar removed"
 msgstr "Bourse aux livres de l'AGEPoly: Exemplaire retiré"
 
-#: polybookexchange/polybookexchange/views.py:474
 msgid "AGEPoly's book exchange: Exemplar sold"
 msgstr "Bourse aux livres de l'AGEPoly: Exemplaire vendu"
 
-#: polybookexchange/polybookexchange/views.py:680
 msgid "This candidate does not exist anymore. Maybe it was already validated."
 msgstr "Ce candidat n'existe plus. Il a peut-être déjà été validé."
 
-#: polybookexchange/polybookexchange/views.py:694
 msgid "Book Number already in use !"
 msgstr "Numéro de livre déjà utilisé !"
 
-#: polybookexchange/polybookexchange/views.py:710
 msgid "Invalid form data."
 msgstr "Saisie invalide."
 
-#: polybookexchange/polybookexchange/views.py:723
 msgid "AGEPoly's book exchange: Exemplar in sale"
 msgstr "Bourse aux livres de l'AGEPoly: Exemplaire en vente"
-
-#~ msgid "Book n°"
-#~ msgstr "Livre n°"
-
-#~ msgid "of book"
-#~ msgstr "du livre"
-
-#~ msgid "Please accepts terms!"
-#~ msgstr "Merci d\\'accepter les conditions !"
-
-#~ msgid "ISBN::"
-#~ msgstr "ISBN::"
-
-#~ msgid "Show the recepie"
-#~ msgstr "Afficher le reçu"
-
-#~ msgid "Newer"
-#~ msgstr "Plus récents"
-
-#~ msgid "Older"
-#~ msgstr "Plus vieux"
-
-#~ msgid "Not an ISBN"
-#~ msgstr "Pas un ISBN"
-
-#~ msgid "Cannot found this ISBN in online databases"
-#~ msgstr "Impossible de trouver les détails de l'ISBN en ligne"
-
-#~ msgid "Good ISBN !"
-#~ msgstr "ISBN ok !"
-
-#~ msgid "Proposition are deleted after 15 days."
-#~ msgstr "Les propositions sont supprimées après 15 jours."
-
-#~ msgid "Begin by 978. No - or spaces please."
-#~ msgstr "Commence par 978. Pas de - ou d'espaces, merci."
-
-#~ msgid "Maximium two checks !"
-#~ msgstr "Maximum deux croix !"

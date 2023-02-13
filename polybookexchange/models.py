@@ -7,6 +7,7 @@ from django.db import models
 from django.db.models import Min
 from django.templatetags.static import static
 from django.utils.timezone import now
+from django.utils.translation import get_language
 from django.utils.translation import gettext_lazy as _
 
 
@@ -203,3 +204,18 @@ class UsedBy(models.Model):
     book = models.ForeignKey("Book", on_delete=models.CASCADE)
     section = models.ForeignKey("Section", on_delete=models.CASCADE)
     semester = models.ForeignKey("Semester", on_delete=models.CASCADE)
+
+
+class Text(models.Model):
+    KEY_CHOICES = (
+        ("exchange_location", _("Location of the exchange")),
+        ("exchange_time", _("Time of the exchange")),
+    )
+
+    key = models.CharField(choices=KEY_CHOICES, max_length=255, unique=True)
+    text_fr = models.TextField()
+    text_en = models.TextField()
+
+    @property
+    def text(self):
+        return self.text_fr if get_language() == "fr" else self.text_en
