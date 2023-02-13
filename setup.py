@@ -1,11 +1,14 @@
 #!/usr/bin/python
 
+import polybookexchange
+
+
 from distutils.core import setup
 
 
 setup(
     name="PolyBookExchange",
-    version="0.2.2",
+    version=polybookexchange.__version__,
     description="A small django application for book exchange at AGEPoly.",
     long_description="PolyBookExchange is a small django application used for book exchange at AGEPoly, the student association of EPFL.",
     author="Maximilien Cuony",

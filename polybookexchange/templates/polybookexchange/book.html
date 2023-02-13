@@ -1,20 +1,22 @@
 {% extends "polybookexchange/base.html" %}
-{% load i18n %}
-{% load polybookexchange_extras %}
+{% load i18n polybookexchange_extras %}
 
 {% block title %}{{block.super}} :: {% trans "Book details" %}{% endblock %}
 
 {% block content %}
 
     <h1 class="page-header">{% trans "Book details" %}</h1>
+    <hr />
 
     {% show_book book "False" %}
 
     {% if user.is_staff %}
 
-        <span class="pull-right">
+        <span class="float-end">
 
-            <a href="{% url 'polybookexchange.views.edit_book' book.isbn %}" class="btn btn-info"><i class="glyphicon glyphicon-edit"></i> {% trans "Edit book details" %}</a>
+            <a href="{% url 'polybookexchange.views.edit_book' book.isbn %}" class="btn btn-info">
+                <i class="fas fa-edit"></i> {% trans "Edit book details" %}
+            </a>
 
         </span>
 
@@ -26,28 +28,33 @@
 
     {% if book.sellable %}
 
-        <table class="table table-condensed table-hover table-state">
+        <table class="table table-condensed table-hover table-state data-table mb-5">
             <thead>
                 <tr>
                     <th>{% trans "ID" %}</th>
                     <th>{% trans "Price" %}</th>
                     <th>{% trans "State" %}</th>
-                    {% if user.is_staff %}<th></th>{% endif %}
+                    {% if user.is_staff %}
+                        <th></th>
+                    {% endif %}
                 </tr>
             </thead>
 
             <tbody>
 
                 {% for ex in book.sellable %}
-
                     <tr>
-                        <td><a href="{% url 'polybookexchange.views.exemplar' ex.pk %}">{% trans "Book n°" %}{{ ex.pk }}</a></td>
+                        <td><a href="{% url 'polybookexchange.views.exemplar' ex.pk %}">{% trans "Exemplar n°" %}{{ ex.pk }}</a></td>
                         <td>{{ ex.price|floatformat:2 }} CHF</td>
-                            <td><span class="label label-{{ex.state_color}}">{{ ex.state }}</span></td>
-                            {% if user.is_staff %}
-                                <td><a href="{% url 'polybookexchange.views.sell_book' %}?eId={{ ex.pk }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-shopping-cart"></i> {% trans "Sell" %}</a></td>
-                            {% endif %}
-                        </tr>
+                        <td><span class="badge bg-{{ex.state_color}}">{{ ex.state }}</span></td>
+                        {% if user.is_staff %}
+                            <td>
+                                <a href="{% url 'polybookexchange.views.sell_book' %}?eId={{ ex.pk }}" class="btn btn-success btn-sm">
+                                    <i class="fas fa-cart-shopping"></i> {% trans "Sell" %}
+                                </a>
+                            </td>
+                        {% endif %}
+                    </tr>
                 {% endfor %}
 
                 </tbody>
@@ -56,7 +63,7 @@
     {% else %}
 
         <div class="alert alert-warning">
-            {% trans "This book is not available yet, please try again later !" %}
+            {% trans "This book is not available now, please try again later !" %}
         </div>
 
     {% endif %}
@@ -67,7 +74,7 @@
 
         {% if book.sold %}
 
-            <table class="table table-condensed table-hover table-state">
+            <table class="table table-condensed table-hover table-state data-table mb-5">
                 <thead>
                     <tr>
                         <th>{% trans "ID" %}</th>
@@ -78,9 +85,9 @@
 
                 {% for ex in book.sold %}
                     <tr>
-                        <td><a href="{% url 'polybookexchange.views.exemplar' ex.pk %}">{% trans "Book n°" %}{{ ex.pk }}</a></td>
+                        <td><a href="{% url 'polybookexchange.views.exemplar' ex.pk %}">{% trans "Exemplar n°" %}{{ ex.pk }}</a></td>
                         <td>{{ ex.price|floatformat:2 }} CHF</td>
-                        <td><span class="label label-{{ex.state_color}}">{{ ex.state }}</span></td>
+                        <td><span class="badge bg-{{ex.state_color}}">{{ ex.state }}</span></td>
                     </tr>
                 {% endfor %}
             </table>
@@ -89,7 +96,6 @@
             <div class="alert alert-warning">
                 {% trans "No exemplar sold yet !" %}
             </div>
-
 
         {% endif %}
     {% endif %}
@@ -123,6 +129,9 @@
     </table>
 
 
-    <script type="text/javascript">$('#polybook-menu-browse').addClass('active');</script>
+    <script type="text/javascript">
+        $('#polybook-menu-browse').addClass('active');
+        $('.data-table').dataTable();
+    </script>
 
 {% endblock %}

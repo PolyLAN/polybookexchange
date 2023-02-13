@@ -1,19 +1,19 @@
 {% extends "polybookexchange/base.html" %}
-{% load i18n %}
-{% load polybookexchange_extras %}
+{% load i18n polybookexchange_extras %}
 
 {% block title %}{{block.super}} :: {% trans "Book selling" %}{% endblock %}
 
 {% block content %}
 
     <h1 class="page-header">{% trans "Book selling" %}</h1>
+    <hr />
 
     {% if status == "ok" %}
 
         <div class="alert alert-success">
             {% trans "Book sold successfuly !" %}
 
-            <a href="{% url 'polybookexchange.views.exemplar' exemplar_id %}" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-print"></i> {% trans "Show the recepie" %}</a>
+            <a href="{% url 'polybookexchange.views.exemplar' exemplar_id %}" class="btn btn-primary pull-right"><i class="fas fa-print"></i> {% trans "Show the receipt" %}</a>
             <br /><br />
 
         </div>
@@ -32,23 +32,25 @@
             {% if exemplar_id %}
                 <input type="hidden" value="{{exemplar_id}}" name="exemplar_id">
             {% else %}
-                <div class="form-group">
-                    <label>{% trans "Exemplar ID:" %}</label>
+                <div class="form-group mb-3">
+                    <label class="form-label">{% trans "Exemplar ID:" %}</label>
                     <input name="exemplar_id" type="text" class="form-control">
                 </div>
             {% endif %}
 
-            <div class="form-group">
-                <label>{% trans "Sciper:" %}</label>
+            <div class="form-group mb-3">
+                <label class="form-label">{% trans "Sciper:" %}</label>
                 <input name="sciper" type="text" class="form-control">
-                <span class="help-text">{% trans "Of the buyer" %}</span>
+                <span class="form-text">{% trans "Of the buyer" %}</span>
             </div>
 
-            <button type="submit" class="pull-right btn btn-primary"><i class="glyphicon glyphicon-shopping-cart"></i> {% trans "Sell" %}</button>
+            <button type="submit" class="float-end btn btn-primary"><i class="fas fa-cart-shopping"></i> {% trans "Sell" %}</button>
         </form>
 
     {% endif %}
 
-    <script type="text/javascript">$('#polybook-menu-admin').addClass('active');</script>
+    <script type="text/javascript">
+        $('#polybook-menu-admin').addClass('active');
+    </script>
 
 {% endblock %}

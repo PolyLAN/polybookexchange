@@ -1,20 +1,21 @@
-
 {% extends "polybookexchange/base.html" %}
-{% load i18n %}
-{% load polybookexchange_extras %}
+{% load i18n polybookexchange_extras %}
 
 {% block title %}{{block.super}} :: {% trans "Book removing" %}{% endblock %}
 
 {% block content %}
 
     <h1 class="page-header">{% trans "Book removing" %}</h1>
+    <hr />
 
     {% if status == "ok" %}
 
         <div class="alert alert-success">
             {% trans "Book removed successfuly !" %}
 
-            <a href="{% url 'polybookexchange.views.exemplar' exemplar_id %}" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-print"></i> {% trans "Show the receipt" %}</a>
+            <a href="{% url 'polybookexchange.views.exemplar' exemplar_id %}" class="btn btn-primary float-end">
+                <i class="fas fa-print"></i> {% trans "Show the receipt" %}
+            </a>
             <br /><br />
 
     {% else %}
@@ -27,13 +28,13 @@
 
         <form method="POST" action="">
             {% csrf_token %}
-            <div class="form-group">
-                <label>{% trans "Exemplar ID:" %}</label>
+            <div class="form-group mb-3">
+                <label class="form-label">{% trans "Exemplar ID:" %}</label>
                 <input name="exemplar_id" type="text" class="form-control">
             </div>
-            <div class="form-group">
-                <label>{% trans "Reason:" %}</label>
-                <select name="out_reason" id="out_reason" class="form-control">
+            <div class="form-group mb-3">
+                <label class="form-label">{% trans "Reason:" %}</label>
+                <select name="out_reason" id="out_reason" class="form-select">
                     {% for value, label in Exemplar.OUT_REASON_CHOICES %}
                         {% if value != "sold" %}
                             <option value="{{value}}">{{label}}</option>
@@ -41,7 +42,7 @@
                     {% endfor %}
                 </select>
             </div>
-            <button type="submit" class="pull-right btn btn-primary"><i class="glyphicon glyphicon-trash"></i> {% trans "Remove" %}</button>
+            <button type="submit" class="float-end btn btn-primary"><i class="fas fa-trash"></i> {% trans "Remove" %}</button>
         </form>
 
     {% endif %}

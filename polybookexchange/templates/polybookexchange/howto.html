@@ -1,14 +1,15 @@
 {% extends "polybookexchange/base.html" %}
 {% load i18n %}
 
-{% block title %}{{block.super}} :: {% trans "How it's work ?" %}{% endblock %}
+{% block title %}{{block.super}} :: {% trans "How it works ?" %}{% endblock %}
 
 {% block content %}
 
     <h1 class="page-header">{% trans "What is the book exchange ?" %}</h1>
+    <hr />
 
     {% blocktrans %}
-        The book exchange is a system who allow you to sell or buy used books of others students.
+        The book exchange is a system who allows you to sell or buy used books of other students.
 
         AGEPoly takes care of the storage of your books and sell them for you, without any fees.
     {% endblocktrans %}
@@ -55,11 +56,13 @@
         <li>{% trans "AGEPoly won't be responsible for any deterioration of a book" %}</li>
         <li>{% trans "Handouts and language learning books cannot be sold using the book exchange" %}</li>
         <li>{% trans "The service is free, for EPFL students" %}</li>
-        <li>{% trans "If a book isn't sold or taken back after 14 months," %}<span class="text-danger">{% trans "it's your responsibilty to get your book back at AGEPoly's desk, otherwhise he will be given to the central library, without the posibily to get it or your money back !" %}</span></li>
+        <li>{% trans "If a book isn't sold or taken back after 14 months, " %}<span class="text-danger">{% trans "it's your responsibilty to get your book back at AGEPoly's desk, otherwise it will be given to the central library, without the possibility to get it or your money back !" %}</span></li>
         <li>{% trans "Il you left the EPFL, it's your responsibilty to follow your books. You have to contact AGEPoly as soon as possible." %}</li>
     </ul>
 
 
-    <script type="text/javascript">$('#polybook-menu-howto').addClass('active');</script>
+    <script type="text/javascript">
+        $('#polybook-menu-howto').addClass('active');
+    </script>
 
 {% endblock %}

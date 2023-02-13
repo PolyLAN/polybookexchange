@@ -1,12 +1,12 @@
 {% extends "polybookexchange/base.html" %}
-{% load i18n %}
-{% load polybookexchange_extras %}
+{% load i18n polybookexchange_extras %}
 
 {% block title %}{{block.super}} :: {% trans "New exemplar" %}{% endblock %}
 
 {% block content %}
 
-    <h1 class="page-header">{% trans "New exemplar" %}</h2>
+    <h1 class="page-header">{% trans "New exemplar" %}</h1>
+    <hr />
 
     {% show_book book "False" %}
 
@@ -17,29 +17,28 @@
     <form method="POST" action"">
         {% csrf_token %}
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">{% trans "About the exemplar" %}</h3>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{% trans "About the exemplar" %}</h3>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
 
                 <div class="container-fluid">
 
                     <div class="row">
 
                         <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label>{% trans "Annotated:" %}</label>
-                                <input type="checkbox" name="annotated" value="annotated" {% if candidate.annotated %}checked{% endif %}>
+                            <div class="form-check mb-3">
+                                <label class="form-check-label">{% trans "Annotated" %}</label>
+                                <input type="checkbox" name="annotated" value="annotated" class="form-check-input" {% if candidate.annotated %}checked{% endif %} />
                             </div>
-                            <div class="form-group">
-                                <label>{% trans "Surligned:" %}</label>
-                                <input type="checkbox" name="highlighted" value="highlighted" {% if candidate.highlighted %}checked{% endif %}>
+                            <div class="form-check mb-3">
+                                <label class="form-check-label">{% trans "Surligned" %}</label>
+                                <input type="checkbox" name="highlighted" value="highlighted" class="form-check-input" {% if candidate.highlighted %}checked{% endif %} />
                             </div>
-                            <div class="form-group">
-                                <label>{% trans "Condition" %}</label>
-                                <select name="state" class="form-control">
+                            <div class="form-group mb-3">
+                                <label class="form-label">{% trans "Condition:" %}</label>
+                                <select name="state" class="form-select">
                                     <option value="neuf" {% if candidate.state == 'new' %}selected{% endif %}>{% trans "New" %}</option>
                                     <option value="bon" {% if candidate.state == 'bon' %}selected{% endif %}>{% trans "Good" %}</option>
                                     <option value="acceptable" {% if candidate.state == 'acceptable' %}selected{% endif %}>{% trans "Acceptable" %}</option>
@@ -49,15 +48,16 @@
                         </div>
 
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label>{% trans "Price asked:" %}</label>
-                                <input name="price" type="text" class="form-control" value="{{candidate.price|floatformat:"0"}}">
+                            <div class="form-group mb-3">
+                                <label class="form-label">{% trans "Price asked:" %}</label>
+                                <input name="price" type="text" class="form-control" value="{{candidate.price|floatformat:'0'}}" />
                             </div>
-                            <div class="form-group">
-                                <label>{% trans "Comments:" %}</label>
+                            <div class="form-group mb-3">
+                                <label class="form-label">{% trans "Comments:" %}</label>
                                 <textarea name="comment" class="form-control">{{candidate.comments}}</textarea>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -69,21 +69,21 @@
             </div>
         {% endif %}
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">{% trans "Book ID" %}</h3>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{% trans "Book ID" %}</h3>
             </div>
-            <div class="panel-body">
-                <label>{% trans "Exemplar Identifier:" %}</label>
-                <input name="force_id" required="true" type="number" class="form-control">
+            <div class="card-body">
+                <label class="form-label">{% trans "Exemplar Identifier:" %}</label>
+                <input name="force_id" required="true" type="number" class="form-control" />
             </div>
         </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">{% trans "Book usage" %}</h3>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{% trans "Book usage" %}</h3>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
 
                 <div class="alert alert-info">
                     {% trans "Please select sections/years when this book is used." %}
@@ -96,21 +96,21 @@
                             <th></th>
                             {% for sem in semestres %}
                                 <th>{{sem.acronym}}</th>
-                                {% endfor %}
+                            {% endfor %}
                         </tr>
                     </thead>
 
                     <tbody>
-
                         {% for sec in sections %}
                             <tr>
                                 <td><b>{{ sec.acronym }}</b></td>
 
                                 {% for sem in semestres %}
-                                    <td><input type="checkbox" name="c_{{sec.pk}}_{{sem.pk}}" value="on" {% checked_case book sem sec candidate %}></td>
+                                    <td><input type="checkbox" name="c_{{sec.pk}}_{{sem.pk}}" value="on" {% checked_case book sem sec candidate %} /></td>
                                 {% endfor %}
                             </tr>
                         {% endfor %}
+                    </tbody>
 
                 </table>
 
@@ -118,10 +118,12 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i> {% trans "Submit" %}</button>
+        <button type="submit" class="btn btn-primary float-end"><i class="fas fa-plus"></i> {% trans "Submit" %}</button>
     </form>
 
-    <script type="text/javascript">$('#polybook-menu-admin').addClass('active');</script>
-    <script type="text/javascript">$('input[name=force_id]').focus();</script>
+    <script type="text/javascript">
+        $('#polybook-menu-admin').addClass('active');
+        $('input[name=force_id]').focus();
+    </script>
 
 {% endblock %}

@@ -6,6 +6,7 @@
 {% block content %}
 
     <h1 class="page-header">{% trans "Add a new sales candidate" %}</h1>
+    <hr />
 
     {% if error %}
         <div class="alert alert-danger">
@@ -19,16 +20,16 @@
         {% trans "Once the book is submitted, you have to bring it to AGEPoly's book exchange at CO floor 0 from Tuesday, September 27, 2022 to Thursday, September 29, 2022 between 8:45 AM and 5:15 PM!" %}
     </div>
 
-    <form method="POST" onsubmit="if (!$('#terms').is(':checked')) { alert('{% trans "Please accepts terms!" %}'); return false }">
+    <form method="POST" class="needs-validation" novalidate>
         {% csrf_token %}
 
-        <div class="form-group" id="form-group-isbn">
-            <label class="control-label">{% trans "ISBN of your book:" %}</label>
-            <div class="input-group">
-                <input name="isbn" type="text" id="isbn" class="form-control" value="{{isbn}}">
-                <span class="input-group-addon" id="isbn-result"></span>
+        <div class="form-group mb-3" id="form-group-isbn">
+            <label class="form-label">{% trans "ISBN of your book:" %}</label>
+            <div class="input-group has-validation">
+                <input name="isbn" type="text" id="isbn" class="form-control" value="{{isbn}}" aria-describedby="isbn-result" />
+                <span class="input-group-text" id="isbn-result"></span>
             </div>
-            <span class="help-block">
+            <span class="form-text">
                 {% trans "Begin by 978" %}
                 <small>
                     <a href="http://{% trans "en" %}.wikipedia.org/wiki/ISBN" target="_blank">
@@ -38,29 +39,29 @@
             </span>
         </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">{% trans "About your exemplar" %}</h3>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{% trans "About your exemplar" %}</h3>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
 
                 <div class="container-fluid">
 
                     <div class="row">
 
-                        <div class="col-md-6">
+                        <div class="col-12 col-md-6">
 
-                            <div class="form-group">
-                                <label>{% trans "Annotated:" %}</label>
-                                <input type="checkbox" name="annotated" value="annotated" {% if annotated %}checked{% endif %}>
+                            <div class="form-check mb-3">
+                                <label class="form-check-label" for="annotated">{% trans "Annotated" %}</label>
+                                <input class="form-check-input" type="checkbox" id="annotated" name="annotated" value="annotated" {% if annotated %}checked{% endif %} />
                             </div>
-                            <div class="form-group">
-                                <label>{% trans "Surligned:" %}</label>
-                                <input type="checkbox" name="highlighted" value="highlighted" {% if highlighted %}checked{% endif %}>
+                            <div class="form-check mb-3">
+                                <label class="form-check-label" for="highlighted">{% trans "Surligned" %}</label>
+                                <input class="form-check-input" type="checkbox" id="highlighted" name="highlighted" value="highlighted" {% if highlighted %}checked{% endif %} />
                             </div>
-                            <div class="form-group">
-                                <label>{% trans "Condition" %}</label>
-                                <select name="state" class="form-control">
+                            <div>
+                                <label class="form-label" for="state">{% trans "Condition:" %}</label>
+                                <select name="state" id="state" class="form-select">
                                     <option value="neuf" {% if state == 'new' %}selected{% endif %}>{% trans "New" %}</option>
                                     <option value="bon" {% if state == 'bon' %}selected{% endif %}>{% trans "Good" %}</option>
                                     <option value="acceptable" {% if state == 'acceptable' %}selected{% endif %}>{% trans "Acceptable" %}</option>
@@ -69,14 +70,14 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>{% trans "Price asked:" %}</label>
-                                <input name="price" type="text" class="form-control" value="{{price|floatformat:"0"}}">
+                        <div class="col-12 col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="price">{% trans "Price asked:" %}</label>
+                                <input name="price" id="price" type="text" class="form-control" value="{{price|floatformat:"0"}}" />
                             </div>
-                            <div class="form-group">
-                                <label>{% trans "Comments:" %}</label>
-                                <textarea name="comment" class="form-control">{{comment}}</textarea>
+                            <div>
+                                <label class="form-label" for="comment">{% trans "Comments:" %}</label>
+                                <textarea name="comment" id="comment" class="form-control">{{comment}}</textarea>
                             </div>
                         </div>
                     </div>
@@ -84,11 +85,11 @@
             </div>
         </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">{% trans "Book usage" %}</h3>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{% trans "Book usage" %}</h3>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
 
                 <div class="alert alert-info">
                     {% trans "Please select sections/years when this book is used." %}
@@ -100,22 +101,24 @@
                         <tr>
                             <th></th>
                             {% for sem in semestres %}
-                                <th>{{sem.acronym}}</th>
-                                {% endfor %}
+                                <th class="text-center" data-bs-toggle="tooltip" data-bs-html="true" title="{{sem.name}}">{{sem.acronym}}</th>
+                            {% endfor %}
                         </tr>
                     </thead>
 
                     <tbody>
-
                         {% for sec in sections %}
                             <tr>
-                                <td><b>{{ sec.acronym }}</b></td>
+                                <td><b data-bs-toggle="tooltip" data-bs-html="true" title="{{sec.name}}">{{ sec.acronym }}</b></td>
 
                                 {% for sem in semestres %}
-                                    <td><input type="checkbox" id="c_{{sec.pk}}_{{sem.pk}}" name="c_{{sec.pk}}_{{sem.pk}}" value="on"></td>
+                                    <td class="text-center">
+                                        <input class="form-check-input" type="checkbox" id="c_{{sec.pk}}_{{sem.pk}}" name="c_{{sec.pk}}_{{sem.pk}}" value="on" />
+                                    </td>
                                 {% endfor %}
                             </tr>
                         {% endfor %}
+                    </tbody>
 
                 </table>
 
@@ -123,17 +126,19 @@
             </div>
         </div>
 
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" id="terms" name="terms" value="terms"> {% trans "I accept" %}<a href="{% url 'polybookexchange.views.howto' %}" target="_blank"> {% trans "the terms and conditions of the book exchange" %}</a>
-            </label>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="terms" name="terms" value="terms" required>
+            <label class="form-check-label" for="terms">{% trans "I accept " %}<a href="{% url 'polybookexchange.views.howto' %}" target="_blank">{% trans "the terms and conditions of the book exchange" %}</a></label>
+            <div class="invalid-feedback">{% trans "You must accept the terms and conditions to propose your book." %}</div>
         </div>
 
-        <button type="submit" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i> {% trans "Add" %}</button>
+        <button type="submit" class="btn btn-primary float-end"><i class="fas fa-plus"></i> {% trans "Add" %}</button>
 
     </form>
 
     <script type="text/javascript">
+
+        var isbn_feedback_class = "";
 
         function check_isbn() {
 
@@ -141,7 +146,14 @@
                 url: "{% url 'polybookexchange.views.check_isbn' %}",
                 data: {'isbn': $('#isbn').val()},
             }).done(function( data ) {
-                $('#isbn-result').html(data);
+                let isbn_result = $('#isbn-result');
+                isbn_result.html(data.html);
+                if (isbn_feedback_class) {
+                    isbn_result.removeClass(isbn_feedback_class);
+                }
+
+                isbn_result.addClass(data.class);
+                isbn_feedback_class = data.class;
             });
         }
 
@@ -153,9 +165,18 @@
             $('#{{check}}').attr('checked', 'checked');
         {% endfor %}
 
+        $('[data-bs-toggle="tooltip"]').each((_, elem) => {return new bootstrap.Tooltip(elem);});
+
+        $('form').on('submit', function(e) {
+            if (!this.checkValidity()) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            $(this).addClass('was-validated');
+        });
+
         $('#polybook-menu-propose').addClass('active');
 
     </script>
-
 
 {% endblock %}

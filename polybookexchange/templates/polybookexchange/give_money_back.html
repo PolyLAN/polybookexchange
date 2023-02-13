@@ -1,11 +1,13 @@
 {% extends "polybookexchange/base.html" %}
-{% load i18n %}
-{% load polybookexchange_extras %}
+{% load i18n polybookexchange_extras %}
 
 {% block title %}{{block.super}} :: {% trans "Give Money" %}{% endblock %}
 
 {% block content %}
     <h1 class="page-header">{% trans "Give Money" %}</h1>
+    <hr />
+
+
     {% if sciper and total %}
         <div>
             <p> {% if status == 'ok' %}
@@ -13,17 +15,11 @@
                 {% else %}
                     {% trans "Total à rendre :" %}
                 {% endif %}
-                <strong>{{total}}</strong>
+                <strong>{{total|floatformat:2}}</strong>
             </p>
         </div>
+
         <div id='printable_report'>
-            <style type="text/css" id="print-ignore">
-                @media screen {
-                    .print-only {
-                        display: none;
-                    }
-                }
-             </style>
             <div class="print-only">
                 <h1>
                     {% trans "AGEPoly Book Exchange Seller Receipt" %} - {% show_name_from_sciper sciper %}
@@ -66,15 +62,15 @@
             </table>
             <div class="print-only">
                <p>
-               {% trans "Je soussigné·e" %}{% show_name_from_sciper sciper %},
-               {% blocktrans %}
-                   atteste à voir recu la somme de {{total}} CHF correspondant à la vente des livres listés ci-dessus aux acheteurs mentionées. Cette vente ne comporte pas de TVA.
-               {% endblocktrans %}
+                   {% trans "Je soussigné·e" %}{% show_name_from_sciper sciper %},
+                   {% blocktrans %}
+                       atteste à voir recu la somme de {{total|floatformat:2}} CHF correspondant à la vente des livres listés ci-dessus aux acheteurs mentionées. Cette vente ne comporte pas de TVA.
+                   {% endblocktrans %}
                </p>
             </div>
             <div class="print-only">
-              </br>
-              </br>
+              <br/>
+              <br/>
               <p><b>{% trans "Signature :" %}</b></p>
             </div>
         </div>
@@ -86,8 +82,8 @@
                     printable: 'printable_report',
                     type: 'html',
                     style: ".print-only { display: block !important; }",
-                })
-            })
+                });
+            });
         </script>
         <div class="alert alert-success">
             {% trans "Success !" %}
@@ -107,14 +103,17 @@
         {% if total and sciper %}
             <input type="hidden" value="{{total | stringformat:'.2f' }}" name="total">
             <input type="hidden" value="{{sciper}}" name="sciper">
-            <button type="submit" class="pull-right btn btn-success"><i class="glyphicon glyphicon-check"></i> {% trans "Confirm" %}</button>
+            <button type="submit" class="float-end btn btn-success"><i class="fas fa-check"></i> {% trans "Confirm" %}</button>
         {% else %}
-            <div class="form-group">
-                <label>{% trans "Sciper :" %}</label>
+            <div class="form-group mb-3">
+                <label class="form-label">{% trans "Sciper :" %}</label>
                 <input name="sciper" type="text" class="form-control">
-                <button type="submit" class="pull-right btn btn-primary"><i class="glyphicon glyphicon-question-sign"></i> {% trans "Go" %}</button>
             </div>
+            <button type="submit" class="float-end btn btn-primary"><i class="fas fa-arrow-right"></i> {% trans "Go" %}</button>
         {% endif %}
     </form>
-    <script type="text/javascript">$('#polybook-menu-admin').addClass('active');</script>
+
+    <script type="text/javascript">
+        $('#polybook-menu-admin').addClass('active');
+    </script>
 {% endblock %}

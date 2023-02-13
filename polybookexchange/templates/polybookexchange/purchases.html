@@ -1,16 +1,16 @@
 {% extends "polybookexchange/base.html" %}
-{% load i18n %}
-{% load polybookexchange_extras %}
+{% load i18n polybookexchange_extras %}
 
 {% block title %}{{block.super}} :: {% trans "Purchased books" %}{% endblock %}
 
 {% block content %}
 
     <h1 class="page-header">{% trans "Purchased books" %}</h1>
+    <hr />
 
     {% if liste %}
 
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover table-bordered">
 
             <thead>
                 <tr>
@@ -29,8 +29,8 @@
                         <td><a href="{% url 'polybookexchange.views.exemplar' ex.pk %}">{{ex.pk}}</a></td>
                         <td>{{ex.book.title}}</td>
                         <td>{{ex.price|floatformat:2}}</td>
-                        <td>{{ex.posted_date}}</td>
-                        <td>{{ex.sold_date}}</td>
+                        <td data-sort="{{ex.posted_date|date:'U'}}">{{ex.posted_date}}</td>
+                        <td data-sort="{{ex.sold_date|date:'U'}}">{{ex.sold_date}}</td>
                     </tr>
                 {% endfor %}
 
@@ -46,6 +46,12 @@
 
     {% endif %}
 
-    <script type="text/javascript">$('#polybook-menu-purchases').addClass('active');</script>
+    <script type="text/javascript">
+        $('#polybook-menu-purchases').addClass('active');
+        $($('table').DataTable({
+            responsive: true,
+            order: [4, 'asc'],
+        }));
+    </script>
 
 {% endblock %}

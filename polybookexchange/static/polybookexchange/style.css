@@ -6,6 +6,7 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
+  font-size: 14px;
 }
 
 
@@ -24,6 +25,7 @@ body {
  */
 .navbar-fixed-top {
   border: 0;
+  line-height: 20px;
 }
 
 /*
@@ -57,14 +59,19 @@ body {
   margin-left: -20px;
 }
 .nav-sidebar > li > a {
-  padding-right: 20px;
-  padding-left: 20px;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  border-radius: 0 !important;
 }
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
   color: #fff;
   background-color: #428bca;
+}
+.nav-sidebar > .dropdown-header {
+    padding-bottom: 0;
+    padding-top: 1rem;
 }
 
 
@@ -81,8 +88,17 @@ body {
     padding-left: 40px;
   }
 }
-.main .page-header {
-  margin-top: 0;
+
+.main hr {
+    margin-top: 0;
+}
+
+.card {
+    margin-bottom: 1rem;
+}
+.card-body {
+    --bs-bg-opacity: 1.0;
+    background-color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity));
 }
 
 
@@ -110,4 +126,10 @@ body {
     float: right;
     margin-right: 15px;
     text-align: right;
+}
+
+@media screen {
+    .print-only {
+        display: none;
+    }
 }

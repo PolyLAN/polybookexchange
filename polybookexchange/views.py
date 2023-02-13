@@ -5,7 +5,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import EmptyPage, InvalidPage, Paginator
 from django.db.models import Avg, Sum
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
@@ -268,22 +268,28 @@ def check_isbn(request):
     isbn = clean_isbn(request.GET.get("isbn", ""))
 
     if not isbnlib.is_isbn13(isbn):
-        return HttpResponse(
-            "<script type=\"text/javascript\">$('#form-group-isbn').attr('class', 'has-warning');</script><span class=\"text-warning\"><i class=\"glyphicon glyphicon-warning-sign\"></i> %s</span>"
-            % (str(_("Not an ISBN")),)
+        return JsonResponse(
+            {
+                "class": "alert-warning",
+                "html": f'<i class="fas fa-exclamation-triangle"></i> {_("Not an ISBN")}',
+            }
         )
 
     data = isbnlib.meta(str(isbn))
 
     if not data or not data.get("Authors"):
-        return HttpResponse(
-            "<script type=\"text/javascript\">$('#form-group-isbn').attr('class', 'has-danger');</script><span class=\"text-danger\"><i class=\"glyphicon glyphicon-remove\"></i> %s</span>"
-            % (str(_("Cannot found this ISBN in online databases")),)
+        return JsonResponse(
+            {
+                "class": "alert-danger",
+                "html": f'<i class="fas fa-times"></i> {_("Cannot found this ISBN in online databases")}',
+            }
         )
 
-    return HttpResponse(
-        "<script type=\"text/javascript\">$('#form-group-isbn').attr('class', 'has-success');</script><span class=\"text-success\"><i class=\"glyphicon glyphicon-ok\"></i> %s</span>"
-        % (str(_("Good ISBN !")),)
+    return JsonResponse(
+        {
+            "class": "alert-success",
+            "html": f'<i class="fas fa-check"></i> {_("Good ISBN !")}',
+        }
     )
 
 
@@ -521,20 +527,6 @@ def list_candidates(request):
 def transactions(request):
 
     liste = Exemplar.objects.order_by("-pk").all()
-
-    paginator = Paginator(liste, 25)
-
-    # Make sure page request is an int. If not, deliver first page.
-    try:
-        page = int(request.GET.get("page", "1"))
-    except ValueError:
-        page = 1
-
-    # If page request (9999) is out of range, deliver last page of results.
-    try:
-        liste = paginator.page(page)
-    except (EmptyPage, InvalidPage):
-        liste = paginator.page(paginator.num_pages)
 
     return render(request, "polybookexchange/transactions.html", {"liste": liste})
 
